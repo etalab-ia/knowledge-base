@@ -5,7 +5,7 @@ helps, and credit will always be given. You can contribute in the ways listed be
 
 ## Report Bugs
 
-Report bugs using GitHub issues.
+Report bugs using GitHub issues. Please.
 
 If you are reporting a bug, please include:
 
