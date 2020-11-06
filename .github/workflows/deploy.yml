@@ -28,9 +28,11 @@ jobs:
     - name: Build the book
       run: |
         jupyter-book build ./knowledge-base
+    
 
     # Push the book's HTML to github-pages
     - name: GitHub Pages action
+      run: ls /home/runner/work/knowledge-base/knowledge-base/knowledge-base/_build/html
       uses: peaceiris/actions-gh-pages@v3.7.3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
