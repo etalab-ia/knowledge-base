@@ -3,7 +3,6 @@
 Contributions are welcome, and they are greatly appreciated! Every little bit
 helps, and credit will always be given. You can contribute in the ways listed below.
 
-
 ## Report Bugs
 
 Report bugs using GitHub issues. Please!
