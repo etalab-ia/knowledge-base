@@ -1,7 +1,16 @@
-# Table of contents
-# Learn more at https://jupyterbook.org/customize/toc.html
-- file: intro
-- file: content
-  sections:
-    - file: markdown
-    - file: notebooks
+- file: intro 
+
+- part: Lab IA
+  chapters:
+  - file: lab_ia/intro
+  - file: lab_ia/onboarding
+  - file: lab_ia/resources
+- part: Piaf - Pour une IA Francophone
+  chapters:
+  - file: piaf/overview
+  - file: piaf/reader/overview
+    sections:
+      - file: piaf/reader/experiment1
+  - file: piaf/retriever/overview
+    sections:
+      - file: piaf/retriever/2-visualisation

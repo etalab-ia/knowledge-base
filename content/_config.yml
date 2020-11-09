@@ -5,7 +5,21 @@
 
 #######################################################################################
 # Book settings
-title                       : knowledge-base  # The title of the book. Will be placed in the left navbar.
+title: ""
 author                      : etalab-ia  # The author of the book
 copyright                   : "2020"  # Copyright year to be placed in the footer
 logo                        : logo.png  # A path to the book logo
+
+# execute:
+#   execute_notebooks: cache
+
+html:
+  home_page_in_navbar: false
+  use_edit_page_button: true
+  use_repository_button: true
+  use_issues_button: true
+
+repository:
+  url: https://github.com/executablebooks/jupyter-book
+  branch: master
+  path_to_book: docs

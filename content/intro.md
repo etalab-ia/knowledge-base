@@ -1,7 +1,7 @@
-Welcome to your Jupyter Book
-============================
+# Lab IA Knowledge Book
 
-This is a small sample book to give you a feel for how book content is
-structured.
+## Overview
 
-Check out the content pages bundled with this sample book to get started.
+This Knowledge Book project is focused on facilitating the sharing of knowledge between Etalab's data scientists and other technical roles using data formats and tools that make sense in these professions. It allows us to publish posts  (Markdown and Jupyter Notebook) to better promote the analysis of our work.
+
+Inspired on airbnb's [Knowledge Repo](https://github.com/airbnb/knowledge-repo) and using the amazing [Jupyter Book](https://jupyterbook.org/) project to generate static content.
