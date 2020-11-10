@@ -19,3 +19,13 @@ Ce Lab IA vise notamment à :
 * Anticiper et accompagner les effets sur les métiers et la relation aux usagers ;
 * Animer la réflexion sur les enjeux éthiques associés à l’IA dans la sphère publique
 * Bénéficier des apports de la recherche, en accompagnant des projets de recherche et en développant un réseau de chercheurs publics affiliés
+
+
+## Team Lab IA
+* Paul-Antoine CHEVALIER
+* Guillaume LANCRENON
+* Kim MONTALIBET
+* Rose POREAUX
+* Robin REYNAUD
+* Giulia SANTARSIERI
+* Pavel SORIANO
