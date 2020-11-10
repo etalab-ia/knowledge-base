@@ -22,6 +22,7 @@ Ce Lab IA vise notamment à :
 
 
 ## Team Lab IA
+
 * Paul-Antoine CHEVALIER
 * Guillaume LANCRENON
 * Kim MONTALIBET
