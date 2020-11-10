@@ -57,8 +57,8 @@
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Résults par type d’analyse" href="2-visualisation.html" />
-    <link rel="prev" title="Soy Reader Experiment 1" href="../reader/experiment1.html" />
+    <link rel="next" title="Analyse complémentarité" href="complementarity_dense_sparse.html" />
+    <link rel="prev" title="Reporting Standards" href="../../lab_ia/reporting_standards.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -107,6 +107,40 @@
    Resources
   </a>
  </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../lab_ia/coding_standards.html">
+   Coding Standards
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lab_ia/git.html">
+     Working with Git
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lab_ia/secrets.html">
+     Secrets
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lab_ia/python.html">
+     Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lab_ia/jupyter.html">
+     Notebooks (.ipynb)
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../lab_ia/reporting_standards.html">
+   Reporting Standards
+  </a>
+ </li>
 </ul>
 <p class="caption collapsible-parent">
  <span class="caption-text">
@@ -114,33 +148,39 @@
  </span>
 </p>
 <ul class="current nav sidenav_l1">
- <li class="toctree-l1">
-  <a class="reference internal" href="../overview.html">
-   Overview
-  </a>
- </li>
- <li class="toctree-l1 collapsible-parent">
-  <a class="reference internal" href="../reader/overview.html">
-   Reader Module
-  </a>
-  <ul class="collapse-ul">
-   <li class="toctree-l2">
-    <a class="reference internal" href="../reader/experiment1.html">
-     Soy Reader Experiment 1
-    </a>
-   </li>
-  </ul>
-  <i class="fas fa-chevron-down">
-  </i>
- </li>
  <li class="toctree-l1 current active collapsible-parent">
   <a class="current reference internal" href="#">
    Retriever Module
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
-    <a class="reference internal" href="2-visualisation.html">
-     Résults par type d’analyse
+    <a class="reference internal" href="complementarity_dense_sparse.html">
+     Analyse complémentarité
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="complementarity_dense_sparse_v2.html">
+     Analyse complémentarité
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="dense_vs_sparse_qualitative.html">
+     Étude de scores systéme dense vs sparse
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="score_threshold_sparse_retriever.html">
+     Recherche d’un seuil pour le score sparse
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Visualisation_csv_results.html">
+     Visualisation de l’indice de précision obtenu dans results.csv
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Visualisation_results_Robin.html">
+     Visualisation de la précision dense vs sparse
     </a>
    </li>
   </ul>
@@ -203,14 +243,14 @@
         aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
     <div class="dropdown-buttons sourcebuttons">
         <a class="repository-button"
-            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+            href="https://github.com/psorianom/knowledge-base"><button type="button" class="btn btn-secondary topbarbtn"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fpiaf/retriever/overview.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/psorianom/knowledge-base/issues/new?title=Issue%20on%20page%20%2Fpiaf/retriever/overview.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/executablebooks/jupyter-book/edit/master/docs/piaf/retriever/overview.md"><button
+        <a class="edit-button" href="https://github.com/psorianom/knowledge-base/edit/master/docs/piaf/retriever/overview.md"><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
     </div>
@@ -230,20 +270,6 @@
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
         
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i> Contents
-        </div>
-        <nav id="bd-toc-nav">
-            <ul class="nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#something">
-   Something
-  </a>
- </li>
-</ul>
-
-        </nav>
-        
     </div>
 </div>
     <div id="main-content" class="row">
@@ -253,10 +279,11 @@
                 
   <div class="section" id="retriever-module">
 <h1>Retriever Module<a class="headerlink" href="#retriever-module" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="something">
-<h2>Something<a class="headerlink" href="#something" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>This is the module on charge of retrieveing the correct documents for a given query.</p></li>
+<li><p>Currently based on ES</p></li>
+</ul>
 <div class="toctree-wrapper compound">
-</div>
 </div>
 </div>
 
@@ -288,8 +315,8 @@
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="../reader/experiment1.html" title="previous page">Soy Reader Experiment 1</a>
-    <a class='right-next' id="next-link" href="2-visualisation.html" title="next page">Résults par type d’analyse</a>
+    <a class='left-prev' id="prev-link" href="../../lab_ia/reporting_standards.html" title="previous page">Reporting Standards</a>
+    <a class='right-next' id="next-link" href="complementarity_dense_sparse.html" title="next page">Analyse complémentarité</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

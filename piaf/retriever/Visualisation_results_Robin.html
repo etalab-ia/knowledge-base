@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Résults par type d’analyse</title>
+    <title>Visualisation de la précision dense vs sparse</title>
     
   <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -57,7 +57,7 @@
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="prev" title="Retriever Module" href="overview.html" />
+    <link rel="prev" title="Visualisation de l’indice de précision obtenu dans results.csv" href="Visualisation_csv_results.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -106,6 +106,40 @@
    Resources
   </a>
  </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../lab_ia/coding_standards.html">
+   Coding Standards
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lab_ia/git.html">
+     Working with Git
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lab_ia/secrets.html">
+     Secrets
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lab_ia/python.html">
+     Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lab_ia/jupyter.html">
+     Notebooks (.ipynb)
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../lab_ia/reporting_standards.html">
+   Reporting Standards
+  </a>
+ </li>
 </ul>
 <p class="caption collapsible-parent">
  <span class="caption-text">
@@ -113,33 +147,39 @@
  </span>
 </p>
 <ul class="current nav sidenav_l1">
- <li class="toctree-l1">
-  <a class="reference internal" href="../overview.html">
-   Overview
-  </a>
- </li>
- <li class="toctree-l1 collapsible-parent">
-  <a class="reference internal" href="../reader/overview.html">
-   Reader Module
-  </a>
-  <ul class="collapse-ul">
-   <li class="toctree-l2">
-    <a class="reference internal" href="../reader/experiment1.html">
-     Soy Reader Experiment 1
-    </a>
-   </li>
-  </ul>
-  <i class="fas fa-chevron-down">
-  </i>
- </li>
  <li class="toctree-l1 current active collapsible-parent">
   <a class="reference internal" href="overview.html">
    Retriever Module
   </a>
   <ul class="current collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="complementarity_dense_sparse.html">
+     Analyse complémentarité
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="complementarity_dense_sparse_v2.html">
+     Analyse complémentarité
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="dense_vs_sparse_qualitative.html">
+     Étude de scores systéme dense vs sparse
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="score_threshold_sparse_retriever.html">
+     Recherche d’un seuil pour le score sparse
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Visualisation_csv_results.html">
+     Visualisation de l’indice de précision obtenu dans results.csv
+    </a>
+   </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Résults par type d’analyse
+     Visualisation de la précision dense vs sparse
     </a>
    </li>
   </ul>
@@ -186,7 +226,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/piaf/retriever/2-visualisation.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../../_sources/piaf/retriever/Visualisation_results_Robin.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -202,14 +242,14 @@
         aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
     <div class="dropdown-buttons sourcebuttons">
         <a class="repository-button"
-            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+            href="https://github.com/psorianom/knowledge-base"><button type="button" class="btn btn-secondary topbarbtn"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fpiaf/retriever/2-visualisation.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/psorianom/knowledge-base/issues/new?title=Issue%20on%20page%20%2Fpiaf/retriever/Visualisation_results_Robin.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/executablebooks/jupyter-book/edit/master/docs/piaf/retriever/2-visualisation.ipynb"><button
+        <a class="edit-button" href="https://github.com/psorianom/knowledge-base/edit/master/docs/piaf/retriever/Visualisation_results_Robin.ipynb"><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
     </div>
@@ -229,7 +269,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/piaf/retriever/2-visualisation.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/psorianom/knowledge-base/master?urlpath=tree/docs/piaf/retriever/Visualisation_results_Robin.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../../_static/images/logo_binder.svg"
@@ -252,11 +292,6 @@
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#visualisation-de-la-precision-dense-vs-sparse">
-   Visualisation de la précision dense vs sparse
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#visualisation-des-resultats-avec-filtrage-par-dossier">
    Visualisation des résultats avec filtrage par dossier
   </a>
@@ -267,8 +302,8 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#conclusionsss">
-   Conclusionsss
+  <a class="reference internal nav-link" href="#conclusions">
+   Conclusions:
   </a>
  </li>
 </ul>
@@ -282,34 +317,15 @@
         
               <div>
                 
-  <div class="section" id="results-par-type-d-analyse">
-<h1>Résults par type d’analyse<a class="headerlink" href="#results-par-type-d-analyse" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="visualisation-de-la-precision-dense-vs-sparse">
+<h1>Visualisation de la précision dense vs sparse<a class="headerlink" href="#visualisation-de-la-precision-dense-vs-sparse" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="mi">7</span><span class="n">dd3504c366f</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;pandas&#39;
-</pre></div>
 </div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;results.csv&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="section" id="visualisation-de-la-precision-dense-vs-sparse">
-<h2>Visualisation de la précision dense vs sparse<a class="headerlink" href="#visualisation-de-la-precision-dense-vs-sparse" title="Permalink to this headline">¶</a></h2>
 <p>On visualise ici les différentes performances selon le type de retriever choisi (sparse / dense). <br> Dans le notebook <em>Visualisation results</em> (results de Pavel) on visualisait la performance pour chaque test, ici on visualise plutot la <em>performance moyenne</em> comme plusieurs tests ont été faits.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -337,11 +353,10 @@ Name: precision, dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f9459e37250&gt;
 </pre></div>
 </div>
-<img alt="../../_images/2-visualisation_5_2.png" src="../../_images/2-visualisation_5_2.png" />
+<img alt="../../_images/Visualisation_results_Robin_3_2.png" src="../../_images/Visualisation_results_Robin_3_2.png" />
 </div>
 </div>
 <p>Globalement le retriever <em>dense</em> donne des meilleurs résultats, sauf pour le cas k=5</p>
-</div>
 <div class="section" id="visualisation-des-resultats-avec-filtrage-par-dossier">
 <h2>Visualisation des résultats avec filtrage par dossier<a class="headerlink" href="#visualisation-des-resultats-avec-filtrage-par-dossier" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
@@ -370,7 +385,7 @@ Name: precision, dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f945a654cd0&gt;
 </pre></div>
 </div>
-<img alt="../../_images/2-visualisation_8_2.png" src="../../_images/2-visualisation_8_2.png" />
+<img alt="../../_images/Visualisation_results_Robin_6_2.png" src="../../_images/Visualisation_results_Robin_6_2.png" />
 </div>
 </div>
 </div>
@@ -402,7 +417,7 @@ Name: precision, dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f945a839e10&gt;
 </pre></div>
 </div>
-<img alt="../../_images/2-visualisation_10_2.png" src="../../_images/2-visualisation_10_2.png" />
+<img alt="../../_images/Visualisation_results_Robin_8_2.png" src="../../_images/Visualisation_results_Robin_8_2.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -438,8 +453,8 @@ Name: retriever_type, dtype: int64
 </div>
 </div>
 </div>
-<div class="section" id="conclusionsss">
-<h2>Conclusionsss<a class="headerlink" href="#conclusionsss" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="conclusions">
+<h2>Conclusions:<a class="headerlink" href="#conclusions" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>remarque: par rapport au notebook précédent, ici vu la forme des données j’ai plutot évalué la performance moyenne (pas possible d’en faire sur les données précédentes), donc les deux notebooks ne sont pas exactement comparables</p></li>
 <li><p>visualisation par type de retriever, <strong>sans filtrage</strong>:</p>
@@ -491,7 +506,7 @@ Name: retriever_type, dtype: int64
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="overview.html" title="previous page">Retriever Module</a>
+    <a class='left-prev' id="prev-link" href="Visualisation_csv_results.html" title="previous page">Visualisation de l’indice de précision obtenu dans results.csv</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

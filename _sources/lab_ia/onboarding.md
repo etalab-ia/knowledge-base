@@ -8,9 +8,9 @@ Welcome kit : [https://etalab.github.io/etalab/](https://etalab.github.io/etalab
 
 Configuration : 
 - [ ] Mail : @data.gouv.fr / Mdp à demander à Paul-Antoine
-    - [ ] Ajout à la liste etalab@data.gouv.fr
-    - [ ] Ajout à la liste lab-ia@data.gouv.fr
-    - [ ] Ajout à la liste piaf@data.gouv.fr
+    - [ ] Ajout à la liste etalab [at] data.gouv.fr
+    - [ ] Ajout à la liste lab-ia [at] data.gouv.fr
+    - [ ] Ajout à la liste piaf [at] data.gouv.fr
     
 - [ ] Slack : startups-detat.slack.com via email data.gouv.fr
     - [ ] Ajout au canal #etalab-prive

@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Resources</title>
+    <title>Working with Git</title>
     
   <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -57,8 +57,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Coding Standards" href="coding_standards.html" />
-    <link rel="prev" title="Onboarding" href="onboarding.html" />
+    <link rel="next" title="Secrets" href="secrets.html" />
+    <link rel="prev" title="Coding Standards" href="coding_standards.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -102,18 +102,18 @@
    Onboarding
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="resources.html">
    Resources
   </a>
  </li>
- <li class="toctree-l1 collapsible-parent">
+ <li class="toctree-l1 current active collapsible-parent">
   <a class="reference internal" href="coding_standards.html">
    Coding Standards
   </a>
-  <ul class="collapse-ul">
-   <li class="toctree-l2">
-    <a class="reference internal" href="git.html">
+  <ul class="current collapse-ul">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      Working with Git
     </a>
    </li>
@@ -227,7 +227,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/lab_ia/resources.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/lab_ia/git.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -247,10 +247,10 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/psorianom/knowledge-base/issues/new?title=Issue%20on%20page%20%2Flab_ia/resources.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/psorianom/knowledge-base/issues/new?title=Issue%20on%20page%20%2Flab_ia/git.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/psorianom/knowledge-base/edit/master/docs/lab_ia/resources.md"><button
+        <a class="edit-button" href="https://github.com/psorianom/knowledge-base/edit/master/docs/lab_ia/git.md"><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
     </div>
@@ -276,70 +276,41 @@
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#etalab">
-   Etalab
+  <a class="reference internal nav-link" href="#how-should-i-organize-my-codebase">
+   How should I organize my codebase?
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#data-science-machine-learning">
-   Data Science / Machine Learning
+  <a class="reference internal nav-link" href="#branches">
+   Branches
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-often-should-i-branch-how-often-to-review-code">
+   How often should I branch? How often to review code?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#create-a-readme-md">
+   Create a README.md
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#tabular-data">
-     Tabular Data
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#nlp">
-     NLP
+    <a class="reference internal nav-link" href="#example">
+     Example
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#devops">
-   DevOps
+  <a class="reference internal nav-link" href="#gitignore">
+   .gitignore
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#python">
-     Python
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#web-services">
-     Web Services
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#api-restful">
-       API RESTful
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#building-a-web-service">
-       Building a web service
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#git-github">
-     Git/Github
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#working-with-a-remote-server-with-ssh">
-     Working with a remote server with
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       ssh
-      </span>
-     </code>
-    </a>
-   </li>
-  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#configuration">
+   Configuration
+  </a>
  </li>
 </ul>
 
@@ -352,63 +323,81 @@
         
               <div>
                 
-  <div class="section" id="resources">
-<h1>Resources<a class="headerlink" href="#resources" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="etalab">
-<h2>Etalab<a class="headerlink" href="#etalab" title="Permalink to this headline">¶</a></h2>
-<p>An essential overview of what Etalab is all about can be found in <a class="reference external" href="https://www.etalab.gouv.fr/wp-content/uploads/2018/04/RapportAGD_2016-2017_web.pdf">the report 2016-2017 of the administrateur général des données AGD</a>.</p>
-<p>A list of useful links about the day-to-day work is <a class="reference external" href="https://etalab.github.io/etalab/">here</a>.</p>
-</div>
-<div class="section" id="data-science-machine-learning">
-<h2>Data Science / Machine Learning<a class="headerlink" href="#data-science-machine-learning" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="tabular-data">
-<h3>Tabular Data<a class="headerlink" href="#tabular-data" title="Permalink to this headline">¶</a></h3>
-<p>While the baseline way to build dataset vectors is by using the textual meta-data of each one of them (description, title, keywords, etc), we could exploit the content of the datasets. Below I show some ressources to get started on this subject.</p>
-<p>Regarding the dataset2vec idea, ideally you can familiarize yourself with the concept of embeddings by taking a look into one of the most famous <a class="reference external" href="https://papers.nips.cc/paper/5021-distributed-representations-of-words-and-phrases-and-their-compositionality.pdf">paper on the subject</a>. Or by looking at <a class="reference external" href="https://papers.nips.cc/paper/5477-neural-word-embedding-as-implicit-matrix-factorization.pdf">this interesting take by the author of NNMNLP </a>. There are also plenty of blogposts/papers that try to facilitate the comprehension of the topic, such as this <a class="reference external" href="https://arxiv.org/abs/1709.03856">one</a>.</p>
-<p>Once familiarized with the concept, this blogpost explains what I would like to try on the subject of an eventual <a class="reference external" href="https://www.fast.ai/2018/04/29/categorical-embeddings/">table2vec</a></p>
-<p>An other exploration avenue is the transformation of tables into text. A mini-review on the subject can be found <a class="reference external" href="https://github.com/sebastianruder/NLP-progress/blob/master/english/data_to_text_generation.md">here</a>.</p>
-<p>A final possibility, if there is time :), would be to explore the candidate machine learnable datasets with automatic machine learning approahces such as <a class="reference external" href="https://github.com/awslabs/autogluon">autogluon</a> and <a class="reference external" href="https://dabl.github.io/dev/">dabl</a>.</p>
-</div>
-<div class="section" id="nlp">
-<h3>NLP<a class="headerlink" href="#nlp" title="Permalink to this headline">¶</a></h3>
-<p>A very good intro to modern NLP can be found in the first chapters of Neural Network Methods in Natural Language Processing (NNMNLP). A more applied view into modern NLP can be found in the first chapters of Natural Language Processing with PyTorch (NLPP). We have both books here at Etalab.</p>
-<p>For now, we are training/testing NLP with flair and sometimes with spacy or similar libraries. Flair(https://github.com/flairNLP/flair) is quite intuitive and it has great documentation. Just doing the example exercises in the repo README is enough to get started. We mainly focus on Recurrent Neural Networks (it is well explained in NNMNLP). Specifically, biLSTM + CRF architectures that were <a class="reference external" href="https://arxiv.org/abs/1603.01360">quite famous some years ago</a>.</p>
-<p>Aside from recurrent networks, and going into more parallelizable/performant models, I want to move on to newer architectures, namely Transformers. Transformers is the name of the neural network architecture as well as the name of a NLP Python library](https://github.com/huggingface/transformers/) that facilitates the use of the Transformer methods. If you could do the intro exercises that would be good enough.</p>
-<p>The intro chapters in NNMNLP are a really good start. If you want to go more in detail into what it is being currently done today in NLP, you can check the nice introduction to Transformers in its seminal <a class="reference external" href="https://arxiv.org/abs/1706.03762">paper “Attention is all you need”</a>. That paper, coupled to this other on <a class="reference external" href="https://arxiv.org/abs/1902.02181">Attention Mechansims</a> should give you a good intro into what is current in NLP.</p>
-<p>For quicker and simpler (and not necesseraly worse, au contraire) approaches to NLP, a good tutorial on scikit-learn with text data is <a class="reference external" href="https://scikit-learn.org/stable/tutorial/text_analytics/working_with_text_data.html">this one</a>. Doing this exercise will give you a good glimpse on dealing with text with scikit-learn. Scikit-learn is the most famous machine learning library in Python, it has implemented almost all the ML famous methods. It does not have deep learning, nor graph theory though.</p>
-<p>Both the pseudo and piaf projects use these technologies (<em>flair</em>/<em>transformers</em>). A new project that is starting here at Etalab will use them plus some more classical stuff (<em>scikit-learn</em>, <em>gensim</em>).</p>
-</div>
-</div>
-<div class="section" id="devops">
-<h2>DevOps<a class="headerlink" href="#devops" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="python">
-<h3>Python<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h3>
-<p>If needed, a good intro to Python in the context of data science can be found in the Python Data Science Handbook (PDSH). We have this book at etalab. The book explores the pandas and scikit-learn Python libraries. Pandas is used to get dataframes like in R and scikit-learn is the library that allows you to train/test machine learning methods.</p>
-<p>An equivalence guide between R and Python is <a class="reference external" href="https://www.kdnuggets.com/2017/02/moving-r-python-libraries.html">here</a></p>
-<p>A nice <a class="reference external" href="https://datacarpentry.org/python-ecology-lesson/">course on the subject is</a></p>
-</div>
-<div class="section" id="web-services">
-<h3>Web Services<a class="headerlink" href="#web-services" title="Permalink to this headline">¶</a></h3>
-<p>Building a model is nice but putting it to use is essential. You can make it useful via a web service. To do so, usually you need to build an API and a web service.</p>
-<div class="section" id="api-restful">
-<h4>API RESTful<a class="headerlink" href="#api-restful" title="Permalink to this headline">¶</a></h4>
-<p>The interface that links users and models. In python, we use flask most of the times as it is the simplest approach. A simple example is <a class="reference external" href="https://www.kdnuggets.com/2019/01/build-api-machine-learning-model-using-flask.html">here</a>.</p>
-</div>
-<div class="section" id="building-a-web-service">
-<h4>Building a web service<a class="headerlink" href="#building-a-web-service" title="Permalink to this headline">¶</a></h4>
-<p>Building web services is a whole computer science domain apart. Still, in order to build quick demos to let users play with our models, it is essential to have a GUI.</p>
-<p>The fastest way I have found to achieve this task is by using <a class="reference external" href="https://examples.dask.org/machine-learning.html">Dask</a> or <a class="reference external" href="https://www.streamlit.io/">streamlit</a>. The former is more powerful but a little bit more trickier. The latter is less powerful but easier to get it running.</p>
+  <div class="section" id="working-with-git">
+<h1>Working with Git<a class="headerlink" href="#working-with-git" title="Permalink to this headline">¶</a></h1>
+<p>By default all work should be stored on the <a class="reference external" href="https://github.com/etalab-ia/">Lab IA github organisation repo</a>. Still, it is prefered to move a project to the team’s repo once the development is at a MVP stage. When using secrets (API keys, usernames, passwords, adresses, sensitive information, etc), you shoud  always follow the guidelines in the Secrets guideline.</p>
+<div class="section" id="how-should-i-organize-my-codebase">
+<h2>How should I organize my codebase?<a class="headerlink" href="#how-should-i-organize-my-codebase" title="Permalink to this headline">¶</a></h2>
+<p>A good bare minimum data-science oriented folder structure can be found <a class="reference external" href="https://github.com/etalab-ia/data_science_template">here</a>.
+This template is proposed when a new repo is created from Lab IA’s organization.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>.
+├── data
+├── LICENSE
+├── logs
+├── README.md
+├── notebooks
+├── reports
+├── results
+└── src
+    ├── data
+    │   └── __init__.py
+    ├── __init__.py
+    ├── models
+    │   └── __init__.py
+    └── util
+        └── __init__.py
+</pre></div>
 </div>
 </div>
-<div class="section" id="git-github">
-<h3>Git/Github<a class="headerlink" href="#git-github" title="Permalink to this headline">¶</a></h3>
-<p>Git is essential in our coding/testing/writing workflow. Another one-day course is <a class="reference external" href="https://swcarpentry.github.io/git-novice/">here</a>.
-Github is the website that allow us to store our code within git repositories.</p>
+<div class="section" id="branches">
+<h2>Branches<a class="headerlink" href="#branches" title="Permalink to this headline">¶</a></h2>
+<p>Treat the master branch as a place for finished code and always work on another branch. This makes code review easy even for the initial version of a project, as you can submit a pull request to merge the first working version of the code into master.</p>
 </div>
-<div class="section" id="working-with-a-remote-server-with-ssh">
-<h3>Working with a remote server with <code class="docutils literal notranslate"><span class="pre">ssh</span></code><a class="headerlink" href="#working-with-a-remote-server-with-ssh" title="Permalink to this headline">¶</a></h3>
-<p>A good intro into connecting to a remote server, to perform an experiment, to access data, to deploy a service, or other, can be found over <a class="reference external" href="https://www.digitalocean.com/community/tutorials/ssh-essentials-working-with-ssh-servers-clients-and-keys">here</a>. Knowing how to work with a remote server is essential to a developper/ML engineer.</p>
+<div class="section" id="how-often-should-i-branch-how-often-to-review-code">
+<h2>How often should I branch? How often to review code?<a class="headerlink" href="#how-often-should-i-branch-how-often-to-review-code" title="Permalink to this headline">¶</a></h2>
+<p>Follow the Git Flow convention. Each major feature should be developed on a branch. This should <strong>ideally</strong> be reviewed (see Code Review) by at least one other team member and passed any unit/integration (if existing) tests before the code is merged into the master branch. Working in this way also encourages the development of modular code.</p>
+<p>When considering what constitutes a major feature think of the reviewer. Aim to strike a balance between having long pull requests that require a lot of time to review and short but frequent pull requests. As a ball park figure, accurate review of 200-400 lines of code should take 60-90 minutes to review with an accuracy of 70-90%.</p>
 </div>
+<div class="section" id="create-a-readme-md">
+<h2>Create a README.md<a class="headerlink" href="#create-a-readme-md" title="Permalink to this headline">¶</a></h2>
+<p>All projects should have a README.md that gives enough information for someone to understand the project and get started with the code. If a project has multiple components, consider nesting and linking them, with each readme explaining a specific component.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>├── README.md             (General overview)
+├── Component 1
+│   ├── README.md         (Specific instructions)
+│   ├── code.sh
+├── Component 2
+│   ├── README.md
+│   ├── code.sh
+...
+</pre></div>
+</div>
+<div class="section" id="example">
+<h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<p>A bare minimum README file should contain the following sections:</p>
+<ul class="simple">
+<li><p>Project Name</p></li>
+<li><p>Project Intro/Objective</p></li>
+<li><p>Partner</p></li>
+<li><p>Methods Used</p></li>
+<li><p>Technologies</p></li>
+<li><p>Project Description</p></li>
+<li><p>Needs of this project</p></li>
+<li><p>Getting Started</p></li>
+<li><p>Featured Notebooks/Analysis/Deliverables</p></li>
+<li><p>Contributing Etalab Members</p></li>
+<li><p>Contact</p></li>
+</ul>
+<p>A full README.md template can be found here</p>
+</div>
+</div>
+<div class="section" id="gitignore">
+<h2>.gitignore<a class="headerlink" href="#gitignore" title="Permalink to this headline">¶</a></h2>
+<p>Maintain a good .gitignore file. Github proposes defaut .gitignore files ready to be used. <a class="reference external" href="https://github.com/github/gitignore/blob/master/Python.gitignore">Here is the Python example</a>. Please add your <code class="docutils literal notranslate"><span class="pre">.idea</span></code> folder to your .gitignore file in order to avoid having your local PyCharm’s (or other) config file in the repo :)</p>
+</div>
+<div class="section" id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
+<p>One common mistake with Git is not correctly associating your local account with the remote one. To do this, make sure your globally configured email is the same as one of your GitHub emails.</p>
+<p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">config</span> <span class="pre">--global</span> <span class="pre">user.email</span> <span class="pre">&quot;me&#64;data.gouv.fr&quot;</span></code></p>
 </div>
 </div>
 
@@ -440,8 +429,8 @@ Github is the website that allow us to store our code within git repositories.</
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="onboarding.html" title="previous page">Onboarding</a>
-    <a class='right-next' id="next-link" href="coding_standards.html" title="next page">Coding Standards</a>
+    <a class='left-prev' id="prev-link" href="coding_standards.html" title="previous page">Coding Standards</a>
+    <a class='right-next' id="next-link" href="secrets.html" title="next page">Secrets</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
