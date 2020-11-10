@@ -10,8 +10,8 @@ author                      : etalab-ia  # The author of the book
 copyright                   : "2020"  # Copyright year to be placed in the footer
 logo                        : logo.png  # A path to the book logo
 
-# execute:
-#   execute_notebooks: cache
+execute:
+  execute_notebooks: off
 
 html:
   home_page_in_navbar: false
@@ -20,6 +20,6 @@ html:
   use_issues_button: true
 
 repository:
-  url: https://github.com/executablebooks/jupyter-book
+  url: https://github.com/psorianom/knowledge-base
   branch: master
   path_to_book: docs
