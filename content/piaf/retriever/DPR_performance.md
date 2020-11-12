@@ -1,4 +1,4 @@
-# Investigating the performance of DPR Camembert (finetuned over PIAF combo)
+# Investigating the performance of DPR Camembert (finetuned over PIAF combo) [WIP]
 
 ## Intro
 
@@ -42,7 +42,7 @@ For each problem above, I have tried:
 
 ## Methodology
 
-I need to check if my fine-tuned multilingual Bert model (mbertDPR) is working. Let's not use my evaluation script, but [Haystack's e2e evaluation script](https://github.com/deepset-ai/haystack/blob/master/tutorials/Tutorial5_Evaluation.ipynb). We will focus exlcusively on the retriever for now. Also, while they test in English, I believe a multilingual bert should not do very bad. 
+I need to check if my fine-tuned multilingual Bert model (`mbertDPR`) is working. Let's not use my evaluation script, but [Haystack's e2e evaluation script](https://github.com/deepset-ai/haystack/blob/master/tutorials/Tutorial5_Evaluation.ipynb). We will focus exlcusively on the retriever for now. Also, while they test in English, I believe a multilingual bert should not do very bad. 
 
 Haystack allows us to use either two types of backends: `ElasticsearchDocumentStore` or `FAISSDocumentStore`.
 The former uses ElasticSearch, the latter uses Facebook FAISS.
@@ -50,7 +50,7 @@ The former uses ElasticSearch, the latter uses Facebook FAISS.
 Both backends are quite known and mature (ES much more maybe). In the following, I will test both backends in DPR mode, while using three models: 
 
 1. the model as shared by DPR authors,
-2. my mbertDPR model, and
+2. my `mbertDPR` model, and
 3. the non fine-tuned multilingual Bert model (mbert).
 
 ### Using `ElasticsearchDocumentStore`
@@ -79,7 +79,7 @@ Retriever Mean Avg Precision: 0.955761316872428
 ```
 
 
-#### DPR (mbertDPR) Results (embedded title)
+#### DPR (`mbertDPR`) Results (embedded title)
 
 ```
 11/11/2020 19:25:12 - INFO - haystack.retriever.base -   For 54 out of 54 questions (100.00%), the answer was in the top-10 candidate passages selected by the retriever.
@@ -87,7 +87,7 @@ Retriever Recall: 1.0
 Retriever Mean Avg Precision: 0.9223985890652557
 ```
 
-#### DPR (mbertDPR) Results (non embedded title)
+#### DPR (`mbertDPR`) Results (non embedded title)
 
 ```
 11/11/2020 19:43:48 - INFO - haystack.retriever.base -   For 54 out of 54 questions (100.00%), the answer was in the top-10 candidate passages selected by the retriever.
@@ -110,6 +110,18 @@ Retriever Recall: 0.3333333333333333
 Retriever Mean Avg Precision: 0.12633009994121103
 ```
 
+#### Discussion
+
+In this proposed test, DPR from faceboook (MAP: 0.97) is indeed better than BM25 (MAP: 0.93). 
+
+```{attention}
+And what is better ! Our `mbertDPR` model is performing not as good as facebook's DPR, but correctly (MAP: 0.92)! Maybe the model actually works and it is something else not working ... 
+```
+
+Finally, I tested the 
+
+
+
 ### Using `FAISS`
 
 ```{error}
@@ -121,9 +133,23 @@ Some quick solutions :
 
 2. Another way would be to use an `ElasticSearchDocumentStore` in my evaluation script instead of a FAISS store. 
 
-I chose solution two, as it would validate quickly whether camembertDPR is working or not.
+I chose solution two, as it would validate quickly whether came`mbertDPR` is working or not.
 
 ## Using `ElasticSearchDocumentStore` in our Evaluation script
 
+
+In our evaluation script, I was using the FAISS document store. I changed it to ElasticSearch while using the mbertDPR model (multilingual Bert with Piaf combo).
+
+And voilà, the results are equally bad to those given by BM25 or SBERT (MAP: 0.19). But that is good news, kindof.
+
+```{alert}
+Is the performance quite similar because in reality, the ES document store is actually using BM25 to retrieve the results and "just" re-ranking with the embeddings vectors? 
+```
+Sadly, it may very well be the case. See the follwing paragraph from [here](https://www.elastic.co/blog/text-similarity-search-with-vectors-in-elasticsearch):
+
+>The script_score query is designed to wrap a restrictive query, and modify the scores of the documents it returns. However, we’ve provided a match_all query, which means the script will be run over all documents in the index. This is a current limitation of vector similarity in Elasticsearch — **vectors can be used for scoring documents, but not in the initial retrieval step**. Support for retrieval based on vector similarity is an important area of [ongoing work](https://github.com/elastic/elasticsearch/issues/42326). 
+
+
+So now, I have to check that with the FAISS document store, we get the same results in Haystack's e2e evaluation tutorial. But, as I wrote before, the method to test it is not yet implemented. 
 
 
