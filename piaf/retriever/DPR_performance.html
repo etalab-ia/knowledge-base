@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Investigating the performance of DPR Camembert (finetuned over PIAF combo)</title>
+    <title>Investigating the performance of DPR Camembert (finetuned over PIAF combo) [WIP]</title>
     
   <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -184,7 +184,7 @@
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Investigating the performance of DPR Camembert (finetuned over PIAF combo)
+     Investigating the performance of DPR Camembert (finetuned over PIAF combo) [WIP]
     </a>
    </li>
   </ul>
@@ -333,12 +333,24 @@
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#dpr-mbertdpr-results-embedded-title">
-       DPR (mbertDPR) Results (embedded title)
+       DPR (
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         mbertDPR
+        </span>
+       </code>
+       ) Results (embedded title)
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#dpr-mbertdpr-results-non-embedded-title">
-       DPR (mbertDPR) Results (non embedded title)
+       DPR (
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         mbertDPR
+        </span>
+       </code>
+       ) Results (non embedded title)
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
@@ -349,6 +361,11 @@
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#dpr-mbert-results-non-embedded-title">
        DPR (mbert) Results (non embedded title)
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#discussion">
+       Discussion
       </a>
      </li>
     </ul>
@@ -387,8 +404,8 @@
         
               <div>
                 
-  <div class="section" id="investigating-the-performance-of-dpr-camembert-finetuned-over-piaf-combo">
-<h1>Investigating the performance of DPR Camembert (finetuned over PIAF combo)<a class="headerlink" href="#investigating-the-performance-of-dpr-camembert-finetuned-over-piaf-combo" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="investigating-the-performance-of-dpr-camembert-finetuned-over-piaf-combo-wip">
+<h1>Investigating the performance of DPR Camembert (finetuned over PIAF combo) [WIP]<a class="headerlink" href="#investigating-the-performance-of-dpr-camembert-finetuned-over-piaf-combo-wip" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="intro">
 <h2>Intro<a class="headerlink" href="#intro" title="Permalink to this headline">¶</a></h2>
 <p>I have fine-tuned a camambert model over our combo of French SQuAD-like datasets (PIAF, FQuAD, SQuAD-FR) using the <a class="reference external" href="https://arxiv.org/abs/2004.04906">DPR objective</a> (similarity between query and positive and dissimilarity with negative contexts). The objective is to use this model in our PIAF Retriever module.</p>
@@ -427,13 +444,13 @@
 </div>
 <div class="section" id="methodology">
 <h2>Methodology<a class="headerlink" href="#methodology" title="Permalink to this headline">¶</a></h2>
-<p>I need to check if my fine-tuned multilingual Bert model (mbertDPR) is working. Let’s not use my evaluation script, but <a class="reference external" href="https://github.com/deepset-ai/haystack/blob/master/tutorials/Tutorial5_Evaluation.ipynb">Haystack’s e2e evaluation script</a>. We will focus exlcusively on the retriever for now. Also, while they test in English, I believe a multilingual bert should not do very bad.</p>
+<p>I need to check if my fine-tuned multilingual Bert model (<code class="docutils literal notranslate"><span class="pre">mbertDPR</span></code>) is working. Let’s not use my evaluation script, but <a class="reference external" href="https://github.com/deepset-ai/haystack/blob/master/tutorials/Tutorial5_Evaluation.ipynb">Haystack’s e2e evaluation script</a>. We will focus exlcusively on the retriever for now. Also, while they test in English, I believe a multilingual bert should not do very bad.</p>
 <p>Haystack allows us to use either two types of backends: <code class="docutils literal notranslate"><span class="pre">ElasticsearchDocumentStore</span></code> or <code class="docutils literal notranslate"><span class="pre">FAISSDocumentStore</span></code>.
 The former uses ElasticSearch, the latter uses Facebook FAISS.</p>
 <p>Both backends are quite known and mature (ES much more maybe). In the following, I will test both backends in DPR mode, while using three models:</p>
 <ol class="simple">
 <li><p>the model as shared by DPR authors,</p></li>
-<li><p>my mbertDPR model, and</p></li>
+<li><p>my <code class="docutils literal notranslate"><span class="pre">mbertDPR</span></code> model, and</p></li>
 <li><p>the non fine-tuned multilingual Bert model (mbert).</p></li>
 </ol>
 <div class="section" id="using-elasticsearchdocumentstore">
@@ -464,7 +481,7 @@ The former uses ElasticSearch, the latter uses Facebook FAISS.</p>
 </div>
 </div>
 <div class="section" id="dpr-mbertdpr-results-embedded-title">
-<h4>DPR (mbertDPR) Results (embedded title)<a class="headerlink" href="#dpr-mbertdpr-results-embedded-title" title="Permalink to this headline">¶</a></h4>
+<h4>DPR (<code class="docutils literal notranslate"><span class="pre">mbertDPR</span></code>) Results (embedded title)<a class="headerlink" href="#dpr-mbertdpr-results-embedded-title" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">11</span><span class="o">/</span><span class="mi">11</span><span class="o">/</span><span class="mi">2020</span> <span class="mi">19</span><span class="p">:</span><span class="mi">25</span><span class="p">:</span><span class="mi">12</span> <span class="o">-</span> <span class="n">INFO</span> <span class="o">-</span> <span class="n">haystack</span><span class="o">.</span><span class="n">retriever</span><span class="o">.</span><span class="n">base</span> <span class="o">-</span>   <span class="n">For</span> <span class="mi">54</span> <span class="n">out</span> <span class="n">of</span> <span class="mi">54</span> <span class="n">questions</span> <span class="p">(</span><span class="mf">100.00</span><span class="o">%</span><span class="p">),</span> <span class="n">the</span> <span class="n">answer</span> <span class="n">was</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">top</span><span class="o">-</span><span class="mi">10</span> <span class="n">candidate</span> <span class="n">passages</span> <span class="n">selected</span> <span class="n">by</span> <span class="n">the</span> <span class="n">retriever</span><span class="o">.</span>
 <span class="n">Retriever</span> <span class="n">Recall</span><span class="p">:</span> <span class="mf">1.0</span>
 <span class="n">Retriever</span> <span class="n">Mean</span> <span class="n">Avg</span> <span class="n">Precision</span><span class="p">:</span> <span class="mf">0.9223985890652557</span>
@@ -472,7 +489,7 @@ The former uses ElasticSearch, the latter uses Facebook FAISS.</p>
 </div>
 </div>
 <div class="section" id="dpr-mbertdpr-results-non-embedded-title">
-<h4>DPR (mbertDPR) Results (non embedded title)<a class="headerlink" href="#dpr-mbertdpr-results-non-embedded-title" title="Permalink to this headline">¶</a></h4>
+<h4>DPR (<code class="docutils literal notranslate"><span class="pre">mbertDPR</span></code>) Results (non embedded title)<a class="headerlink" href="#dpr-mbertdpr-results-non-embedded-title" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">11</span><span class="o">/</span><span class="mi">11</span><span class="o">/</span><span class="mi">2020</span> <span class="mi">19</span><span class="p">:</span><span class="mi">43</span><span class="p">:</span><span class="mi">48</span> <span class="o">-</span> <span class="n">INFO</span> <span class="o">-</span> <span class="n">haystack</span><span class="o">.</span><span class="n">retriever</span><span class="o">.</span><span class="n">base</span> <span class="o">-</span>   <span class="n">For</span> <span class="mi">54</span> <span class="n">out</span> <span class="n">of</span> <span class="mi">54</span> <span class="n">questions</span> <span class="p">(</span><span class="mf">100.00</span><span class="o">%</span><span class="p">),</span> <span class="n">the</span> <span class="n">answer</span> <span class="n">was</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">top</span><span class="o">-</span><span class="mi">10</span> <span class="n">candidate</span> <span class="n">passages</span> <span class="n">selected</span> <span class="n">by</span> <span class="n">the</span> <span class="n">retriever</span><span class="o">.</span>
 <span class="n">Retriever</span> <span class="n">Recall</span><span class="p">:</span> <span class="mf">1.0</span>
 <span class="n">Retriever</span> <span class="n">Mean</span> <span class="n">Avg</span> <span class="n">Precision</span><span class="p">:</span> <span class="mf">0.9259994121105234</span>
@@ -495,6 +512,15 @@ The former uses ElasticSearch, the latter uses Facebook FAISS.</p>
 </pre></div>
 </div>
 </div>
+<div class="section" id="discussion">
+<h4>Discussion<a class="headerlink" href="#discussion" title="Permalink to this headline">¶</a></h4>
+<p>In this proposed test, DPR from faceboook (MAP: 0.97) is indeed better than BM25 (MAP: 0.93).</p>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>And what is better ! Our <code class="docutils literal notranslate"><span class="pre">mbertDPR</span></code> model is performing not as good as facebook’s DPR, but correctly (MAP: 0.92)! Maybe the model actually works and it is something else not working …</p>
+</div>
+<p>Finally, I tested the</p>
+</div>
 </div>
 <div class="section" id="using-faiss">
 <h3>Using <code class="docutils literal notranslate"><span class="pre">FAISS</span></code><a class="headerlink" href="#using-faiss" title="Permalink to this headline">¶</a></h3>
@@ -507,11 +533,18 @@ The former uses ElasticSearch, the latter uses Facebook FAISS.</p>
 <li><p>Create a temporary <code class="docutils literal notranslate"><span class="pre">add_eval_data</span></code> function that could take SQuAD-like data and add it to a FAISS document store without taking into consideration the QA part (i.e., without Reader evaluation).</p></li>
 <li><p>Another way would be to use an <code class="docutils literal notranslate"><span class="pre">ElasticSearchDocumentStore</span></code> in my evaluation script instead of a FAISS store.</p></li>
 </ol>
-<p>I chose solution two, as it would validate quickly whether camembertDPR is working or not.</p>
+<p>I chose solution two, as it would validate quickly whether came<code class="docutils literal notranslate"><span class="pre">mbertDPR</span></code> is working or not.</p>
 </div>
 </div>
 <div class="section" id="using-elasticsearchdocumentstore-in-our-evaluation-script">
 <h2>Using <code class="docutils literal notranslate"><span class="pre">ElasticSearchDocumentStore</span></code> in our Evaluation script<a class="headerlink" href="#using-elasticsearchdocumentstore-in-our-evaluation-script" title="Permalink to this headline">¶</a></h2>
+<p>In our evaluation script, I was using the FAISS document store. I changed it to ElasticSearch while using the mbertDPR model (multilingual Bert with Piaf combo).</p>
+<p>And voilà, the results are equally bad to those given by BM25 or SBERT (MAP: 0.19). But that is good news, kindof.</p>
+<p>Sadly, it may very well be the case. See the follwing paragraph from <a class="reference external" href="https://www.elastic.co/blog/text-similarity-search-with-vectors-in-elasticsearch">here</a>:</p>
+<blockquote>
+<div><p>The script_score query is designed to wrap a restrictive query, and modify the scores of the documents it returns. However, we’ve provided a match_all query, which means the script will be run over all documents in the index. This is a current limitation of vector similarity in Elasticsearch — <strong>vectors can be used for scoring documents, but not in the initial retrieval step</strong>. Support for retrieval based on vector similarity is an important area of <a class="reference external" href="https://github.com/elastic/elasticsearch/issues/42326">ongoing work</a>.</p>
+</div></blockquote>
+<p>So now, I have to check that with the FAISS document store, we get the same results in Haystack’s e2e evaluation tutorial. But, as I wrote before, the method to test it is not yet implemented.</p>
 </div>
 </div>
 
