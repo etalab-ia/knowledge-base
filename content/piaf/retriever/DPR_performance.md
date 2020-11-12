@@ -32,7 +32,6 @@ For each problem above, I have tried:
 
 1. Changed to a [multilingual bert](https://huggingface.co/bert-base-multilingual-uncased). Still bad results, so even if use the same architecture, I still have bad results.
 2. Following the original Natural Questions [input datset used by DPR](https://dl.fbaipublicfiles.com/dpr/data/retriever/biencoder-nq-train.json.gz), I added around 90 hard negative contexts to each question. The results with my script are still horrible. 
-
 **Note**: at the end of the training, we have an average rank of about 4, while DPR reported 24 :/ 
 
 
@@ -142,7 +141,7 @@ In our evaluation script, I was using the FAISS document store. I changed it to 
 
 And voilà, the results are equally bad to those given by BM25 or SBERT (MAP: 0.19). But that is good news, kindof.
 
-```{alert}
+```{tip}
 Is the performance quite similar because in reality, the ES document store is actually using BM25 to retrieve the results and "just" re-ranking with the embeddings vectors? 
 ```
 Sadly, it may very well be the case. See the follwing paragraph from [here](https://www.elastic.co/blog/text-similarity-search-with-vectors-in-elasticsearch):
