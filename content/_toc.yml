@@ -24,4 +24,5 @@
       - file: piaf/retriever/score_threshold_sparse_retriever
       - file: piaf/retriever/Visualisation_csv_results
       - file: piaf/retriever/Visualisation_results_Robin
+      - file: piaf/retriever/DPR_performance
       
