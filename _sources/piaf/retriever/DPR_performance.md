@@ -33,11 +33,11 @@ For each problem above, I have tried:
 1. Changed to a [multilingual bert](https://huggingface.co/bert-base-multilingual-uncased). Still bad results, so even if use the same architecture, I still have bad results.
 2. Following the original Natural Questions [input datset used by DPR](https://dl.fbaipublicfiles.com/dpr/data/retriever/biencoder-nq-train.json.gz), I added around 90 hard negative contexts to each question. The results with my script are still horrible. 
 
-```{note}
 **Note**: at the end of the training, we have an average rank of about 4, while DPR reported 24 :/ 
-```
 
-3. Nothing tested until now.
+
+3. For problem 3, nothing tested yet.
+
 4. **This notebook analyses** the possibility of an ill-conceived evaluation script (specifically, the part testing dpr).
 
 ## Methodology
@@ -51,7 +51,7 @@ Both backends are quite known and mature (ES much more maybe). In the following,
 
 1. the model as shared by DPR authors,
 2. my `mbertDPR` model, and
-3. the non fine-tuned multilingual Bert model (mbert).
+3. the non fine-tuned multilingual Bert model (`mbert`).
 
 ### Using `ElasticsearchDocumentStore`
 
@@ -95,7 +95,7 @@ Retriever Recall: 1.0
 Retriever Mean Avg Precision: 0.9259994121105234
 ```
 
-#### DPR (mbert) Results (embedded title)
+#### DPR (`mbert`) Results (embedded title)
 ```
 11/11/2020 19:52:58 - INFO - haystack.retriever.base -   For 20 out of 54 questions (37.04%), the answer was in the top-10 candidate passages selected by the retriever.
 Retriever Recall: 0.37037037037037035
@@ -103,7 +103,7 @@ Retriever Mean Avg Precision: 0.12617577895355675
 ```
 
 
-#### DPR (mbert) Results (non embedded title)
+#### DPR (`mbert`) Results (non embedded title)
 ```
 11/11/2020 19:48:42 - INFO - haystack.retriever.base -   For 18 out of 54 questions (33.33%), the answer was in the top-10 candidate passages selected by the retriever.
 Retriever Recall: 0.3333333333333333
@@ -133,7 +133,7 @@ Some quick solutions :
 
 2. Another way would be to use an `ElasticSearchDocumentStore` in my evaluation script instead of a FAISS store. 
 
-I chose solution two, as it would validate quickly whether came`mbertDPR` is working or not.
+I chose solution two, as it would validate quickly whether `camembertDPR` is working or not.
 
 ## Using `ElasticSearchDocumentStore` in our Evaluation script
 

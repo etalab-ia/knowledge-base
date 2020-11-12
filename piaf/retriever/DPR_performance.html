@@ -355,12 +355,24 @@
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#dpr-mbert-results-embedded-title">
-       DPR (mbert) Results (embedded title)
+       DPR (
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         mbert
+        </span>
+       </code>
+       ) Results (embedded title)
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#dpr-mbert-results-non-embedded-title">
-       DPR (mbert) Results (non embedded title)
+       DPR (
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         mbert
+        </span>
+       </code>
+       ) Results (non embedded title)
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
@@ -432,12 +444,9 @@
 <li><p>Changed to a <a class="reference external" href="https://huggingface.co/bert-base-multilingual-uncased">multilingual bert</a>. Still bad results, so even if use the same architecture, I still have bad results.</p></li>
 <li><p>Following the original Natural Questions <a class="reference external" href="https://dl.fbaipublicfiles.com/dpr/data/retriever/biencoder-nq-train.json.gz">input datset used by DPR</a>, I added around 90 hard negative contexts to each question. The results with my script are still horrible.</p></li>
 </ol>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
 <p><strong>Note</strong>: at the end of the training, we have an average rank of about 4, while DPR reported 24 :/</p>
-</div>
 <ol class="simple">
-<li><p>Nothing tested until now.</p></li>
+<li><p>For problem 3, nothing tested yet.</p></li>
 <li><p><strong>This notebook analyses</strong> the possibility of an ill-conceived evaluation script (specifically, the part testing dpr).</p></li>
 </ol>
 </div>
@@ -451,7 +460,7 @@ The former uses ElasticSearch, the latter uses Facebook FAISS.</p>
 <ol class="simple">
 <li><p>the model as shared by DPR authors,</p></li>
 <li><p>my <code class="docutils literal notranslate"><span class="pre">mbertDPR</span></code> model, and</p></li>
-<li><p>the non fine-tuned multilingual Bert model (mbert).</p></li>
+<li><p>the non fine-tuned multilingual Bert model (<code class="docutils literal notranslate"><span class="pre">mbert</span></code>).</p></li>
 </ol>
 <div class="section" id="using-elasticsearchdocumentstore">
 <h3>Using <code class="docutils literal notranslate"><span class="pre">ElasticsearchDocumentStore</span></code><a class="headerlink" href="#using-elasticsearchdocumentstore" title="Permalink to this headline">¶</a></h3>
@@ -497,7 +506,7 @@ The former uses ElasticSearch, the latter uses Facebook FAISS.</p>
 </div>
 </div>
 <div class="section" id="dpr-mbert-results-embedded-title">
-<h4>DPR (mbert) Results (embedded title)<a class="headerlink" href="#dpr-mbert-results-embedded-title" title="Permalink to this headline">¶</a></h4>
+<h4>DPR (<code class="docutils literal notranslate"><span class="pre">mbert</span></code>) Results (embedded title)<a class="headerlink" href="#dpr-mbert-results-embedded-title" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">11</span><span class="o">/</span><span class="mi">11</span><span class="o">/</span><span class="mi">2020</span> <span class="mi">19</span><span class="p">:</span><span class="mi">52</span><span class="p">:</span><span class="mi">58</span> <span class="o">-</span> <span class="n">INFO</span> <span class="o">-</span> <span class="n">haystack</span><span class="o">.</span><span class="n">retriever</span><span class="o">.</span><span class="n">base</span> <span class="o">-</span>   <span class="n">For</span> <span class="mi">20</span> <span class="n">out</span> <span class="n">of</span> <span class="mi">54</span> <span class="n">questions</span> <span class="p">(</span><span class="mf">37.04</span><span class="o">%</span><span class="p">),</span> <span class="n">the</span> <span class="n">answer</span> <span class="n">was</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">top</span><span class="o">-</span><span class="mi">10</span> <span class="n">candidate</span> <span class="n">passages</span> <span class="n">selected</span> <span class="n">by</span> <span class="n">the</span> <span class="n">retriever</span><span class="o">.</span>
 <span class="n">Retriever</span> <span class="n">Recall</span><span class="p">:</span> <span class="mf">0.37037037037037035</span>
 <span class="n">Retriever</span> <span class="n">Mean</span> <span class="n">Avg</span> <span class="n">Precision</span><span class="p">:</span> <span class="mf">0.12617577895355675</span>
@@ -505,7 +514,7 @@ The former uses ElasticSearch, the latter uses Facebook FAISS.</p>
 </div>
 </div>
 <div class="section" id="dpr-mbert-results-non-embedded-title">
-<h4>DPR (mbert) Results (non embedded title)<a class="headerlink" href="#dpr-mbert-results-non-embedded-title" title="Permalink to this headline">¶</a></h4>
+<h4>DPR (<code class="docutils literal notranslate"><span class="pre">mbert</span></code>) Results (non embedded title)<a class="headerlink" href="#dpr-mbert-results-non-embedded-title" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">11</span><span class="o">/</span><span class="mi">11</span><span class="o">/</span><span class="mi">2020</span> <span class="mi">19</span><span class="p">:</span><span class="mi">48</span><span class="p">:</span><span class="mi">42</span> <span class="o">-</span> <span class="n">INFO</span> <span class="o">-</span> <span class="n">haystack</span><span class="o">.</span><span class="n">retriever</span><span class="o">.</span><span class="n">base</span> <span class="o">-</span>   <span class="n">For</span> <span class="mi">18</span> <span class="n">out</span> <span class="n">of</span> <span class="mi">54</span> <span class="n">questions</span> <span class="p">(</span><span class="mf">33.33</span><span class="o">%</span><span class="p">),</span> <span class="n">the</span> <span class="n">answer</span> <span class="n">was</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">top</span><span class="o">-</span><span class="mi">10</span> <span class="n">candidate</span> <span class="n">passages</span> <span class="n">selected</span> <span class="n">by</span> <span class="n">the</span> <span class="n">retriever</span><span class="o">.</span>
 <span class="n">Retriever</span> <span class="n">Recall</span><span class="p">:</span> <span class="mf">0.3333333333333333</span>
 <span class="n">Retriever</span> <span class="n">Mean</span> <span class="n">Avg</span> <span class="n">Precision</span><span class="p">:</span> <span class="mf">0.12633009994121103</span>
@@ -533,7 +542,7 @@ The former uses ElasticSearch, the latter uses Facebook FAISS.</p>
 <li><p>Create a temporary <code class="docutils literal notranslate"><span class="pre">add_eval_data</span></code> function that could take SQuAD-like data and add it to a FAISS document store without taking into consideration the QA part (i.e., without Reader evaluation).</p></li>
 <li><p>Another way would be to use an <code class="docutils literal notranslate"><span class="pre">ElasticSearchDocumentStore</span></code> in my evaluation script instead of a FAISS store.</p></li>
 </ol>
-<p>I chose solution two, as it would validate quickly whether came<code class="docutils literal notranslate"><span class="pre">mbertDPR</span></code> is working or not.</p>
+<p>I chose solution two, as it would validate quickly whether <code class="docutils literal notranslate"><span class="pre">camembertDPR</span></code> is working or not.</p>
 </div>
 </div>
 <div class="section" id="using-elasticsearchdocumentstore-in-our-evaluation-script">
