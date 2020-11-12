@@ -58,7 +58,15 @@ A easy and fast to read report (either a Jupyter Notebook or a Markdown file) sh
     * What's the place of this new method in the pipeline (if any)?
     * How to add it to our basecode? 
 
+## Markdown (or MyST) Syntax
 
+The version of Markdown used in Jupyter Book is called MyST, which is a mix of RST with regular Markdown. 
 
+```{note}
+This Markdown version is different than the one used in our pad's. Most of the functionality is there but there are certain aspects that do not work, such as the emojis :/
+```
 
+RST has some quite nice capabilities, such as directly mixing code with text à la Rmarkdown. 
+
+[Here](https://jupyterbook.org/reference/cheatsheet.html) you can find a quick list of recurrent syntax elements to help you during your reporting.
 
