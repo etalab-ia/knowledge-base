@@ -73,31 +73,31 @@ We have four _analyzer_ filters:
 ]
 ```
 Let's do a quick ablation test (check the perf offered by each filter). More info about each of these filters can be found by following the links above.
+Using the same settings as before `(BM25, v12, 406 QA dataset, no filtering)`:
 #### Only _french_elision_ 
 
-* Mean_precision 0.24. Time per ES query (ms): 20.607
+* Mean_precision **0.24**. Time per ES query (ms): 20.607
 
 #### Only _lowercase_
 
-* Mean_precision 0.21. Time per ES query (ms): 19.473
+* Mean_precision **0.21**. Time per ES query (ms): 19.473
 
 #### Only _french_stop_
 
-* Mean_precision 0.30. Time per ES query (ms): 10.056
+* Mean_precision **0.30**. Time per ES query (ms): 10.056
 
 #### Only _french_stemmer_
 
-* Mean_precision 0.22. Time per ES query (ms): 23.966
+* Mean_precision **0.22**. Time per ES query (ms): 23.966
 
 #### All of them: _french_elision_,  _lowercase_, _french_stop_, _french_stemmer_
 
-
-* Mean_precision 0.34. Time per ES query (ms): 11.148
+* Mean_precision **0.34**. Time per ES query (ms): 11.148
 
 #### All of them: _french_elision_,  _lowercase_, _french_stop_, _french_stemmer_ 
-Using the `standard` tokenizer instead of the recommended `icu-tokenizer`
+Same as before but using the `standard` tokenizer instead of the recommended `icu-tokenizer`
 
-* Mean_precision 0.34. Time per ES query (ms): 9.000
+* Mean_precision **0.34**. Time per ES query (ms): 9.000
 
 
 ## Conclusion
