@@ -483,42 +483,43 @@ Once this config is part of the instantiation of ES, we must specify the analyze
 <span class="p">]</span>
 </pre></div>
 </div>
-<p>Let’s do a quick ablation test (check the perf offered by each filter). More info about each of these filters can be found by following the links above.</p>
+<p>Let’s do a quick ablation test (check the perf offered by each filter). More info about each of these filters can be found by following the links above.
+Using the same settings as before <code class="docutils literal notranslate"><span class="pre">(BM25,</span> <span class="pre">v12,</span> <span class="pre">406</span> <span class="pre">QA</span> <span class="pre">dataset,</span> <span class="pre">no</span> <span class="pre">filtering)</span></code>:</p>
 <div class="section" id="only-french-elision">
 <h4>Only <em>french_elision</em><a class="headerlink" href="#only-french-elision" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
-<li><p>Mean_precision 0.24. Time per ES query (ms): 20.607</p></li>
+<li><p>Mean_precision <strong>0.24</strong>. Time per ES query (ms): 20.607</p></li>
 </ul>
 </div>
 <div class="section" id="only-lowercase">
 <h4>Only <em>lowercase</em><a class="headerlink" href="#only-lowercase" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
-<li><p>Mean_precision 0.21. Time per ES query (ms): 19.473</p></li>
+<li><p>Mean_precision <strong>0.21</strong>. Time per ES query (ms): 19.473</p></li>
 </ul>
 </div>
 <div class="section" id="only-french-stop">
 <h4>Only <em>french_stop</em><a class="headerlink" href="#only-french-stop" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
-<li><p>Mean_precision 0.30. Time per ES query (ms): 10.056</p></li>
+<li><p>Mean_precision <strong>0.30</strong>. Time per ES query (ms): 10.056</p></li>
 </ul>
 </div>
 <div class="section" id="only-french-stemmer">
 <h4>Only <em>french_stemmer</em><a class="headerlink" href="#only-french-stemmer" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
-<li><p>Mean_precision 0.22. Time per ES query (ms): 23.966</p></li>
+<li><p>Mean_precision <strong>0.22</strong>. Time per ES query (ms): 23.966</p></li>
 </ul>
 </div>
 <div class="section" id="all-of-them-french-elision-lowercase-french-stop-french-stemmer">
 <h4>All of them: <em>french_elision</em>,  <em>lowercase</em>, <em>french_stop</em>, <em>french_stemmer</em><a class="headerlink" href="#all-of-them-french-elision-lowercase-french-stop-french-stemmer" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
-<li><p>Mean_precision 0.34. Time per ES query (ms): 11.148</p></li>
+<li><p>Mean_precision <strong>0.34</strong>. Time per ES query (ms): 11.148</p></li>
 </ul>
 </div>
 <div class="section" id="id1">
 <h4>All of them: <em>french_elision</em>,  <em>lowercase</em>, <em>french_stop</em>, <em>french_stemmer</em><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
-<p>Using the <code class="docutils literal notranslate"><span class="pre">standard</span></code> tokenizer instead of the recommended <code class="docutils literal notranslate"><span class="pre">icu-tokenizer</span></code></p>
+<p>Same as before but using the <code class="docutils literal notranslate"><span class="pre">standard</span></code> tokenizer instead of the recommended <code class="docutils literal notranslate"><span class="pre">icu-tokenizer</span></code></p>
 <ul class="simple">
-<li><p>Mean_precision 0.34. Time per ES query (ms): 9.000</p></li>
+<li><p>Mean_precision <strong>0.34</strong>. Time per ES query (ms): 9.000</p></li>
 </ul>
 </div>
 </div>
