@@ -52,8 +52,8 @@ The resulting PR containing these modifs is [here]().
 ### Python Pre-Processing
 The previous simple procesing yields the following improvment: 
 
-1. BM25, v12, 406 QA dataset, no filtering, with no preprocessing: `Mean_precision 0.2199074074074074. Time per ES query (ms): 16.721`
-2. BM25, v12, 406 QA dataset, no filtering, with preprocessing:   `Mean_precision 0.3431069958847736. Time per ES query (ms): 19.722`
+1. BM25, v12, 406 QA dataset, no filtering, with no preprocessing: `Mean_precision 0.21. Time per ES query (ms): 16.721`
+2. BM25, v12, 406 QA dataset, no filtering, with preprocessing:   `Mean_precision 0.34. Time per ES query (ms): 19.722`
 
 >In this case, the improvement is of about 13%. Still, the time to run this functions **augments the total time about 3 times.** 
 
@@ -102,13 +102,14 @@ Using the `standard` tokenizer instead of the recommended `icu-tokenizer`
 
 ## Conclusion
 
-Using the four analyzer filters gives the best performance. Using the pre-processing function gives a negligeable improvement over using an ES analyzer. Still the advantage of an self-contained ES analyzer are multiple: faster, included in ES, and easier to deploy. 
+Using the four ES analyzer filters gives the best performance. On the other hand, using the pre-processing function (in Python and spacy-based) gives a negligeable improvement over using an ES analyzer. The decision is simpe, **the advantages of an self-contained ES analyzer are multiple: same performance, faster, included in ES, and easier to deploy. **
 
-For this experiment the `icu-tokenizer` does not seem to offer an advantage over the `standard` tokenizer.
+For this experiment the `icu-tokenizer` does not seem to offer an advantage over the `standard` tokenizer. If it is not possible to add it to the Hastack master, maybe we can roll with the `standard` tokenizer and it will be fine.
+
 
 
 
 ## TODO
 
-Merge the proposed PR into master and add the required plugin line to Haystack's ES Dockerfile. If it is not possible to add it to the Hastack master, maybe we can roll with the `standard` tokenizer and it will be fine.
-
+1. Merge the proposed PR into master and add the required plugin line to Haystack's ES Dockerfile. 
+2. Wonder why using the four filters is faster than using them indpendently :o 

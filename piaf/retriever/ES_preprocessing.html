@@ -464,8 +464,8 @@ Once this config is part of the instantiation of ES, we must specify the analyze
 <h3>Python Pre-Processing<a class="headerlink" href="#python-pre-processing" title="Permalink to this headline">¶</a></h3>
 <p>The previous simple procesing yields the following improvment:</p>
 <ol class="simple">
-<li><p>BM25, v12, 406 QA dataset, no filtering, with no preprocessing: <code class="docutils literal notranslate"><span class="pre">Mean_precision</span> <span class="pre">0.2199074074074074.</span> <span class="pre">Time</span> <span class="pre">per</span> <span class="pre">ES</span> <span class="pre">query</span> <span class="pre">(ms):</span> <span class="pre">16.721</span></code></p></li>
-<li><p>BM25, v12, 406 QA dataset, no filtering, with preprocessing:   <code class="docutils literal notranslate"><span class="pre">Mean_precision</span> <span class="pre">0.3431069958847736.</span> <span class="pre">Time</span> <span class="pre">per</span> <span class="pre">ES</span> <span class="pre">query</span> <span class="pre">(ms):</span> <span class="pre">19.722</span></code></p></li>
+<li><p>BM25, v12, 406 QA dataset, no filtering, with no preprocessing: <code class="docutils literal notranslate"><span class="pre">Mean_precision</span> <span class="pre">0.21.</span> <span class="pre">Time</span> <span class="pre">per</span> <span class="pre">ES</span> <span class="pre">query</span> <span class="pre">(ms):</span> <span class="pre">16.721</span></code></p></li>
+<li><p>BM25, v12, 406 QA dataset, no filtering, with preprocessing:   <code class="docutils literal notranslate"><span class="pre">Mean_precision</span> <span class="pre">0.34.</span> <span class="pre">Time</span> <span class="pre">per</span> <span class="pre">ES</span> <span class="pre">query</span> <span class="pre">(ms):</span> <span class="pre">19.722</span></code></p></li>
 </ol>
 <blockquote>
 <div><p>In this case, the improvement is of about 13%. Still, the time to run this functions <strong>augments the total time about 3 times.</strong></p>
@@ -525,12 +525,15 @@ Once this config is part of the instantiation of ES, we must specify the analyze
 </div>
 <div class="section" id="conclusion">
 <h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h2>
-<p>Using the four analyzer filters gives the best performance. Using the pre-processing function gives a negligeable improvement over using an ES analyzer. Still the advantage of an self-contained ES analyzer are multiple: faster, included in ES, and easier to deploy.</p>
-<p>For this experiment the <code class="docutils literal notranslate"><span class="pre">icu-tokenizer</span></code> does not seem to offer an advantage over the <code class="docutils literal notranslate"><span class="pre">standard</span></code> tokenizer.</p>
+<p>Using the four ES analyzer filters gives the best performance. On the other hand, using the pre-processing function (in Python and spacy-based) gives a negligeable improvement over using an ES analyzer. The decision is simpe, **the advantages of an self-contained ES analyzer are multiple: same performance, faster, included in ES, and easier to deploy. **</p>
+<p>For this experiment the <code class="docutils literal notranslate"><span class="pre">icu-tokenizer</span></code> does not seem to offer an advantage over the <code class="docutils literal notranslate"><span class="pre">standard</span></code> tokenizer. If it is not possible to add it to the Hastack master, maybe we can roll with the <code class="docutils literal notranslate"><span class="pre">standard</span></code> tokenizer and it will be fine.</p>
 </div>
 <div class="section" id="todo">
 <h2>TODO<a class="headerlink" href="#todo" title="Permalink to this headline">¶</a></h2>
-<p>Merge the proposed PR into master and add the required plugin line to Haystack’s ES Dockerfile. If it is not possible to add it to the Hastack master, maybe we can roll with the <code class="docutils literal notranslate"><span class="pre">standard</span></code> tokenizer and it will be fine.</p>
+<ol class="simple">
+<li><p>Merge the proposed PR into master and add the required plugin line to Haystack’s ES Dockerfile.</p></li>
+<li><p>Wonder why using the four filters is faster than using them indpendently :o</p></li>
+</ol>
 </div>
 </div>
 
