@@ -4,7 +4,7 @@
 
 Currently, we are preprocessing the text we ingest into ElasticSearch (ES) with the [following function](https://github.com/etalab-ia/piaf-ml/blob/9f27997447fe5985eb3d4ddf959fe9435206548e/src/util/convert_json_to_dictsAndEmbeddings.py#L18): 
 
-```{python}
+```python
 def preprocess_text(text: str):
     """
     Tokenize, lemmatize, lowercase and remove stop words
@@ -63,6 +63,7 @@ With these results in mind, we can compare the performance of the ES preprocesso
 ### ES Analyzer
 
 We have four _analyzer_ filters:
+
 ```python                    
 "filter": [
     "french_elision",
@@ -74,29 +75,29 @@ We have four _analyzer_ filters:
 Let's do a quick ablation test (check the perf offered by each filter). More info about each of these filters can be found by following the links above.
 #### Only _french_elision_ 
 
-* BM25, v12, 406 QA dataset, no filtering, `filter=[french_elision]`, Mean_precision 0.24130658436213998. Time per ES query (ms): 20.607
+* Mean_precision 0.24. Time per ES query (ms): 20.607
 
 #### Only _lowercase_
 
-* BM25, v12, 406 QA dataset, no filtering, `filter=[lowercase]`, Mean_precision 0.2199074074074074. Time per ES query (ms): 19.473
+* Mean_precision 0.21. Time per ES query (ms): 19.473
 
 #### Only _french_stop_
 
-* BM25, v12, 406 QA dataset, no filtering, `filter=[french_stop]`, Mean_precision 0.3085390946502058. Time per ES query (ms): 10.056
+* Mean_precision 0.30. Time per ES query (ms): 10.056
 
 #### Only _french_stemmer_
 
-* BM25, v12, 406 QA dataset, no filtering, `filter=[french_stemmer]`, Mean_precision 0.22649176954732517. Time per ES query (ms): 23.966
+* Mean_precision 0.22. Time per ES query (ms): 23.966
 
 #### All of them: _french_elision_,  _lowercase_, _french_stop_, _french_stemmer_
 
 
-* BM25, v12, 406 QA dataset, no filtering, `filter=[french_elision, lowercase,  french_stemmer, french_stop ]`, Mean_precision 0.34027777777777785. Time per ES query (ms): 11.148
+* Mean_precision 0.34. Time per ES query (ms): 11.148
 
 #### All of them: _french_elision_,  _lowercase_, _french_stop_, _french_stemmer_ 
 Using the `standard` tokenizer instead of the recommended `icu-tokenizer`
 
-* BM25, v12, 406 QA dataset, no filtering, `filter=[french_elision, lowercase,  french_stemmer, french_stop ]`, Mean_precision 0.34027777777777785. Time per ES query (ms): 9.000
+* Mean_precision 0.34. Time per ES query (ms): 9.000
 
 
 ## Conclusion
