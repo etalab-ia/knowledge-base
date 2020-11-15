@@ -421,6 +421,21 @@
 <div class="section" id="intro">
 <h2>Intro<a class="headerlink" href="#intro" title="Permalink to this headline">¶</a></h2>
 <p>Currently, we are preprocessing the text we ingest into ElasticSearch (ES) with the <a class="reference external" href="https://github.com/etalab-ia/piaf-ml/blob/9f27997447fe5985eb3d4ddf959fe9435206548e/src/util/convert_json_to_dictsAndEmbeddings.py#L18">following function</a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">preprocess_text</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Tokenize, lemmatize, lowercase and remove stop words</span>
+<span class="sd">    :param text:</span>
+<span class="sd">    :return:</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">NLP</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Warning NLP not loaded, text will not be preprocessed&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">text</span>
+
+    <span class="n">doc</span> <span class="o">=</span> <span class="n">NLP</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">lemma_</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">doc</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">t</span><span class="o">.</span><span class="n">is_stop</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">text</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="problem">
 <h2>Problem<a class="headerlink" href="#problem" title="Permalink to this headline">¶</a></h2>
@@ -472,38 +487,38 @@ Once this config is part of the instantiation of ES, we must specify the analyze
 <div class="section" id="only-french-elision">
 <h4>Only <em>french_elision</em><a class="headerlink" href="#only-french-elision" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
-<li><p>BM25, v12, 406 QA dataset, no filtering, <code class="docutils literal notranslate"><span class="pre">filter=[french_elision]</span></code>, Mean_precision 0.24130658436213998. Time per ES query (ms): 20.607</p></li>
+<li><p>Mean_precision 0.24. Time per ES query (ms): 20.607</p></li>
 </ul>
 </div>
 <div class="section" id="only-lowercase">
 <h4>Only <em>lowercase</em><a class="headerlink" href="#only-lowercase" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
-<li><p>BM25, v12, 406 QA dataset, no filtering, <code class="docutils literal notranslate"><span class="pre">filter=[lowercase]</span></code>, Mean_precision 0.2199074074074074. Time per ES query (ms): 19.473</p></li>
+<li><p>Mean_precision 0.21. Time per ES query (ms): 19.473</p></li>
 </ul>
 </div>
 <div class="section" id="only-french-stop">
 <h4>Only <em>french_stop</em><a class="headerlink" href="#only-french-stop" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
-<li><p>BM25, v12, 406 QA dataset, no filtering, <code class="docutils literal notranslate"><span class="pre">filter=[french_stop]</span></code>, Mean_precision 0.3085390946502058. Time per ES query (ms): 10.056</p></li>
+<li><p>Mean_precision 0.30. Time per ES query (ms): 10.056</p></li>
 </ul>
 </div>
 <div class="section" id="only-french-stemmer">
 <h4>Only <em>french_stemmer</em><a class="headerlink" href="#only-french-stemmer" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
-<li><p>BM25, v12, 406 QA dataset, no filtering, <code class="docutils literal notranslate"><span class="pre">filter=[french_stemmer]</span></code>, Mean_precision 0.22649176954732517. Time per ES query (ms): 23.966</p></li>
+<li><p>Mean_precision 0.22. Time per ES query (ms): 23.966</p></li>
 </ul>
 </div>
 <div class="section" id="all-of-them-french-elision-lowercase-french-stop-french-stemmer">
 <h4>All of them: <em>french_elision</em>,  <em>lowercase</em>, <em>french_stop</em>, <em>french_stemmer</em><a class="headerlink" href="#all-of-them-french-elision-lowercase-french-stop-french-stemmer" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
-<li><p>BM25, v12, 406 QA dataset, no filtering, <code class="docutils literal notranslate"><span class="pre">filter=[french_elision,</span> <span class="pre">lowercase,</span>&#160; <span class="pre">french_stemmer,</span> <span class="pre">french_stop</span> <span class="pre">]</span></code>, Mean_precision 0.34027777777777785. Time per ES query (ms): 11.148</p></li>
+<li><p>Mean_precision 0.34. Time per ES query (ms): 11.148</p></li>
 </ul>
 </div>
 <div class="section" id="id1">
 <h4>All of them: <em>french_elision</em>,  <em>lowercase</em>, <em>french_stop</em>, <em>french_stemmer</em><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
 <p>Using the <code class="docutils literal notranslate"><span class="pre">standard</span></code> tokenizer instead of the recommended <code class="docutils literal notranslate"><span class="pre">icu-tokenizer</span></code></p>
 <ul class="simple">
-<li><p>BM25, v12, 406 QA dataset, no filtering, <code class="docutils literal notranslate"><span class="pre">filter=[french_elision,</span> <span class="pre">lowercase,</span>&#160; <span class="pre">french_stemmer,</span> <span class="pre">french_stop</span> <span class="pre">]</span></code>, Mean_precision 0.34027777777777785. Time per ES query (ms): 9.000</p></li>
+<li><p>Mean_precision 0.34. Time per ES query (ms): 9.000</p></li>
 </ul>
 </div>
 </div>
