@@ -1,0 +1,575 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test : Preprocessing directly with ElasticSearch Analyzers</title>
+    
+  <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="Investigating the performance of DPR Camembert (finetuned over PIAF combo) [WIP]" href="DPR_performance.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <img src="../../_static/logo.png" class="logo" alt="logo">
+  
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <p class="caption collapsible-parent">
+ <span class="caption-text">
+  Lab IA
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../lab_ia/intro.html">
+   Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../lab_ia/onboarding.html">
+   Onboarding
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../lab_ia/resources.html">
+   Resources
+  </a>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../lab_ia/coding_standards.html">
+   Coding Standards
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lab_ia/git.html">
+     Working with Git
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lab_ia/secrets.html">
+     Secrets
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lab_ia/python.html">
+     Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lab_ia/jupyter.html">
+     Notebooks (.ipynb)
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../lab_ia/reporting_standards.html">
+   Reporting Standards
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Piaf - Pour une IA Francophone
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="overview.html">
+   Retriever Module
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="complementarity_dense_sparse.html">
+     Analyse complémentarité
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="complementarity_dense_sparse_v2.html">
+     Analyse complémentarité
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="dense_vs_sparse_qualitative.html">
+     Étude de scores systéme dense vs sparse
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="score_threshold_sparse_retriever.html">
+     Recherche d’un seuil pour le score sparse
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Visualisation_csv_results.html">
+     Visualisation de l’indice de précision obtenu dans results.csv
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Visualisation_results_Robin.html">
+     Visualisation de la précision dense vs sparse
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="DPR_performance.html">
+     Investigating the performance of DPR Camembert (finetuned over PIAF combo) [WIP]
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Test : Preprocessing directly with ElasticSearch Analyzers
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/piaf/retriever/ES_preprocessing.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/psorianom/knowledge-base"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/psorianom/knowledge-base/issues/new?title=Issue%20on%20page%20%2Fpiaf/retriever/ES_preprocessing.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/psorianom/knowledge-base/edit/master/docs/piaf/retriever/ES_preprocessing.md"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#intro">
+   Intro
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#problem">
+   Problem
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#solution">
+   Solution
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#methodo">
+   Methodo
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#results">
+   Results
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#python-pre-processing">
+     Python Pre-Processing
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#es-analyzer">
+     ES Analyzer
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#only-french-elision">
+       Only
+       <em>
+        french_elision
+       </em>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#only-lowercase">
+       Only
+       <em>
+        lowercase
+       </em>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#only-french-stop">
+       Only
+       <em>
+        french_stop
+       </em>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#only-french-stemmer">
+       Only
+       <em>
+        french_stemmer
+       </em>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#all-of-them-french-elision-lowercase-french-stop-french-stemmer">
+       All of them:
+       <em>
+        french_elision
+       </em>
+       ,
+       <em>
+        lowercase
+       </em>
+       ,
+       <em>
+        french_stop
+       </em>
+       ,
+       <em>
+        french_stemmer
+       </em>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id1">
+       All of them:
+       <em>
+        french_elision
+       </em>
+       ,
+       <em>
+        lowercase
+       </em>
+       ,
+       <em>
+        french_stop
+       </em>
+       ,
+       <em>
+        french_stemmer
+       </em>
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conclusion">
+   Conclusion
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#todo">
+   TODO
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="test-preprocessing-directly-with-elasticsearch-analyzers">
+<h1>Test : Preprocessing directly with ElasticSearch Analyzers<a class="headerlink" href="#test-preprocessing-directly-with-elasticsearch-analyzers" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="intro">
+<h2>Intro<a class="headerlink" href="#intro" title="Permalink to this headline">¶</a></h2>
+<p>Currently, we are preprocessing the text we ingest into ElasticSearch (ES) with the <a class="reference external" href="https://github.com/etalab-ia/piaf-ml/blob/9f27997447fe5985eb3d4ddf959fe9435206548e/src/util/convert_json_to_dictsAndEmbeddings.py#L18">following function</a>:</p>
+</div>
+<div class="section" id="problem">
+<h2>Problem<a class="headerlink" href="#problem" title="Permalink to this headline">¶</a></h2>
+<p>The preprocessing function needs to be ran both while indexing the documents and also while dealign with queries.</p>
+<p>To facilitate the installation of our pipeline, our current solution is as coupled to the original Haystack dev as possible. This entails that in production, no other Python code is run. We use the Haystack library as it is in its own master repo. Thus, the function above cannot be run without creating a wrapper that would complexify our production environment. The same is true while querying, this preprocessing would need to run client-side (hard) or creating yet-anonther wrapper for our system that add this function.</p>
+</div>
+<div class="section" id="solution">
+<h2>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">¶</a></h2>
+<p>To solve the issue, &#64;Guillim got an insight from the DScientists working in the <em>Code du Travail Numerique</em> project : use the preprocessors (called <em>analyzers</em>) already existing in the ElasticSearch stack.</p>
+<p>In this way, everything would be self-contained within ES.</p>
+</div>
+<div class="section" id="methodo">
+<h2>Methodo<a class="headerlink" href="#methodo" title="Permalink to this headline">¶</a></h2>
+<p>Analizers <a class="reference external" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-lang-analyzer.html#french-analyzer">are defined by passing</a> a JSON object to our running ES instance (a more French-specific discussion can be found <a class="reference external" href="https://jolicode.com/blog/construire-un-bon-analyzer-francais-pour-elasticsearch">here</a>).
+Once this config is part of the instantiation of ES, we must specify the analyzer to be used (if any) in the specific property of our custom mapping.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>We are now using the <code class="docutils literal notranslate"><span class="pre">icu_tokenizer</span></code> so we need to install the <code class="docutils literal notranslate"><span class="pre">analysis-icu</span></code> ES plugin. This would be achieved in ES (via Dockerfile installation) like so:</p>
+<p><code class="docutils literal notranslate"><span class="pre">RUN</span> <span class="pre">bin/elasticsearch-plugin</span> <span class="pre">install</span> <span class="pre">--silent</span> <span class="pre">analysis-icu</span></code></p>
+</div>
+<p>The resulting PR containing these modifs is <span class="xref myst">here</span>.</p>
+</div>
+<div class="section" id="results">
+<h2>Results<a class="headerlink" href="#results" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="python-pre-processing">
+<h3>Python Pre-Processing<a class="headerlink" href="#python-pre-processing" title="Permalink to this headline">¶</a></h3>
+<p>The previous simple procesing yields the following improvment:</p>
+<ol class="simple">
+<li><p>BM25, v12, 406 QA dataset, no filtering, with no preprocessing: <code class="docutils literal notranslate"><span class="pre">Mean_precision</span> <span class="pre">0.2199074074074074.</span> <span class="pre">Time</span> <span class="pre">per</span> <span class="pre">ES</span> <span class="pre">query</span> <span class="pre">(ms):</span> <span class="pre">16.721</span></code></p></li>
+<li><p>BM25, v12, 406 QA dataset, no filtering, with preprocessing:   <code class="docutils literal notranslate"><span class="pre">Mean_precision</span> <span class="pre">0.3431069958847736.</span> <span class="pre">Time</span> <span class="pre">per</span> <span class="pre">ES</span> <span class="pre">query</span> <span class="pre">(ms):</span> <span class="pre">19.722</span></code></p></li>
+</ol>
+<blockquote>
+<div><p>In this case, the improvement is of about 13%. Still, the time to run this functions <strong>augments the total time about 3 times.</strong></p>
+</div></blockquote>
+<p>With these results in mind, we can compare the performance of the ES preprocessor below.</p>
+</div>
+<div class="section" id="es-analyzer">
+<h3>ES Analyzer<a class="headerlink" href="#es-analyzer" title="Permalink to this headline">¶</a></h3>
+<p>We have four <em>analyzer</em> filters:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;filter&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">&quot;french_elision&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;lowercase&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;french_stop&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;french_stemmer&quot;</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>Let’s do a quick ablation test (check the perf offered by each filter). More info about each of these filters can be found by following the links above.</p>
+<div class="section" id="only-french-elision">
+<h4>Only <em>french_elision</em><a class="headerlink" href="#only-french-elision" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>BM25, v12, 406 QA dataset, no filtering, <code class="docutils literal notranslate"><span class="pre">filter=[french_elision]</span></code>, Mean_precision 0.24130658436213998. Time per ES query (ms): 20.607</p></li>
+</ul>
+</div>
+<div class="section" id="only-lowercase">
+<h4>Only <em>lowercase</em><a class="headerlink" href="#only-lowercase" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>BM25, v12, 406 QA dataset, no filtering, <code class="docutils literal notranslate"><span class="pre">filter=[lowercase]</span></code>, Mean_precision 0.2199074074074074. Time per ES query (ms): 19.473</p></li>
+</ul>
+</div>
+<div class="section" id="only-french-stop">
+<h4>Only <em>french_stop</em><a class="headerlink" href="#only-french-stop" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>BM25, v12, 406 QA dataset, no filtering, <code class="docutils literal notranslate"><span class="pre">filter=[french_stop]</span></code>, Mean_precision 0.3085390946502058. Time per ES query (ms): 10.056</p></li>
+</ul>
+</div>
+<div class="section" id="only-french-stemmer">
+<h4>Only <em>french_stemmer</em><a class="headerlink" href="#only-french-stemmer" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>BM25, v12, 406 QA dataset, no filtering, <code class="docutils literal notranslate"><span class="pre">filter=[french_stemmer]</span></code>, Mean_precision 0.22649176954732517. Time per ES query (ms): 23.966</p></li>
+</ul>
+</div>
+<div class="section" id="all-of-them-french-elision-lowercase-french-stop-french-stemmer">
+<h4>All of them: <em>french_elision</em>,  <em>lowercase</em>, <em>french_stop</em>, <em>french_stemmer</em><a class="headerlink" href="#all-of-them-french-elision-lowercase-french-stop-french-stemmer" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>BM25, v12, 406 QA dataset, no filtering, <code class="docutils literal notranslate"><span class="pre">filter=[french_elision,</span> <span class="pre">lowercase,</span>&#160; <span class="pre">french_stemmer,</span> <span class="pre">french_stop</span> <span class="pre">]</span></code>, Mean_precision 0.34027777777777785. Time per ES query (ms): 11.148</p></li>
+</ul>
+</div>
+<div class="section" id="id1">
+<h4>All of them: <em>french_elision</em>,  <em>lowercase</em>, <em>french_stop</em>, <em>french_stemmer</em><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<p>Using the <code class="docutils literal notranslate"><span class="pre">standard</span></code> tokenizer instead of the recommended <code class="docutils literal notranslate"><span class="pre">icu-tokenizer</span></code></p>
+<ul class="simple">
+<li><p>BM25, v12, 406 QA dataset, no filtering, <code class="docutils literal notranslate"><span class="pre">filter=[french_elision,</span> <span class="pre">lowercase,</span>&#160; <span class="pre">french_stemmer,</span> <span class="pre">french_stop</span> <span class="pre">]</span></code>, Mean_precision 0.34027777777777785. Time per ES query (ms): 9.000</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h2>
+<p>Using the four analyzer filters gives the best performance. Using the pre-processing function gives a negligeable improvement over using an ES analyzer. Still the advantage of an self-contained ES analyzer are multiple: faster, included in ES, and easier to deploy.</p>
+<p>For this experiment the <code class="docutils literal notranslate"><span class="pre">icu-tokenizer</span></code> does not seem to offer an advantage over the <code class="docutils literal notranslate"><span class="pre">standard</span></code> tokenizer.</p>
+</div>
+<div class="section" id="todo">
+<h2>TODO<a class="headerlink" href="#todo" title="Permalink to this headline">¶</a></h2>
+<p>Merge the proposed PR into master and add the required plugin line to Haystack’s ES Dockerfile. If it is not possible to add it to the Hastack master, maybe we can roll with the <code class="docutils literal notranslate"><span class="pre">standard</span></code> tokenizer and it will be fine.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./piaf/retriever"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="DPR_performance.html" title="previous page">Investigating the performance of DPR Camembert (finetuned over PIAF combo) [WIP]</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By etalab-ia<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

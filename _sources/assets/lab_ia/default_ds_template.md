@@ -1,27 +1,28 @@
-*Instructions: Click on the raw button in the upper right hand corner of this box.  Copy and paste the template into the README.md document on your github.  Fill in the titles, information and links where prompted! Feel free to stray a bit to suit your project but try to stick to the format as closely as possible for consistency across DSWG projects.*
 
+Inspired from [here](https://github.com/sfbrigade/data-science-wg/blob/master/dswg_project_resources/Project-README-template.md)
 # Project Name
 This project is a part of Etalab Lab IA (http://www.thisisthelabiawebpage.com) at [DINUM](https://www.numerique.gouv.fr/dinum/).  Other Lab IA projects can be found at the [main GitHub repo](https://github.com/etalab-ia/).
 
-#### -- Project Status: [Active, On-Hold, Completed]
+-- Project Status: [Active, On-Hold, Completed]
+
 
 ## Project Intro/Objective
 The purpose of this project is ________. (Describe the main goals of the project and potential civic impact. Limit to a short paragraph, 3-6 Sentences)
 
-### Partner
+## Partner
 * [Name of Partner organization/Government department etc..]
 * Website for partner
 * Partner contact: [Name of Contact], [slack handle of contact if any]
 * If you do not have a partner leave this section out
 
-### Methods Used
+## Methods Used
 * Inferential Statistics
 * Machine Learning
 * Data Visualization
 * Predictive Modeling
 * etc.
 
-### Technologies
+## Technologies
 * R 
 * Python
 * D3
