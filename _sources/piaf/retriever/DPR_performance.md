@@ -142,13 +142,18 @@ In our evaluation script, I was using the FAISS document store. I changed it to 
 And voilà, the results are equally bad to those given by BM25 or SBERT (MAP: 0.19). But that is good news, kindof.
 
 ```{tip}
-Is the performance quite similar because in reality, the ES document store is actually using BM25 to retrieve the results and "just" re-ranking with the embeddings vectors? 
+The performance among BM25, SBERT, and DPR is quite similar. Is it because the ES document store is actually using BM25 to retrieve the results and "just" re-ranking with the embeddings vectors? 
 ```
 Sadly, it may very well be the case. See the follwing paragraph from [here](https://www.elastic.co/blog/text-similarity-search-with-vectors-in-elasticsearch):
 
->The script_score query is designed to wrap a restrictive query, and modify the scores of the documents it returns. However, we’ve provided a match_all query, which means the script will be run over all documents in the index. This is a current limitation of vector similarity in Elasticsearch — **vectors can be used for scoring documents, but not in the initial retrieval step**. Support for retrieval based on vector similarity is an important area of [ongoing work](https://github.com/elastic/elasticsearch/issues/42326). 
+>The script_score query is designed to wrap a restrictive query, and modify the scores of the documents it returns. However, we’ve provided a match_all query, which means the script will be run over all documents in the index. **This is a current limitation of vector similarity in Elasticsearch — vectors can be used for scoring documents, but not in the initial retrieval step**. Support for retrieval based on vector similarity is an important area of [ongoing work](https://github.com/elastic/elasticsearch/issues/42326). 
 
 
 So now, I have to check that with the FAISS document store, we get the same results in Haystack's e2e evaluation tutorial. But, as I wrote before, the method to test it is not yet implemented. 
 
 
+```{figure} ../../assets/piaf/haystack_ES_faiss_backend.png
+:name: results_haystac
+
+Results reported by Haystack [here] (https://github.com/deepset-ai/haystack/blob/0a1e814bd99301dd186ea29de3d0e7619556a28a/test/benchmarks/retriever_query_results.csv)
+```
