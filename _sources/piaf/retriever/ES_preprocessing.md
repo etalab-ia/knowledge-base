@@ -102,9 +102,9 @@ Same as before but using the `standard` tokenizer instead of the recommended `ic
 
 ## Conclusion
 
-Using the four ES analyzer filters gives the best performance (MAP: 0.34). On the other hand, using the pre-processing function (in Python, spacy-based) gives a negligeable improvement over using an ES analyzer. The decision is simple, **the advantages of an self-contained ES analyzer are multiple: same performance, faster, included in ES, and easier to deploy.**
+Regarding the four filters, using all of them gives the best performance (MAP: 0.34). While the pre-processing function (in Python, spacy-based) gives a negligeable improvement over using an ES analyzer, all things being equal, the decision is simple, **the advantages of an self-contained ES analyzer are multiple: same performance, faster, included in ES, and easier to deploy.**
 
-For this experiment the `icu-tokenizer` does not seem to offer an advantage over the `standard` tokenizer. If it is not possible to add it to the Hastack master, maybe we can roll with the `standard` tokenizer and it will be fine.
+For this experiment the `icu-tokenizer` does not seem to offer an advantage over the `standard` tokenizer. If it is not possible to add it to the Haystack Dockerfile in master, maybe we can roll with the `standard` tokenizer and it will be fine.  
 
 
 
