@@ -111,5 +111,6 @@ For this experiment the `icu-tokenizer` does not seem to offer an advantage over
 
 ## TODO
 
-1. Merge the proposed PR into master and add the required plugin line to Haystack's ES Dockerfile. 
+1. Test "default" as analyzer name. Check it is taken into account.
 2. Wonder why using the four filters is faster than using them indpendently :o 
+3. Merge the proposed PR into master and add the required plugin line to Haystack's ES Dockerfile. 
