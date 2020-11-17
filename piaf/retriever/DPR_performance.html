@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Investigating the performance of DPR Camembert (finetuned over PIAF combo) [WIP]</title>
+    <title>Why my trained DPR is (was) not working</title>
     
   <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -185,7 +185,7 @@
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Investigating the performance of DPR Camembert (finetuned over PIAF combo) [WIP]
+     Why my trained DPR is (was) not working
     </a>
    </li>
    <li class="toctree-l2">
@@ -308,8 +308,8 @@
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#methodology">
-   Methodology
+  <a class="reference internal nav-link" href="#performance-with-haystack-s-evaluation-script">
+   Performance with Haystack’s Evaluation Script
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -401,14 +401,18 @@
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#using-elasticsearchdocumentstore-in-our-evaluation-script">
-   Using
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     ElasticSearchDocumentStore
-    </span>
-   </code>
-   in our Evaluation script
+  <a class="reference internal nav-link" href="#performance-with-our-evaluation-script">
+   Performance with our Evaluation Script
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conclusion">
+   Conclusion
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#next-steps">
+   Next Steps
   </a>
  </li>
 </ul>
@@ -422,8 +426,8 @@
         
               <div>
                 
-  <div class="section" id="investigating-the-performance-of-dpr-camembert-finetuned-over-piaf-combo-wip">
-<h1>Investigating the performance of DPR Camembert (finetuned over PIAF combo) [WIP]<a class="headerlink" href="#investigating-the-performance-of-dpr-camembert-finetuned-over-piaf-combo-wip" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="why-my-trained-dpr-is-was-not-working">
+<h1>Why my trained DPR is (was) not working<a class="headerlink" href="#why-my-trained-dpr-is-was-not-working" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="intro">
 <h2>Intro<a class="headerlink" href="#intro" title="Permalink to this headline">¶</a></h2>
 <p>I have fine-tuned a camambert model over our combo of French SQuAD-like datasets (PIAF, FQuAD, SQuAD-FR) using the <a class="reference external" href="https://arxiv.org/abs/2004.04906">DPR objective</a> (similarity between query and positive and dissimilarity with negative contexts). The objective is to use this model in our PIAF Retriever module.</p>
@@ -455,8 +459,8 @@
 </ol>
 </div>
 </div>
-<div class="section" id="methodology">
-<h2>Methodology<a class="headerlink" href="#methodology" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="performance-with-haystack-s-evaluation-script">
+<h2>Performance with Haystack’s Evaluation Script<a class="headerlink" href="#performance-with-haystack-s-evaluation-script" title="Permalink to this headline">¶</a></h2>
 <p>I need to check if my fine-tuned multilingual Bert model (<code class="docutils literal notranslate"><span class="pre">mbertDPR</span></code>) is working. Let’s not use my evaluation script, but <a class="reference external" href="https://github.com/deepset-ai/haystack/blob/master/tutorials/Tutorial5_Evaluation.ipynb">Haystack’s e2e evaluation script</a>. We will focus exlcusively on the retriever for now. Also, while they test in English, I believe a multilingual bert should not do very bad.</p>
 <p>Haystack allows us to use either two types of backends: <code class="docutils literal notranslate"><span class="pre">ElasticsearchDocumentStore</span></code> or <code class="docutils literal notranslate"><span class="pre">FAISSDocumentStore</span></code>.
 The former uses ElasticSearch, the latter uses Facebook FAISS.</p>
@@ -532,7 +536,7 @@ The former uses ElasticSearch, the latter uses Facebook FAISS.</p>
 <p class="admonition-title">Attention</p>
 <p>And what is better ! Our <code class="docutils literal notranslate"><span class="pre">mbertDPR</span></code> model is performing not as good as facebook’s DPR, but correctly (MAP: 0.92)! Maybe the model actually works and it is something else not working …</p>
 </div>
-<p>Finally, I tested the</p>
+<p>** This means there is an error in my evaluation script. ** Before moving on to find this bug, I decided to check the delta in performance between a FAISS and an ES backend.</p>
 </div>
 </div>
 <div class="section" id="using-faiss">
@@ -541,31 +545,35 @@ The former uses ElasticSearch, the latter uses Facebook FAISS.</p>
 <p class="admonition-title">Error</p>
 <p>Actually, I cannot test this using FAISS as a backend. The reason is that the method <code class="docutils literal notranslate"><span class="pre">add_eval_data</span></code> is not available for this document store.</p>
 </div>
-<p>Some quick solutions :</p>
-<ol class="simple">
-<li><p>Create a temporary <code class="docutils literal notranslate"><span class="pre">add_eval_data</span></code> function that could take SQuAD-like data and add it to a FAISS document store without taking into consideration the QA part (i.e., without Reader evaluation).</p></li>
-<li><p>Another way would be to use an <code class="docutils literal notranslate"><span class="pre">ElasticSearchDocumentStore</span></code> in my evaluation script instead of a FAISS store.</p></li>
-</ol>
-<p>I chose solution two, as it would validate quickly whether <code class="docutils literal notranslate"><span class="pre">camembertDPR</span></code> is working or not.</p>
-</div>
-</div>
-<div class="section" id="using-elasticsearchdocumentstore-in-our-evaluation-script">
-<h2>Using <code class="docutils literal notranslate"><span class="pre">ElasticSearchDocumentStore</span></code> in our Evaluation script<a class="headerlink" href="#using-elasticsearchdocumentstore-in-our-evaluation-script" title="Permalink to this headline">¶</a></h2>
-<p>In our evaluation script, I was using the FAISS document store. I changed it to ElasticSearch while using the mbertDPR model (multilingual Bert with Piaf combo).</p>
-<p>And voilà, the results are equally bad to those given by BM25 or SBERT (MAP: 0.19). But that is good news, kindof.</p>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>The performance among BM25, SBERT, and DPR is quite similar. Is it because the ES document store is actually using BM25 to retrieve the results and “just” re-ranking with the embeddings vectors?</p>
-</div>
-<p>Sadly, it may very well be the case. See the follwing paragraph from <a class="reference external" href="https://www.elastic.co/blog/text-similarity-search-with-vectors-in-elasticsearch">here</a>:</p>
-<blockquote>
-<div><p>The script_score query is designed to wrap a restrictive query, and modify the scores of the documents it returns. However, we’ve provided a match_all query, which means the script will be run over all documents in the index. <strong>This is a current limitation of vector similarity in Elasticsearch — vectors can be used for scoring documents, but not in the initial retrieval step</strong>. Support for retrieval based on vector similarity is an important area of <a class="reference external" href="https://github.com/elastic/elasticsearch/issues/42326">ongoing work</a>.</p>
-</div></blockquote>
-<p>So now, I have to check that with the FAISS document store, we get the same results in Haystack’s e2e evaluation tutorial. But, as I wrote before, the method to test it is not yet implemented.</p>
-<div class="figure align-default" id="results-haystac">
+<p>We cannot test using Haystack evaluation script but we can test with our script (linked above). I took this evaluation (with FAISS as backend) as far as I could without wasting too much time. It works equally well (or bad) as with ElasticSearchDocumentStore. Some issues start popping up about the size of the column of a table used by FAISS (with postgres backup). It became too much of a hassle. Also, FAISS does not seem to deal with filters (theme, dossier, …).</p>
+<p>Furthermore, I found this image (Figure {ref} results_haystack) on the evaluation carried on by Haystack and it shows that it is very much the same thing using FAISS or ES as backends.</p>
+<div class="figure align-default" id="results-haystack">
 <img alt="../../_images/haystack_ES_faiss_backend.png" src="../../_images/haystack_ES_faiss_backend.png" />
-<p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">Results reported by Haystack [here] (https://github.com/deepset-ai/haystack/blob/0a1e814bd99301dd186ea29de3d0e7619556a28a/test/benchmarks/retriever_query_results.csv)</span><a class="headerlink" href="#results-haystac" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">Results reported by Haystack [here] (https://github.com/deepset-ai/haystack/blob/0a1e814bd99301dd186ea29de3d0e7619556a28a/test/benchmarks/retriever_query_results.csv)</span><a class="headerlink" href="#results-haystack" title="Permalink to this image">¶</a></p>
 </div>
+</div>
+</div>
+<div class="section" id="performance-with-our-evaluation-script">
+<h2>Performance with our Evaluation Script<a class="headerlink" href="#performance-with-our-evaluation-script" title="Permalink to this headline">¶</a></h2>
+<p>The main reason I was getting horrible results using FAISS is because I was running this line before indexing in FAISS :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">document_store</span><span class="o">.</span><span class="n">faiss_index</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Which I do not know what it does but it doesn’t do what I want: to clean the FAISS DB before indexing</p>
+<p>Once this line was removed, I started getting decent results, which are reported in another report <span class="xref myst">overhere</span>.</p>
+</div>
+<div class="section" id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h2>
+<p>The objective of this experiment was to try and determine the source of error that caused the low performance of a fine-tuned DPR model on a French QA dataset. We found that the main culprit of this error was a bug in our evaluation script. I determined this error by using Haystack’s evaluation script and testing different DPR models.</p>
+<p>The performance given by Facebook’s DPR model (MAP:0.97) is in the same ball-park than those found by the fine-tuned multilingual Bert model (MAP: 0.92) which would indicate that it works.</p>
+<p>This result entails that my fine-tuning is actually working. It is important to note that <strong>this result is found with my <code class="docutils literal notranslate"><span class="pre">mbertDPR</span></code> model trained with 90 hard negative examples per question</strong>.</p>
+<p>A bug in the evaluation script was found and fixed, this allowed me to compute the results with our evaluation script. The results of the evaluation can be found in my next report <span class="xref myst">here</span>.</p>
+<p>To recap, <strong>there was a bug in the analysis script</strong> and <strong>now we are using ~90 hard negative contexts</strong>. This way we get <strong>decent results with <code class="docutils literal notranslate"><span class="pre">mbertDPR</span></code></strong>.</p>
+<p>As a final remark, both <strong>FAISS or ES as backends seem to be the same performance-wise</strong> (with the amount of data we have).</p>
+</div>
+<div class="section" id="next-steps">
+<h2>Next Steps<a class="headerlink" href="#next-steps" title="Permalink to this headline">¶</a></h2>
+<p>We now know that the fine-tuned <code class="docutils literal notranslate"><span class="pre">mbertDPR</span></code> works. Thus, a fine tuned camemBERT should also work. This is covered in the next <span class="xref myst">report</span>.</p>
 </div>
 </div>
 
