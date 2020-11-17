@@ -1,4 +1,6 @@
-# Investigating the performance of DPR Camembert (finetuned over PIAF combo) [WIP]
+
+# Why my trained DPR is (was) not working
+
 
 ## Intro
 
@@ -39,7 +41,7 @@ For each problem above, I have tried:
 
 4. **This notebook analyses** the possibility of an ill-conceived evaluation script (specifically, the part testing dpr).
 
-## Methodology
+## Performance with Haystack's Evaluation Script
 
 I need to check if my fine-tuned multilingual Bert model (`mbertDPR`) is working. Let's not use my evaluation script, but [Haystack's e2e evaluation script](https://github.com/deepset-ai/haystack/blob/master/tutorials/Tutorial5_Evaluation.ipynb). We will focus exlcusively on the retriever for now. Also, while they test in English, I believe a multilingual bert should not do very bad. 
 
@@ -117,8 +119,7 @@ In this proposed test, DPR from faceboook (MAP: 0.97) is indeed better than BM25
 And what is better ! Our `mbertDPR` model is performing not as good as facebook's DPR, but correctly (MAP: 0.92)! Maybe the model actually works and it is something else not working ... 
 ```
 
-Finally, I tested the 
-
+** This means there is an error in my evaluation script. ** Before moving on to find this bug, I decided to check the delta in performance between a FAISS and an ES backend.
 
 
 ### Using `FAISS`
@@ -127,33 +128,42 @@ Finally, I tested the
 Actually, I cannot test this using FAISS as a backend. The reason is that the method `add_eval_data` is not available for this document store.
 ```
 
-Some quick solutions : 
-1. Create a temporary `add_eval_data` function that could take SQuAD-like data and add it to a FAISS document store without taking into consideration the QA part (i.e., without Reader evaluation).
+We cannot test using Haystack evaluation script but we can test with our script (linked above). I took this evaluation (with FAISS as backend) as far as I could without wasting too much time. It works equally well (or bad) as with ElasticSearchDocumentStore. Some issues start popping up about the size of the column of a table used by FAISS (with postgres backup). It became too much of a hassle. Also, FAISS does not seem to deal with filters (theme, dossier, ...).
 
-2. Another way would be to use an `ElasticSearchDocumentStore` in my evaluation script instead of a FAISS store. 
-
-I chose solution two, as it would validate quickly whether `camembertDPR` is working or not.
-
-## Using `ElasticSearchDocumentStore` in our Evaluation script
-
-
-In our evaluation script, I was using the FAISS document store. I changed it to ElasticSearch while using the mbertDPR model (multilingual Bert with Piaf combo).
-
-And voilà, the results are equally bad to those given by BM25 or SBERT (MAP: 0.19). But that is good news, kindof.
-
-```{tip}
-The performance among BM25, SBERT, and DPR is quite similar. Is it because the ES document store is actually using BM25 to retrieve the results and "just" re-ranking with the embeddings vectors? 
-```
-Sadly, it may very well be the case. See the follwing paragraph from [here](https://www.elastic.co/blog/text-similarity-search-with-vectors-in-elasticsearch):
-
->The script_score query is designed to wrap a restrictive query, and modify the scores of the documents it returns. However, we’ve provided a match_all query, which means the script will be run over all documents in the index. **This is a current limitation of vector similarity in Elasticsearch — vectors can be used for scoring documents, but not in the initial retrieval step**. Support for retrieval based on vector similarity is an important area of [ongoing work](https://github.com/elastic/elasticsearch/issues/42326). 
-
-
-So now, I have to check that with the FAISS document store, we get the same results in Haystack's e2e evaluation tutorial. But, as I wrote before, the method to test it is not yet implemented. 
+Furthermore, I found this image (Figure {ref} results_haystack) on the evaluation carried on by Haystack and it shows that it is very much the same thing using FAISS or ES as backends.
 
 
 ```{figure} ../../assets/piaf/haystack_ES_faiss_backend.png
-:name: results_haystac
+:name: results_haystack
 
 Results reported by Haystack [here] (https://github.com/deepset-ai/haystack/blob/0a1e814bd99301dd186ea29de3d0e7619556a28a/test/benchmarks/retriever_query_results.csv)
 ```
+## Performance with our Evaluation Script 
+The main reason I was getting horrible results using FAISS is because I was running this line before indexing in FAISS :
+```
+document_store.faiss_index.reset()
+```
+
+Which I do not know what it does but it doesn't do what I want: to clean the FAISS DB before indexing 
+
+Once this line was removed, I started getting decent results, which are reported in another report [overhere]().
+
+## Conclusion
+
+The objective of this experiment was to try and determine the source of error that caused the low performance of a fine-tuned DPR model on a French QA dataset. We found that the main culprit of this error was a bug in our evaluation script. I determined this error by using Haystack's evaluation script and testing different DPR models.
+
+The performance given by Facebook's DPR model (MAP:0.97) is in the same ball-park than those found by the fine-tuned multilingual Bert model (MAP: 0.92) which would indicate that it works.
+
+This result entails that my fine-tuning is actually working. It is important to note that **this result is found with my `mbertDPR` model trained with 90 hard negative examples per question**.
+
+A bug in the evaluation script was found and fixed, this allowed me to compute the results with our evaluation script. The results of the evaluation can be found in my next report [here](). 
+
+To recap, **there was a bug in the analysis script** and **now we are using ~90 hard negative contexts**. This way we get **decent results with `mbertDPR`**.
+
+As a final remark, both **FAISS or ES as backends seem to be the same performance-wise** (with the amount of data we have).
+
+
+
+## Next Steps
+
+We now know that the fine-tuned `mbertDPR` works. Thus, a fine tuned camemBERT should also work. This is covered in the next [report]().
