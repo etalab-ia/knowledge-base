@@ -311,14 +311,14 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#convert-dprs-output-to-be-huggin-face-s-transformers-conpatible">
+  <a class="reference internal nav-link" href="#convert-dprs-output-to-be-huggin-face-s-transformers-compatible">
    4. Convert DPRs output to be Huggin Face’s
    <code class="docutils literal notranslate">
     <span class="pre">
      transformers
     </span>
    </code>
-   conpatible
+   compatible
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -409,8 +409,8 @@
 </div>
 <p>&#64;Etalab, we are using CNRS’ super computer, <a class="reference external" href="http://www.idris.fr/eng/jean-zay/jean-zay-presentation-eng.html">Jean Zay</a>.</p>
 </div>
-<div class="section" id="convert-dprs-output-to-be-huggin-face-s-transformers-conpatible">
-<h2>4. Convert DPRs output to be Huggin Face’s <code class="docutils literal notranslate"><span class="pre">transformers</span></code> conpatible<a class="headerlink" href="#convert-dprs-output-to-be-huggin-face-s-transformers-conpatible" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="convert-dprs-output-to-be-huggin-face-s-transformers-compatible">
+<h2>4. Convert DPRs output to be Huggin Face’s <code class="docutils literal notranslate"><span class="pre">transformers</span></code> compatible<a class="headerlink" href="#convert-dprs-output-to-be-huggin-face-s-transformers-compatible" title="Permalink to this headline">¶</a></h2>
 <p>To be able to use <code class="docutils literal notranslate"><span class="pre">transformers</span></code>, we have to extract the models from DPR’s check point output. This checkpoint contains both models (context and question encoder) plus some other structures.</p>
 <p>Given that I had trained a camembert, I had to then convert the original <code class="docutils literal notranslate"><span class="pre">fairseq</span></code> RoBERTa model into a Hugging Face model.</p>
 <p>The code used to do this conversion is <a class="reference external" href="https://github.com/psorianom/DPR/tree/master/dpr2hf">here</a>.</p>
