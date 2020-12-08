@@ -57,7 +57,7 @@
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Test : Preprocessing directly with ElasticSearch Analyzers" href="ES_preprocessing.html" />
+    <link rel="next" title="DPR Fine-Tuning (finally)" href="DPR_fine_tuning.html" />
     <link rel="prev" title="Visualisation de la précision dense vs sparse" href="Visualisation_results_Robin.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -186,6 +186,11 @@
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
      Why my trained DPR is (was) not working
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="DPR_fine_tuning.html">
+     DPR Fine-Tuning (finally)
     </a>
    </li>
    <li class="toctree-l2">
@@ -546,7 +551,7 @@ The former uses ElasticSearch, the latter uses Facebook FAISS.</p>
 <p>Actually, I cannot test this using FAISS as a backend. The reason is that the method <code class="docutils literal notranslate"><span class="pre">add_eval_data</span></code> is not available for this document store.</p>
 </div>
 <p>We cannot test using Haystack evaluation script but we can test with our script (linked above). I took this evaluation (with FAISS as backend) as far as I could without wasting too much time. It works equally well (or bad) as with ElasticSearchDocumentStore. Some issues start popping up about the size of the column of a table used by FAISS (with postgres backup). It became too much of a hassle. Also, FAISS does not seem to deal with filters (theme, dossier, …).</p>
-<p>Furthermore, I found this image (Figure {ref} results_haystack) on the evaluation carried on by Haystack and it shows that it is very much the same thing using FAISS or ES as backends.</p>
+<p>Furthermore, I found this table below on the <a class="reference external" href="https://github.com/deepset-ai/haystack/blob/2531c8e0613f24b66838ab82ed02024d505aa578/test/benchmarks/retriever_query_results.csv">evaluation</a> carried on by Haystack and it shows that it is very much the same thing using FAISS or ES as backends.</p>
 <div class="figure align-default" id="results-haystack">
 <img alt="../../_images/haystack_ES_faiss_backend.png" src="../../_images/haystack_ES_faiss_backend.png" />
 <p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">Results reported by Haystack [here] (https://github.com/deepset-ai/haystack/blob/0a1e814bd99301dd186ea29de3d0e7619556a28a/test/benchmarks/retriever_query_results.csv)</span><a class="headerlink" href="#results-haystack" title="Permalink to this image">¶</a></p>
@@ -573,7 +578,7 @@ The former uses ElasticSearch, the latter uses Facebook FAISS.</p>
 </div>
 <div class="section" id="next-steps">
 <h2>Next Steps<a class="headerlink" href="#next-steps" title="Permalink to this headline">¶</a></h2>
-<p>We now know that the fine-tuned <code class="docutils literal notranslate"><span class="pre">mbertDPR</span></code> works. Thus, a fine tuned camemBERT should also work. This is covered in the next <span class="xref myst">report</span>.</p>
+<p>We now know that the fine-tuned <code class="docutils literal notranslate"><span class="pre">mbertDPR</span></code> works. Thus, a fine tuned camemBERT should also work. This is covered in the next report (see <a class="reference internal" href="DPR_fine_tuning.html"><span class="doc">DPR Fine-Tuning (finally)</span></a>.</p>
 </div>
 </div>
 
@@ -606,7 +611,7 @@ The former uses ElasticSearch, the latter uses Facebook FAISS.</p>
     <div class='prev-next-bottom'>
         
     <a class='left-prev' id="prev-link" href="Visualisation_results_Robin.html" title="previous page">Visualisation de la précision dense vs sparse</a>
-    <a class='right-next' id="next-link" href="ES_preprocessing.html" title="next page">Test : Preprocessing directly with ElasticSearch Analyzers</a>
+    <a class='right-next' id="next-link" href="DPR_fine_tuning.html" title="next page">DPR Fine-Tuning (finally)</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

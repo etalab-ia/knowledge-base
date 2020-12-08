@@ -130,7 +130,7 @@ Actually, I cannot test this using FAISS as a backend. The reason is that the me
 
 We cannot test using Haystack evaluation script but we can test with our script (linked above). I took this evaluation (with FAISS as backend) as far as I could without wasting too much time. It works equally well (or bad) as with ElasticSearchDocumentStore. Some issues start popping up about the size of the column of a table used by FAISS (with postgres backup). It became too much of a hassle. Also, FAISS does not seem to deal with filters (theme, dossier, ...).
 
-Furthermore, I found this image (Figure {ref} results_haystack) on the evaluation carried on by Haystack and it shows that it is very much the same thing using FAISS or ES as backends.
+Furthermore, I found this table below on the [evaluation](https://github.com/deepset-ai/haystack/blob/2531c8e0613f24b66838ab82ed02024d505aa578/test/benchmarks/retriever_query_results.csv) carried on by Haystack and it shows that it is very much the same thing using FAISS or ES as backends.
 
 
 ```{figure} ../../assets/piaf/haystack_ES_faiss_backend.png
@@ -166,4 +166,4 @@ As a final remark, both **FAISS or ES as backends seem to be the same performanc
 
 ## Next Steps
 
-We now know that the fine-tuned `mbertDPR` works. Thus, a fine tuned camemBERT should also work. This is covered in the next [report]().
+We now know that the fine-tuned `mbertDPR` works. Thus, a fine tuned camemBERT should also work. This is covered in the next report (see {doc}`./DPR_fine_tuning`.
