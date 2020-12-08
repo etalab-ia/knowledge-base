@@ -71,7 +71,7 @@ python -m torch.distributed.launch --nproc_per_node=8 train_dense_encoder.py \
 @Etalab, we are using CNRS' super computer, [Jean Zay](http://www.idris.fr/eng/jean-zay/jean-zay-presentation-eng.html).
 
 
-## 4. Convert DPRs output to be Huggin Face's `transformers` conpatible
+## 4. Convert DPRs output to be Huggin Face's `transformers` compatible
 
 To be able to use `transformers`, we have to extract the models from DPR's check point output. This checkpoint contains both models (context and question encoder) plus some other structures.
 
