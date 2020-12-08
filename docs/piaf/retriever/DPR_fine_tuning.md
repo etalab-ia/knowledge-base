@@ -79,7 +79,7 @@ Given that I had trained a camembert, I had to then convert the original `fairse
 
 The code used to do this conversion is [here](https://github.com/psorianom/DPR/tree/master/dpr2hf).
 
-## 5. Publication of the dataset in Hugging Face's hub
+## 5. Publication of the models in Hugging Face's hub
 
 I uploaded the trained files to HF hub. Unfortunately, `transformers` just changed to v4.0 and it is now incompatible with `haystack`. Plus, it seems that you need `transformers` v4.0 to be able to instantiate the model using the name. Bref, the easier way to use it is to download each model files and save them locally and pass the required string to `haystack`'s `DensePassageRetriever`. 
 
