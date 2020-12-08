@@ -1,0 +1,25 @@
+#######################################################################################
+# A default configuration that will be loaded for all jupyter books
+# See the documentation for help and more options: 
+# https://jupyterbook.org/customize/config.html
+
+#######################################################################################
+# Book settings
+title: ""
+author                      : etalab-ia  # The author of the book
+copyright                   : "2020"  # Copyright year to be placed in the footer
+logo                        : logo.png  # A path to the book logo
+
+execute:
+  execute_notebooks: off
+
+html:
+  home_page_in_navbar: false
+  use_edit_page_button: true
+  use_repository_button: true
+  use_issues_button: true
+
+repository:
+  url: https://github.com/psorianom/knowledge-base
+  branch: master
+  path_to_book: docs
