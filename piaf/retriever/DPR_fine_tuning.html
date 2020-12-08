@@ -296,8 +296,8 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#creation-of-dpr-dataset">
-   1. Creation of DPR dataset
+  <a class="reference internal nav-link" href="#creation-of-a-dpr-dataset">
+   1. Creation of a DPR dataset
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -360,8 +360,8 @@
 <h2>0. Intro<a class="headerlink" href="#intro" title="Permalink to this headline">¶</a></h2>
 <p>Previously (<a class="reference internal" href="DPR_performance.html"><span class="doc">Why my trained DPR is (was) not working</span></a>), I was failing to fine-tune camemBERT on a French Q&amp;A dataset. It was not working due to a bug and to the different nature of my training dataset (a single hard negative context although I don’t believe this was the cause but wadever). Anyways, now it is working. Here are the steps I followed to ine tune a camemBERT with the DPR objective.</p>
 </div>
-<div class="section" id="creation-of-dpr-dataset">
-<h2>1. Creation of DPR dataset<a class="headerlink" href="#creation-of-dpr-dataset" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="creation-of-a-dpr-dataset">
+<h2>1. Creation of a DPR dataset<a class="headerlink" href="#creation-of-a-dpr-dataset" title="Permalink to this headline">¶</a></h2>
 <p>The <a class="reference external" href="https://github.com/facebookresearch/DPR">DPR</a> training script expects a dataset of this format:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
     <span class="p">{</span>
