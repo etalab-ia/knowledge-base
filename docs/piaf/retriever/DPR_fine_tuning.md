@@ -16,7 +16,7 @@ Finally, I ran some experiments with out service-public.fr test set. **DPR is no
 
 Previously ({doc}`./DPR_performance`), I was failing to fine-tune camemBERT on a French Q&A dataset. It was not working due to a bug and to the different nature of my training dataset (a single hard negative context although I don't believe this was the cause but wadever). Anyways, now it is working. Here are the steps I followed to ine tune a camemBERT with the DPR objective.
 
-## 1. Creation of DPR dataset
+## 1. Creation of a DPR dataset
 
 The [DPR](https://github.com/facebookresearch/DPR) training script expects a dataset of this format: 
 
