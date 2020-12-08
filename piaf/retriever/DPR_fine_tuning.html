@@ -322,8 +322,8 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#publication-of-the-dataset-in-hugging-face-s-hub">
-   5. Publication of the dataset in Hugging Face’s hub
+  <a class="reference internal nav-link" href="#publication-of-the-models-in-hugging-face-s-hub">
+   5. Publication of the models in Hugging Face’s hub
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -415,8 +415,8 @@
 <p>Given that I had trained a camembert, I had to then convert the original <code class="docutils literal notranslate"><span class="pre">fairseq</span></code> RoBERTa model into a Hugging Face model.</p>
 <p>The code used to do this conversion is <a class="reference external" href="https://github.com/psorianom/DPR/tree/master/dpr2hf">here</a>.</p>
 </div>
-<div class="section" id="publication-of-the-dataset-in-hugging-face-s-hub">
-<h2>5. Publication of the dataset in Hugging Face’s hub<a class="headerlink" href="#publication-of-the-dataset-in-hugging-face-s-hub" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="publication-of-the-models-in-hugging-face-s-hub">
+<h2>5. Publication of the models in Hugging Face’s hub<a class="headerlink" href="#publication-of-the-models-in-hugging-face-s-hub" title="Permalink to this headline">¶</a></h2>
 <p>I uploaded the trained files to HF hub. Unfortunately, <code class="docutils literal notranslate"><span class="pre">transformers</span></code> just changed to v4.0 and it is now incompatible with <code class="docutils literal notranslate"><span class="pre">haystack</span></code>. Plus, it seems that you need <code class="docutils literal notranslate"><span class="pre">transformers</span></code> v4.0 to be able to instantiate the model using the name. Bref, the easier way to use it is to download each model files and save them locally and pass the required string to <code class="docutils literal notranslate"><span class="pre">haystack</span></code>’s <code class="docutils literal notranslate"><span class="pre">DensePassageRetriever</span></code>.</p>
 </div>
 <div class="section" id="some-results">
