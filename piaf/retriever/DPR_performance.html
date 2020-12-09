@@ -438,7 +438,7 @@
 <p>I have fine-tuned a camambert model over our combo of French SQuAD-like datasets (PIAF, FQuAD, SQuAD-FR) using the <a class="reference external" href="https://arxiv.org/abs/2004.04906">DPR objective</a> (similarity between query and positive and dissimilarity with negative contexts). The objective is to use this model in our PIAF Retriever module.</p>
 <div class="section" id="problem">
 <h3>Problem<a class="headerlink" href="#problem" title="Permalink to this headline">¶</a></h3>
-<p>The training has been completed on Jean ZAY. It runs without major problems apprently. Still, when testing this model with our <a class="reference external" href="https://github.com/etalab-ia/piaf-ml/blob/master/src/evaluation/retriever_25k_eval.py">evaluation script</a> and our test dataset (460 SPF questions), the results are surprisingly low (around 5%) compared to those obtained with BM25 (~20%) and SBERT (~18%).</p>
+<p>The training has been completed on Jean ZAY. It runs without major problems apprently. Still, when testing this model with our <a class="reference external" href="https://github.com/etalab-ia/piaf-ml/blob/master/src/evaluation/retriever_25k_eval.py">evaluation script</a> and our test dataset (460 SPF questions), the results are surprisingly low (MAP around 5%) compared to those obtained with BM25 (~20%) and SBERT (~18%).</p>
 </div>
 <div class="section" id="possible-sources-of-errors">
 <h3>Possible sources of errors<a class="headerlink" href="#possible-sources-of-errors" title="Permalink to this headline">¶</a></h3>
