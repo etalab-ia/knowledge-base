@@ -8,7 +8,7 @@
 4. [Converted](https://github.com/psorianom/DPR/tree/master/dpr2hf) the DPR output to a `transformers` compatible model.
 5. Published the [question encoder](https://huggingface.co/etalab-ia/dpr-question_encoder-fr_qa-camembert) and [context encoder](https://huggingface.co/etalab-ia/dpr-ctx_encoder-fr_qa-camembert) in the Hugging Face model's hub.
 
-Finally, I ran some experiments with out service-public.fr test set. **DPR is not better than BM25 ¯\\_(ツ)_/¯**.
+Finally, I ran some experiments using our service-public.fr test set. **DPR is not better than BM25 ¯\\_(ツ)_/¯**.
 
 ```
 
