@@ -4,7 +4,7 @@
 **TLDR**: To fine-tune camemBERT with the DPR objective I did the following:
 1. Crated a Q&A French dataset following the DPR format (using PIAF, FQuAD, French-SQuAD). Dataset [here](https://drive.google.com/file/d/1W5Jm3sqqWlsWsx2sFpA39Ewn33PaLQ7U/view?usp=sharing).
 2. Modified the DPR [code to create](https://github.com/psorianom/DPR) a `CamembertTokenizer`.
-3. Run the training on 8 GPUs (thanks Jean Zay!).
+3. Ran the training on 8 GPUs (thanks Jean Zay!).
 4. [Converted](https://github.com/psorianom/DPR/tree/master/dpr2hf) the DPR output to a `transformers` compatible model.
 5. Published the [question encoder](https://huggingface.co/etalab-ia/dpr-question_encoder-fr_qa-camembert) and [context encoder](https://huggingface.co/etalab-ia/dpr-ctx_encoder-fr_qa-camembert) in the Hugging Face model's hub.
 
