@@ -8,7 +8,7 @@ I have fine-tuned a camambert model over our combo of French SQuAD-like datasets
 
 ### Problem 
 
-The training has been completed on Jean ZAY. It runs without major problems apprently. Still, when testing this model with our [evaluation script](https://github.com/etalab-ia/piaf-ml/blob/master/src/evaluation/retriever_25k_eval.py) and our test dataset (460 SPF questions), the results are surprisingly low (around 5%) compared to those obtained with BM25 (~20%) and SBERT (~18%).
+The training has been completed on Jean ZAY. It runs without major problems apprently. Still, when testing this model with our [evaluation script](https://github.com/etalab-ia/piaf-ml/blob/master/src/evaluation/retriever_25k_eval.py) and our test dataset (460 SPF questions), the results are surprisingly low (MAP around 5%) compared to those obtained with BM25 (~20%) and SBERT (~18%).
 
 ### Possible sources of errors
 
