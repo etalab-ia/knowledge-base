@@ -40,7 +40,6 @@
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/language_data.js"></script>
     <script src="../../_static/togglebutton.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
@@ -334,6 +333,11 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#resultats-dpr">
+   Resultats DPR
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#conclusions">
    Conclusions
   </a>
@@ -354,6 +358,8 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="c1"># plt.rcParams[&#39;figure.figsize&#39;] = [640, 480]</span>
 </pre></div>
 </div>
 </div>
@@ -462,6 +468,47 @@ Name: precision, dtype: object
 </div>
 <p>Le retriever sparse donne des meilleurs résultats que le dense pour un filtrage ‘thème’</p>
 </div>
+<div class="section" id="resultats-dpr">
+<h2>Resultats DPR<a class="headerlink" href="#resultats-dpr" title="Permalink to this headline">¶</a></h2>
+<p>Voilà les resultats avec DPR, compared to BM25 and SBERT. Using the knowledge base v14.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pwd
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/pavel/code/knowledge-base/docs/piaf/retriever
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results_dpr</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../../assets/piaf/dpr_results.csv&#39;</span><span class="p">)</span>
+<span class="n">results_dpr</span> <span class="o">=</span> <span class="n">results_dpr</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">results_dpr</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">results_dpr</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;retriever_type&#39;</span><span class="p">,</span> <span class="s1">&#39;filter_level&#39;</span><span class="p">,</span> <span class="s1">&#39;preprocessing&#39;</span><span class="p">])[</span><span class="s1">&#39;precision&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">xticks</span><span class="o">=</span><span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">11</span><span class="p">)])</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">ax</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pandas.core.series.Series
+</pre></div>
+</div>
+<img alt="../../_images/Visualisation_csv_results_22_1.png" src="../../_images/Visualisation_csv_results_22_1.png" />
+</div>
+</div>
+<p>The best config is still bm25, with filtering=dossier and with preprocessing (using ES analyzer).
+DPR is better than SBERT which is nice (without preprocessing). Y-axis is MAP (can’t find a way to add it with pandas plot :/ )</p>
+</div>
 <div class="section" id="conclusions">
 <h2>Conclusions<a class="headerlink" href="#conclusions" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
@@ -470,6 +517,7 @@ Name: precision, dtype: object
 <li><p>Le retriever <em>sparse</em> a une plus grande performance lorsqu’on lui rajoute du filtrage</p></li>
 <li><p>Le filtrage <em>dossier</em> couplé avec un retriever <em>sparse</em> donne les meilleurs résultats absolus en terme de performance</p></li>
 <li><p>Il reste peut etre à clarifier pourquoi dans le cas <em>sans filtrage</em> c’est plutot le retriever <em>dense</em> qui donne des meilleurs résultats</p></li>
+<li><p>DPR as it is, is no better than bm25, in any config.</p></li>
 </ul>
 </div>
 </div>
