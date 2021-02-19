@@ -16,6 +16,9 @@
 
 - part: Piaf - Pour une IA Francophone
   chapters:
+  - file: piaf/howtos/overview
+    sections:
+      - file: piaf/howtos/Format_donnees_SQuAD   
   - file: piaf/retriever/overview
     sections:
       - file: piaf/retriever/complementarity_dense_sparse
