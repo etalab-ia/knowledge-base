@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Reader Module</title>
+    <title>Format données SQuAD</title>
     
   <link rel="stylesheet" href="../../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -237,7 +237,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/piaf/reader/overview.md"><button type="button"
+        <a class="dropdown-buttons" href="../../_sources/piaf/howtos/Format_donnees_SQuAD.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -257,10 +257,10 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/psorianom/knowledge-base/issues/new?title=Issue%20on%20page%20%2Fpiaf/reader/overview.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/psorianom/knowledge-base/issues/new?title=Issue%20on%20page%20%2Fpiaf/howtos/Format_donnees_SQuAD.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/psorianom/knowledge-base/edit/master/docs/piaf/reader/overview.md"><button
+        <a class="edit-button" href="https://github.com/psorianom/knowledge-base/edit/master/docs/piaf/howtos/Format_donnees_SQuAD.md"><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
     </div>
@@ -286,8 +286,23 @@
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#overview">
-   Overview
+  <a class="reference internal nav-link" href="#qu-est-que-piaf">
+   Qu’est que PIAF ?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#comment-nous-utilisons-piaf">
+   Comment nous utilisons PIAF ?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#quelles-donnees-envoyer-pour-proposer-un-cas-d-usage">
+   Quelles données envoyer pour proposer un cas d’usage ?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sous-quel-format-envoyer-les-donnees">
+   Sous quel format envoyer les données ?
   </a>
  </li>
 </ul>
@@ -301,10 +316,64 @@
         
               <div>
                 
-  <div class="section" id="reader-module">
-<h1>Reader Module<a class="headerlink" href="#reader-module" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+  <div class="section" id="format-donnees-squad">
+<h1>Format données SQuAD<a class="headerlink" href="#format-donnees-squad" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="qu-est-que-piaf">
+<h2>Qu’est que PIAF ?<a class="headerlink" href="#qu-est-que-piaf" title="Permalink to this headline">¶</a></h2>
+<p>PIAF désigne la solution de Question Réponse proposée par la DINUM. Elle s’appuie sur différentes briques technologiques :</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.data.gouv.fr/fr/datasets/piaf-le-dataset-francophone-de-questions-reponses/">Le dataset de Piaf</a> : un dataset contenant de multiples exemples de Questions Réponses (QR) provenant de wikipédia. Cette annotation est issue d’une annotation citoyenne. Ce dataset suive la methodologie et le format du dataset QR anglophone <a class="reference external" href="https://rajpurkar.github.io/SQuAD-explorer/">SQuAD</a>. Vous trouverez plus de renseignements <a class="reference external" href="https://piaf.etalab.studio/">ici</a>.</p></li>
+<li><p><a class="reference external" href="https://huggingface.co/etalab-ia/camembert-base-squadFR-fquad-piaf">camembert-base-squadFR-fquad-piaf</a> : un modèle français de Question Réponses basé sur CamemBERT et fine-tuné sur une combinaison de trois datasets français de Question Réponse:</p>
+<ul>
+<li><p>PIAFv1.1</p></li>
+<li><p>FQuADv1.0</p></li>
+<li><p>SQuAD-FR (SQuAD automatically translated to French)</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://github.com/deepset-ai/haystack">Haystack</a> : une brique open source à laquelle nous contribuons activement permettant de faire du question réponse sur une base documentaire. Elle intègre une partie retriever qui retrouve les meilleurs documents candidat et une brique reader dans laquelle le modèle piaf est intégré et qui permet de trouver la bonne réponse.</p></li>
+<li><p><a class="reference external" href="https://piaf.datascience.etalab.studio/piafagent/">Piaf Agent</a> et <a class="reference external" href="https://piafbot.chatbot.fabnum.fr/">Piaf Bot</a> : des interfaces graphique permettant d’interroger l’API de haystack et de permettre à l’utilisateur de poser une question et d’obtenir une réponse.</p></li>
+</ul>
+</div>
+<div class="section" id="comment-nous-utilisons-piaf">
+<h2>Comment nous utilisons PIAF ?<a class="headerlink" href="#comment-nous-utilisons-piaf" title="Permalink to this headline">¶</a></h2>
+<p>Pour utiliser PIAF, il n’y a pas besoin d’entrainer un modèle sur vos données. Nous récupérons vos données et ajustons les paramètres des différents composants du système pour votre cas d’usage.</p>
+<p>Si vous avez une quantité de pairs Question-Réponse conséquente, nous pourrons envisager le fine-tuning de notre modèle avec vos données. Cette procedure pourrait améliorer la performance du système.</p>
+</div>
+<div class="section" id="quelles-donnees-envoyer-pour-proposer-un-cas-d-usage">
+<h2>Quelles données envoyer pour proposer un cas d’usage ?<a class="headerlink" href="#quelles-donnees-envoyer-pour-proposer-un-cas-d-usage" title="Permalink to this headline">¶</a></h2>
+<p>Vos données doivent comporter les informations suivantes:</p>
+<ul class="simple">
+<li><p>Une liste de contextes : C’est votre base de connaissance. Les contextes sont des textes. Il n’y a pas de contrainte sur la longueur du texte, PIAF se charge d’optimiser sa longueur pour votre cas d’usage.</p></li>
+<li><p>Des questions et des réponses pour effectuer l’evaluation. Il peut y avoir plusieurs questions par contexte et plusieurs réponses par questions.</p></li>
+</ul>
+</div>
+<div class="section" id="sous-quel-format-envoyer-les-donnees">
+<h2>Sous quel format envoyer les données ?<a class="headerlink" href="#sous-quel-format-envoyer-les-donnees" title="Permalink to this headline">¶</a></h2>
+<p>Idéalement vos données sont envoyées sous la forme d’un json structuré de la manière suivante (en suivant le format SQuAD v2.0) :</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>{
+ &quot;version&quot;: &quot;v1.0&quot;,
+ &quot;data&quot;: [{
+   &#39;title&#39;: &#39;Immatriculer un véhicule d&#39;occasion&#39;, #OBLIGATOIRE : titre de votre chapitre (un chapitre peut contenir plusieurs contextes)
+   &#39;theme&#39;: &#39;Véhicule&#39;, #FACULTATIF : Metadonnées d&#39;arborescence. Si ces données sont disponibles, elles peuvent améliorer les performances de PIAF en permettant à l&#39;utilisateur de restreindre le champ de sa demande 
+   &#39;Dossier&#39;: &quot;Carte grise (certificat d&#39;immatriculation)&quot;, #FACULTATIF : Metadonnées d&#39;arborescence. #FACULTATIF : Metadonnées d&#39;arborescence.
+   &#39;id&#39;: &#39;F1050&#39;, #FACULTATIF : Metadonnées d&#39;arborescence.
+   &#39;paragraphs&#39;: [{
+       &#39;context&#39;: &quot;Carte grise:...&quot; #C&#39;est le contenu de votre base de connaissance 
+       &#39;qas&#39;: [ #Si vous n&#39;avez pas d&#39;annotation, laissez une liste vide
+           {&#39;question&#39;:&quot;J&#39;ai acheté ...?&quot;
+            &#39;answers&#39;: [ #Si vous n&#39;avez pas de réponse annotée, laissez une liste vide
+                   {
+                 &quot;text&quot;: &quot;100 000&quot;, #La réponse à la question. La réponse se trouve dans le context. C&#39;est un ensemble de mots continu 
+                 &quot;answer_start&quot;: 472 #FACULTATIF Le token du début de la réponse. 
+               }
+            ]
+            &quot;is_impossible&quot;: False #True s&#39;il n&#39;y a pas de réponse possible, ou pas de réponse annoté. False dans les autres cas. 
+           }]
+       }]
+   }]
+</pre></div>
+</div>
+<p>Vous pouvez aussi nous envoyer vos données sous une autre forme (.csv par exemple) et nous nous occupons de les convertir pour vous.</p>
 </div>
 </div>
 
@@ -321,7 +390,7 @@
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./piaf/reader"
+            path: "./piaf/howtos"
         },
         predefinedOutput: true
     }
