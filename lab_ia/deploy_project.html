@@ -485,23 +485,28 @@ proxy_set_header X-Forwarded-For <span class="nv">$proxy_add_x_forwarded_for</sp
 <li><p>If you add a prefix like <code class="docutils literal notranslate"><span class="pre">/profiler/</span></code> to your app, make sure your app is aware of that. That is, your app may be listengin to <code class="docutils literal notranslate"><span class="pre">localhost</span></code> but since you will be receiving your requests at <code class="docutils literal notranslate"><span class="pre">yourserver.com/profiler/</span></code> you need to specify that in your app. For example, in my Python code for the profiler app, I specify this:</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">app</span> <span class="o">=</span> <span class="n">FastAPI</span><span class="p">(</span><span class="n">root_path</span><span class="o">=</span><span class="s2">&quot;/profiler&quot;</span><span class="p">)</span>
-
 </pre></div>
 </div>
 <p>Which indicates that the root of my app is <code class="docutils literal notranslate"><span class="pre">/profiler</span></code> and not the root <code class="docutils literal notranslate"><span class="pre">/</span></code>. This is <strong>very</strong> important because all the resources (javascript, icons, css, images,…) of your website won’t be found if the paths are not correct. You can also deal with this in your nginx config file with the magic of <code class="docutils literal notranslate"><span class="pre">rewrite</span></code>.</p>
 <ol class="simple">
-<li><p>Sometimes you need to open port with <code class="docutils literal notranslate"><span class="pre">iptables</span></code>. This is not ideal because you don’t want to be opening ports.</p></li>
+<li><p>Sometimes you need to open a port with <code class="docutils literal notranslate"><span class="pre">iptables</span></code>. This is not ideal because you don’t want to be opening ports.</p></li>
 <li><p>You need to add the certificates info to deal with <code class="docutils literal notranslate"><span class="pre">https</span></code> instead of <code class="docutils literal notranslate"><span class="pre">http</span></code>. This can be done automatically with certbot.</p></li>
 </ol>
 </div>
 <div class="section" id="useful-commands">
 <h3>Useful commands<a class="headerlink" href="#useful-commands" title="Permalink to this headline">¶</a></h3>
 <ol class="simple">
-<li><p>Check docker logs
-<code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">logs</span> <span class="pre">container_name</span></code></p></li>
-<li><p>Connect to a specific runing docker container
-<code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">exec</span> <span class="pre">-it</span> <span class="pre">container_name</span> <span class="pre">bash</span></code></p></li>
+<li><p>Check docker logs</p></li>
 </ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker logs container_name
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>Connect to a specific runing docker container</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker <span class="nb">exec</span> -it container_name bash
+</pre></div>
+</div>
 </div>
 </div>
 </div>
