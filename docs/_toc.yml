@@ -11,6 +11,7 @@
       - file: lab_ia/secrets
       - file: lab_ia/python
       - file: lab_ia/jupyter
+      - file: lab_ia/deploy_project
   - file: lab_ia/reporting_standards
 
 
