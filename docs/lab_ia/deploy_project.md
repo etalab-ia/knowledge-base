@@ -117,18 +117,23 @@ That should be all :)
 
 ### Common problems
 1. If you add a prefix like `/profiler/` to your app, make sure your app is aware of that. That is, your app may be listengin to `localhost` but since you will be receiving your requests at `yourserver.com/profiler/` you need to specify that in your app. For example, in my Python code for the profiler app, I specify this:
+
 ```python
 app = FastAPI(root_path="/profiler")
-
 ```
+
 Which indicates that the root of my app is `/profiler` and not the root `/`. This is **very** important because all the resources (javascript, icons, css, images,...) of your website won't be found if the paths are not correct. You can also deal with this in your nginx config file with the magic of `rewrite`.
 
-2. Sometimes you need to open port with `iptables`. This is not ideal because you don't want to be opening ports.
+2. Sometimes you need to open a port with `iptables`. This is not ideal because you don't want to be opening ports.
 3. You need to add the certificates info to deal with `https` instead of `http`. This can be done automatically with certbot.
 
 ### Useful commands
 
 1. Check docker logs
-`docker logs container_name`
+```bash
+docker logs container_name
+```
 2. Connect to a specific runing docker container
-`docker exec -it container_name bash`
+```bash
+docker exec -it container_name bash
+```
