@@ -60,7 +60,7 @@ curl localhost:8080
 If everything goes fine, you should have an answer. I am using port `8080` because that is the port that is listening in my host (dev machine or server), as specified above. You can also send your API requests using this method ofc and check it works.
 
 
-### Ngninx + your app 
+### Nginx + your app 
 
 If all goes well, your service is ready to be reverse-proxied by nginx (or apache, here I will discuss nginx). The idea of a reverse proxy is the following:
 
