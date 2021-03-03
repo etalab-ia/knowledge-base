@@ -465,18 +465,18 @@ proxy_set_header X-Forwarded-For <span class="nv">$proxy_add_x_forwarded_for</sp
 </pre></div>
 </div>
 <p>Basically, I’m telling nginx to get everything that arrives at <code class="docutils literal notranslate"><span class="pre">yourserver.com/profiler/some-id-12132</span></code>, with the <code class="docutils literal notranslate"><span class="pre">rewrite</span></code> command we keep only that which inmediatly follows <code class="docutils literal notranslate"><span class="pre">/profiler</span></code> (i.e., <code class="docutils literal notranslate"><span class="pre">/some-id-12132</span></code>) and finally send it to our service running in <code class="docutils literal notranslate"><span class="pre">localhost:8080</span></code> (<code class="docutils literal notranslate"><span class="pre">localhost</span></code> means here the server itself). At the end, the query will be such as if we had sent <code class="docutils literal notranslate"><span class="pre">http://localhost:8080/some-id-12132</span></code> (again, seen from within the server itself).</p>
-<p>Note that nginx knows that we are using <code class="docutils literal notranslate"><span class="pre">yourserver.com</span></code> as domain name because we are telling it that with another config another config file (<code class="docutils literal notranslate"><span class="pre">/etc/nginx/sites-available/datascience.sites</span></code>) that looks like this:</p>
+<p>Note that nginx knows that we are using <code class="docutils literal notranslate"><span class="pre">yourserver.com</span></code> as domain name because we are telling it so with another configuration file: <code class="docutils literal notranslate"><span class="pre">/etc/nginx/sites-available/datascience.studio</span></code> that looks like this:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>server <span class="o">{</span>
     server_name yourserver.com<span class="p">;</span>
     include /etc/nginx/sites-available/datascience/*.conf<span class="p">;</span>  <span class="c1"># here we tell nginx to load all the app&#39;s configs found in this path</span>
 <span class="o">}</span>
 </pre></div>
 </div>
-<p>This last file is not supposed to be changed a lot. The <code class="docutils literal notranslate"><span class="pre">*.config</span></code> files in <code class="docutils literal notranslate"><span class="pre">/etc/nginx/sites-available/datascience/</span></code> are the ones that need to be created, one for each new application. It will be loaded automatically with the <code class="docutils literal notranslate"><span class="pre">include</span></code> command in the previous script.</p>
-<p>In general, to add sites to nginx, we create a link from <code class="docutils literal notranslate"><span class="pre">sites-available</span></code> to <code class="docutils literal notranslate"><span class="pre">sites-enabled</span></code>, like so:</p>
+<p>This last file is not supposed to be changed a lot. In general, to resolve our domain names in nginx, we create such a file in <code class="docutils literal notranslate"><span class="pre">sites-available</span></code>and create a link to <code class="docutils literal notranslate"><span class="pre">sites-enabled</span></code>, like so:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ln -s /etc/nginx/sites-available/datascience.studio /etc/nginx/sites-enabled/
 </pre></div>
 </div>
+<p>The <code class="docutils literal notranslate"><span class="pre">*.config</span></code> files in <code class="docutils literal notranslate"><span class="pre">/etc/nginx/sites-available/datascience/</span></code> are the ones that need to be created, one for each new application. It will be loaded automatically with the <code class="docutils literal notranslate"><span class="pre">include</span></code> command in the previous script.</p>
 </div>
 <div class="section" id="nginx-verification-and-reloading">
 <h4>Nginx verification and reloading<a class="headerlink" href="#nginx-verification-and-reloading" title="Permalink to this headline">¶</a></h4>
