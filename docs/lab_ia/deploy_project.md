@@ -91,7 +91,7 @@ proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
 
 Basically, I'm telling nginx to get everything that arrives at `yourserver.com/profiler/some-id-12132`, with the `rewrite` command we keep only that which inmediatly follows `/profiler` (i.e., `/some-id-12132`) and finally send it to our service running in `localhost:8080` (`localhost` means here the server itself). At the end, the query will be such as if we had sent `http://localhost:8080/some-id-12132` (again, seen from within the server itself).
 
-Note that nginx knows that we are using `yourserver.com` as domain name because we are telling it that with another config another config file (`/etc/nginx/sites-available/datascience.sites`) that looks like this:
+Note that nginx knows that we are using `yourserver.com` as domain name because we are telling it so with another configuration file: `/etc/nginx/sites-available/datascience.studio` that looks like this:
 
 ```bash
 server {
@@ -100,13 +100,17 @@ server {
 }
 ```
 
-This last file is not supposed to be changed a lot. The `*.config` files in `/etc/nginx/sites-available/datascience/` are the ones that need to be created, one for each new application. It will be loaded automatically with the `include` command in the previous script.
-
-In general, to add sites to nginx, we create a link from `sites-available` to `sites-enabled`, like so:
+This last file is not supposed to be changed a lot. In general, to resolve our domain names in nginx, we create such a file in `sites-available`and create a link to `sites-enabled`, like so:
 
 ```bash
 ln -s /etc/nginx/sites-available/datascience.studio /etc/nginx/sites-enabled/
 ``` 
+
+
+The `*.config` files in `/etc/nginx/sites-available/datascience/` are the ones that need to be created, one for each new application. It will be loaded automatically with the `include` command in the previous script.
+
+
+
 
 #### Nginx verification and reloading
 
