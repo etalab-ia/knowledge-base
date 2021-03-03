@@ -76,7 +76,7 @@ Nginx config seems like a rabbit hole, but the gist is the following: you define
 
 Right now, as we have organized our server, and using our previous example, we do this:
 
-1. We need to add a `profiling.conf` file in `/etc/nginx/sites-available/datascience/`. This config file contains exclusively the path that our API will use as URL. Note that we will always use the same domain `yourserver.com`. Let's say we want to run our app at `yourserver.com/profiler`, this is the config I would put in `profiling.conf`:
+We need to add a `profiling.conf` file in `/etc/nginx/sites-available/datascience/`. This config file contains exclusively the path that our API will use as URL. Note that we will always use the same domain `yourserver.com`. Let's say we want to run our app at `yourserver.com/profiler`, this is the config I would put in `profiling.conf`:
 ```bash
 location /profiler/ {
 rewrite ^/profiler(.*) $1 break;
@@ -91,7 +91,7 @@ proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
 
 Basically, I'm telling nginx to get everything that arrives at `yourserver.com/profiler/` and send it to our service running in `localhost:8080` (localhost means the server itself).
 
-Nginx knows we are using `yourserver.com` as domain name because we are passing it as config another file, `datascience.sites`, that looks like this:
+Nginx knows we are using `yourserver.com` as domain name because we are passing telling it that with another config another config file (`/etc/nginx/sites-available/datascience.sites`) that looks like this:
 
 ```bash
 server {
@@ -102,7 +102,15 @@ server {
 
 This last file is not supposed to be changed a lot. The `*.config` files in `/etc/nginx/sites-available/datascience/` are the ones that need to be created, one for each new application. It will be loaded automatically with the `include` command in the previous script.
 
-2. Once you added your config file to the correct folder, you need to make sure the config is valid and then restart nginx to take into account your modifications. Like so:
+In general, to add sites to nginx, we create a link from `sites-available` to `sites-enabled`, like so:
+
+```bash
+ln -s /etc/nginx/sites-available/datascience.studio /etc/nginx/sites-enabled/
+``` 
+
+#### Nginx verification and reloading
+
+Once you have added your config file to the correct folder, you need to make sure the config is valid and then restart nginx to take into account your modifications. Like so:
 
 Verify configuration:
 ```bash
