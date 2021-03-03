@@ -45,7 +45,7 @@ To build the docker image and run it we would do something like this below. Usua
 The flags here mean the following:
 * `-d`: run the container in the background. It returns the prompt inmediatly after running this command.
 * `-p`: bind the port `80` of the container to the port `8080` of your `localhost` (the server or your dev machien). It takes whatever arrives to port `8080` on the server and redirects it to the port `80` of the container. First you put the port of your host and then the port of the container!
-* `-e`: indicate an environment variable to modify the behavior of the container. Here it is `MAX_WORKERS` which is used by the container to set the number of processes started by gunicorn.
+* `-e`: indicate an environment variable to modify the behavior of the container. Here it is `MAX_WORKERS` which is used **specifically** by this container to set the number of processes started by gunicorn.
 * `-v`: this allows us to mount a volume from the local disk to the be used in the container. This is super useful when you want to persist data. Here, I am mapping the database file `/full/path/to/cache.sqlite` towards the database file `/app/cache.sqlite`. The first **absolut** path is in my local machine, the second **absolut** path is found within the container.
 * `pandas-profiling-api`: this is the name of the image you built before.
 
@@ -89,7 +89,7 @@ proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
 
 ```
 
-Basically, I'm telling nginx to get everything that arrives at `yourserver.com/profiler/some-id-12132`, with the `rewrite` command we keep only that which inmediatly follows `/profiler` (`some-id-12132`) and finally send it to our service running in `localhost:8080` (localhost means the server itself. At the end, the query will be such as if we had sent `http://localhost:8080/some-id-12132` (of course, seen from within the server itself).
+Basically, I'm telling nginx to get everything that arrives at `yourserver.com/profiler/some-id-12132`, with the `rewrite` command we keep only that which inmediatly follows `/profiler` (i.e., `/some-id-12132`) and finally send it to our service running in `localhost:8080` (localhost means the server itself. At the end, the query will be such as if we had sent `http://localhost:8080/some-id-12132` (of course, seen from within the server itself).
 
 Note that nginx knows that we are using `yourserver.com` as domain name because we are passing telling it that with another config another config file (`/etc/nginx/sites-available/datascience.sites`) that looks like this:
 
