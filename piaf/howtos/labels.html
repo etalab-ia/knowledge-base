@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Haystack Labels Inquiry</title>
+    <title>Haystack Label’s Inquiry</title>
     
   <link rel="stylesheet" href="../../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -162,7 +162,7 @@
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Haystack Labels Inquiry
+     Haystack Label’s Inquiry
     </a>
    </li>
   </ul>
@@ -347,8 +347,8 @@
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#how-labels-are-loaded-into-es">
-     How labels are loaded into ES?
+    <a class="reference internal nav-link" href="#how-are-labels-loaded-into-es">
+     How are labels loaded into ES?
     </a>
    </li>
   </ul>
@@ -399,8 +399,8 @@
         
               <div>
                 
-  <div class="section" id="haystack-labels-inquiry">
-<h1>Haystack Labels Inquiry<a class="headerlink" href="#haystack-labels-inquiry" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="haystack-label-s-inquiry">
+<h1>Haystack Label’s Inquiry<a class="headerlink" href="#haystack-label-s-inquiry" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="what">
 <h2>What?<a class="headerlink" href="#what" title="Permalink to this headline">¶</a></h2>
 <p>Haystack uses an object called <code class="docutils literal notranslate"><span class="pre">Label</span></code> which stores the question contained in the knowledge base. In our piaf use case, we have a single knowledge base file that contains the documents we want to index in ES <strong>and</strong> the questions we use to evaluate the system.</p>
@@ -432,14 +432,14 @@
 <h2>Data Loading<a class="headerlink" href="#data-loading" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="what-is-stored-in-documents">
 <h3>What is stored in documents ?<a class="headerlink" href="#what-is-stored-in-documents" title="Permalink to this headline">¶</a></h3>
-<p>Easy, we have a document per context (or paragraph) (i.e., 3).</p>
+<p>Easy, we have a document per context (or paragraph) (i.e., 3 documents in the <code class="docutils literal notranslate"><span class="pre">documents</span></code> index).</p>
 </div>
 <div class="section" id="what-is-stored-in-these-labels">
 <h3>What is stored in these labels ?<a class="headerlink" href="#what-is-stored-in-these-labels" title="Permalink to this headline">¶</a></h3>
 <p>A label per answer. That is, not 17 labels but 20 because there are 17 questions but 1 question with two answers and 1 questions with 3 answers. So, it is 15 questions with one answer (15 labels) plus 1 question with two answers (2 labels), plus one question with 3 answers (3 labels) = 15 + 2 + 3 = 20 labels.</p>
 </div>
-<div class="section" id="how-labels-are-loaded-into-es">
-<h3>How labels are loaded into ES?<a class="headerlink" href="#how-labels-are-loaded-into-es" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="how-are-labels-loaded-into-es">
+<h3>How are labels loaded into ES?<a class="headerlink" href="#how-are-labels-loaded-into-es" title="Permalink to this headline">¶</a></h3>
 <p>Documents are read in:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">document_store</span><span class="o">.</span><span class="n">add_eval_data</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;./test/samples/squad/tiny.json&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">as_posix</span><span class="p">(),</span> <span class="n">doc_index</span><span class="o">=</span><span class="n">doc_index</span><span class="p">,</span>
                                 <span class="n">label_index</span><span class="o">=</span><span class="n">label_index</span><span class="p">)</span>
@@ -476,7 +476,7 @@
 </div>
 <div class="section" id="evaluation">
 <h3>Evaluation<a class="headerlink" href="#evaluation" title="Permalink to this headline">¶</a></h3>
-<p><strong>What happens to questions without answer?</strong>
+<p><strong>What happens to those questions without an answer?</strong>
 ES tries to get an answer. ES is able to return no answers if it so decides to (as with the “universe” last question of our test dataset). Note that <em>SBERT</em> (and maybe <em>DPR</em> ) returns an answer even if the question is out of domain.</p>
 <p>Keep in mind that a question that does not have an answer  is still used to compute the retrieval score: it still belongs to a parent document. So if the retrieval finds, or not, the parent document, we take it into account and add it to the final score.</p>
 </div>
@@ -514,7 +514,7 @@ ES tries to get an answer. ES is able to return no answers if it so decides to (
 <div class="section" id="id1">
 <h3>Evaluation<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <p>We do not take into account questions marked as <code class="docutils literal notranslate"><span class="pre">is_impossible</span></code> in the main scores (<code class="docutils literal notranslate"><span class="pre">_has_answer</span></code>), but we do take them into account for the <code class="docutils literal notranslate"><span class="pre">_no_answer</span></code> scores. As our model cannot answer <code class="docutils literal notranslate"><span class="pre">_no_answer</span></code> it does not make sense to use these scores for now.</p>
-<p><strong>What happens to questions that have empty answers and are not marked as <code class="docutils literal notranslate"><span class="pre">is_impossible</span></code>?</strong></p>
+<p><strong>What happens to those questions that have empty answers and are not marked as <code class="docutils literal notranslate"><span class="pre">is_impossible</span></code>?</strong></p>
 <p>As they do not have an answer, their score will be 0, which will be added to the global score, which would affect the final result as we get the average (and we just added a zero for no good reason). Thus, <strong>it is important to make sure that all non-answered questions have <code class="docutils literal notranslate"><span class="pre">is_impossible=True</span></code></strong>.</p>
 </div>
 </div>
