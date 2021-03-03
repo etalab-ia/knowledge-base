@@ -1,4 +1,4 @@
-# Haystack Labels Inquiry
+# Haystack Label's Inquiry
 
 
 ## What?
@@ -27,13 +27,13 @@ This dataset contains 3 contexts (or documents) and 17 questions:
 ## Data Loading
 
 ### What is stored in documents ?
-Easy, we have a document per context (or paragraph) (i.e., 3).
+Easy, we have a document per context (or paragraph) (i.e., 3 documents in the `documents` index).
 
 ### What is stored in these labels ?
 
 A label per answer. That is, not 17 labels but 20 because there are 17 questions but 1 question with two answers and 1 questions with 3 answers. So, it is 15 questions with one answer (15 labels) plus 1 question with two answers (2 labels), plus one question with 3 answers (3 labels) = 15 + 2 + 3 = 20 labels.
 
-### How labels are loaded into ES?
+### How are labels loaded into ES?
 
 Documents are read in: 
 
@@ -79,7 +79,7 @@ So, instead of dealing with 17 questions, **we deal with 16** questions.
 
 ### Evaluation
 
-**What happens to questions without answer?**
+**What happens to those questions without an answer?**
 ES tries to get an answer. ES is able to return no answers if it so decides to (as with the "universe" last question of our test dataset). Note that *SBERT* (and maybe *DPR* ) returns an answer even if the question is out of domain.
 
 Keep in mind that a question that does not have an answer  is still used to compute the retrieval score: it still belongs to a parent document. So if the retrieval finds, or not, the parent document, we take it into account and add it to the final score.
@@ -125,7 +125,7 @@ When a question has no answer, the system predicts no answer:
 
 We do not take into account questions marked as `is_impossible` in the main scores (`_has_answer`), but we do take them into account for the `_no_answer` scores. As our model cannot answer `_no_answer` it does not make sense to use these scores for now.
 
-**What happens to questions that have empty answers and are not marked as `is_impossible`?**
+**What happens to those questions that have empty answers and are not marked as `is_impossible`?**
 
 As they do not have an answer, their score will be 0, which will be added to the global score, which would affect the final result as we get the average (and we just added a zero for no good reason). Thus, **it is important to make sure that all non-answered questions have `is_impossible=True`**.
 
