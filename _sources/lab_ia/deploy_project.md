@@ -89,7 +89,7 @@ proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
 
 ```
 
-Basically, I'm telling nginx to get everything that arrives at `yourserver.com/profiler/some-id-12132`, with the `rewrite` command we keep only that which inmediatly follows `/profiler` (i.e., `/some-id-12132`) and finally send it to our service running in `localhost:8080` (localhost means the server itself. At the end, the query will be such as if we had sent `http://localhost:8080/some-id-12132` (of course, seen from within the server itself).
+Basically, I'm telling nginx to get everything that arrives at `yourserver.com/profiler/some-id-12132`, with the `rewrite` command we keep only that which inmediatly follows `/profiler` (i.e., `/some-id-12132`) and finally send it to our service running in `localhost:8080` (`localhost` means here the server itself). At the end, the query will be such as if we had sent `http://localhost:8080/some-id-12132` (again, seen from within the server itself).
 
 Note that nginx knows that we are using `yourserver.com` as domain name because we are passing telling it that with another config another config file (`/etc/nginx/sites-available/datascience.sites`) that looks like this:
 
