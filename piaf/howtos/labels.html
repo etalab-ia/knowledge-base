@@ -506,7 +506,7 @@ ES tries to get an answer. ES is able to return no answers if it so decides to (
 </pre></div>
 </div>
 <p>In other words, it is a <code class="docutils literal notranslate"><span class="pre">list</span></code> of <code class="docutils literal notranslate"><span class="pre">dicts</span></code>, each dict containing a query as key and a list of <code class="docutils literal notranslate"><span class="pre">dict</span></code> answers as values.  There are 10 answers per query (we then filter them with <code class="docutils literal notranslate"><span class="pre">k_display</span></code>).</p>
-<p>When a question has no answer, the system predicts no answer:</p>
+<p>When a question has no answer, the system predicts no answer (because the retriever retrieved nada):</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;answers&#39;</span><span class="p">:</span> <span class="p">[],</span> <span class="s1">&#39;query&#39;</span><span class="p">:</span> <span class="s2">&quot;Pourquoi l&#39;univers existe ?&quot;</span><span class="p">}</span>
 </pre></div>
 </div>

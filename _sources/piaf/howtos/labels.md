@@ -115,7 +115,7 @@ predicted_answer_list[0] = {
 ```
 In other words, it is a `list` of `dicts`, each dict containing a query as key and a list of `dict` answers as values.  There are 10 answers per query (we then filter them with `k_display`).
 
-When a question has no answer, the system predicts no answer: 
+When a question has no answer, the system predicts no answer (because the retriever retrieved nada): 
 
 ```python
 {'answers': [], 'query': "Pourquoi l'univers existe ?"}
