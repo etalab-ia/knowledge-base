@@ -405,18 +405,18 @@
 <h3>Build and running the image<a class="headerlink" href="#build-and-running-the-image" title="Permalink to this headline">¶</a></h3>
 <p>Once you have built your <code class="docutils literal notranslate"><span class="pre">Dockerfile</span></code> file and you have pushed it, you have pulled it on your server and you are ready to run it!</p>
 <p>To build the docker image and run it we would do something like this below. Usually we want to do this in our local development machine first.</p>
-<ol class="simple">
-<li><p>Build it:</p></li>
-</ol>
+<ol>
+<li><p>Build it:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker build -t pandas-profiling-api .
 </pre></div>
 </div>
-<ol class="simple">
-<li><p>Run it:</p></li>
-</ol>
+</li>
+<li><p>Run it:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">run</span> <span class="o">-</span><span class="n">d</span> <span class="o">-</span><span class="n">p</span> <span class="mi">8080</span><span class="p">:</span><span class="mi">80</span> <span class="o">-</span><span class="n">e</span> <span class="n">MAX_WORKERS</span><span class="o">=</span><span class="s2">&quot;2&quot;</span> <span class="o">-</span><span class="n">v</span> <span class="o">/</span><span class="n">full</span><span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">cache</span><span class="o">.</span><span class="n">sqlite</span><span class="p">:</span><span class="o">/</span><span class="n">app</span><span class="o">/</span><span class="n">cache</span><span class="o">.</span><span class="n">sqlite</span> <span class="n">pandas</span><span class="o">-</span><span class="n">profiling</span><span class="o">-</span><span class="n">api</span>
 </pre></div>
 </div>
+</li>
+</ol>
 <p>The flags here mean the following:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">-d</span></code>: run the container in the background. It returns the prompt inmediatly after running this command.</p></li>
@@ -489,32 +489,31 @@ proxy_set_header X-Forwarded-For <span class="nv">$proxy_add_x_forwarded_for</sp
 </div>
 <div class="section" id="common-problems">
 <h3>Common problems<a class="headerlink" href="#common-problems" title="Permalink to this headline">¶</a></h3>
-<ol class="simple">
-<li><p>If you add a prefix like <code class="docutils literal notranslate"><span class="pre">/profiler/</span></code> to your app, make sure your app is aware of that. That is, your app may be listengin to <code class="docutils literal notranslate"><span class="pre">localhost</span></code> but since you will be receiving your requests at <code class="docutils literal notranslate"><span class="pre">yourserver.com/profiler/</span></code> you need to specify that in your app. For example, in my Python code for the profiler app, I specify this:</p></li>
-</ol>
+<ol>
+<li><p>If you add a prefix like <code class="docutils literal notranslate"><span class="pre">/profiler/</span></code> to your app, make sure your app is aware of that. That is, your app may be listengin to <code class="docutils literal notranslate"><span class="pre">localhost</span></code> but since you will be receiving your requests at <code class="docutils literal notranslate"><span class="pre">yourserver.com/profiler/</span></code> you need to specify that in your app. For example, in my Python code for the profiler app, I specify this:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">app</span> <span class="o">=</span> <span class="n">FastAPI</span><span class="p">(</span><span class="n">root_path</span><span class="o">=</span><span class="s2">&quot;/profiler&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Which indicates that the root of my app is <code class="docutils literal notranslate"><span class="pre">/profiler</span></code> and not the root <code class="docutils literal notranslate"><span class="pre">/</span></code>. This is <strong>very</strong> important because all the resources (javascript, icons, css, images,…) of your website won’t be found if the paths are not correct. You can also deal with this in your nginx config file with the magic of <code class="docutils literal notranslate"><span class="pre">rewrite</span></code>.</p>
-<ol class="simple">
+</li>
 <li><p>Sometimes you need to open a port with <code class="docutils literal notranslate"><span class="pre">iptables</span></code>. This is not ideal because you don’t want to be opening ports.</p></li>
 <li><p>You need to add the certificates info to deal with <code class="docutils literal notranslate"><span class="pre">https</span></code> instead of <code class="docutils literal notranslate"><span class="pre">http</span></code>. This can be done automatically with certbot.</p></li>
 </ol>
 </div>
 <div class="section" id="useful-commands">
 <h3>Useful commands<a class="headerlink" href="#useful-commands" title="Permalink to this headline">¶</a></h3>
-<ol class="simple">
-<li><p>Check docker logs</p></li>
-</ol>
+<ol>
+<li><p>Check docker logs</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker logs container_name
 </pre></div>
 </div>
-<ol class="simple">
-<li><p>Connect to a specific runing docker container</p></li>
-</ol>
+</li>
+<li><p>Connect to a specific runing docker container</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker <span class="nb">exec</span> -it container_name bash
 </pre></div>
 </div>
+</li>
+</ol>
 </div>
 </div>
 </div>

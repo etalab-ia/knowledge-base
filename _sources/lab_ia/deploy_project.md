@@ -33,14 +33,14 @@ Once you have built your `Dockerfile` file and you have pushed it, you have pull
 To build the docker image and run it we would do something like this below. Usually we want to do this in our local development machine first.
 1. Build it:
 
-```bash
-docker build -t pandas-profiling-api .
-```
+    ```bash
+    docker build -t pandas-profiling-api .
+    ```
 
 2. Run it:
-```
-docker run -d -p 8080:80 -e MAX_WORKERS="2" -v /full/path/to/cache.sqlite:/app/cache.sqlite pandas-profiling-api
-```
+    ```
+    docker run -d -p 8080:80 -e MAX_WORKERS="2" -v /full/path/to/cache.sqlite:/app/cache.sqlite pandas-profiling-api
+    ```
 
 The flags here mean the following:
 * `-d`: run the container in the background. It returns the prompt inmediatly after running this command.
@@ -126,11 +126,11 @@ That should be all :)
 ### Common problems
 1. If you add a prefix like `/profiler/` to your app, make sure your app is aware of that. That is, your app may be listengin to `localhost` but since you will be receiving your requests at `yourserver.com/profiler/` you need to specify that in your app. For example, in my Python code for the profiler app, I specify this:
 
-```python
-app = FastAPI(root_path="/profiler")
-```
+    ```python
+    app = FastAPI(root_path="/profiler")
+    ```
 
-Which indicates that the root of my app is `/profiler` and not the root `/`. This is **very** important because all the resources (javascript, icons, css, images,...) of your website won't be found if the paths are not correct. You can also deal with this in your nginx config file with the magic of `rewrite`.
+    Which indicates that the root of my app is `/profiler` and not the root `/`. This is **very** important because all the resources (javascript, icons, css, images,...) of your website won't be found if the paths are not correct. You can also deal with this in your nginx config file with the magic of `rewrite`.
 
 2. Sometimes you need to open a port with `iptables`. This is not ideal because you don't want to be opening ports.
 3. You need to add the certificates info to deal with `https` instead of `http`. This can be done automatically with certbot.
@@ -138,10 +138,10 @@ Which indicates that the root of my app is `/profiler` and not the root `/`. Thi
 ### Useful commands
 
 1. Check docker logs
-```bash
-docker logs container_name
-```
+    ```bash
+    docker logs container_name
+    ```
 2. Connect to a specific runing docker container
-```bash
-docker exec -it container_name bash
-```
+    ```bash
+    docker exec -it container_name bash
+    ```
