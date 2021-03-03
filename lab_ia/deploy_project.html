@@ -346,6 +346,11 @@
        Nginx config
       </a>
      </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#nginx-verification-and-reloading">
+       Nginx verification and reloading
+      </a>
+     </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -443,9 +448,7 @@
 <h4>Nginx config<a class="headerlink" href="#nginx-config" title="Permalink to this headline">¶</a></h4>
 <p>Nginx config seems like a rabbit hole, but the gist is the following: you define <code class="docutils literal notranslate"><span class="pre">servers</span></code> for each domain you have. Each server has its own particular configuration. What really matters is that you define within each server what we call <code class="docutils literal notranslate"><span class="pre">locations</span></code>. These locations tell the server what to do when a particular URL is used (the rules of the third point above).</p>
 <p>Right now, as we have organized our server, and using our previous example, we do this:</p>
-<ol class="simple">
-<li><p>We need to add a <code class="docutils literal notranslate"><span class="pre">profiling.conf</span></code> file in <code class="docutils literal notranslate"><span class="pre">/etc/nginx/sites-available/datascience/</span></code>. This config file contains exclusively the path that our API will use as URL. Note that we will always use the same domain <code class="docutils literal notranslate"><span class="pre">yourserver.com</span></code>. Let’s say we want to run our app at <code class="docutils literal notranslate"><span class="pre">yourserver.com/profiler</span></code>, this is the config I would put in <code class="docutils literal notranslate"><span class="pre">profiling.conf</span></code>:</p></li>
-</ol>
+<p>We need to add a <code class="docutils literal notranslate"><span class="pre">profiling.conf</span></code> file in <code class="docutils literal notranslate"><span class="pre">/etc/nginx/sites-available/datascience/</span></code>. This config file contains exclusively the path that our API will use as URL. Note that we will always use the same domain <code class="docutils literal notranslate"><span class="pre">yourserver.com</span></code>. Let’s say we want to run our app at <code class="docutils literal notranslate"><span class="pre">yourserver.com/profiler</span></code>, this is the config I would put in <code class="docutils literal notranslate"><span class="pre">profiling.conf</span></code>:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>location /profiler/ <span class="o">{</span>
 rewrite ^/profiler<span class="o">(</span>.*<span class="o">)</span> <span class="nv">$1</span> break<span class="p">;</span>
 proxy_pass http://localhost:8080<span class="p">;</span>
@@ -457,7 +460,7 @@ proxy_set_header X-Forwarded-For <span class="nv">$proxy_add_x_forwarded_for</sp
 </pre></div>
 </div>
 <p>Basically, I’m telling nginx to get everything that arrives at <code class="docutils literal notranslate"><span class="pre">yourserver.com/profiler/</span></code> and send it to our service running in <code class="docutils literal notranslate"><span class="pre">localhost:8080</span></code> (localhost means the server itself).</p>
-<p>Nginx knows we are using <code class="docutils literal notranslate"><span class="pre">yourserver.com</span></code> as domain name because we are passing it as config another file, <code class="docutils literal notranslate"><span class="pre">datascience.sites</span></code>, that looks like this:</p>
+<p>Nginx knows we are using <code class="docutils literal notranslate"><span class="pre">yourserver.com</span></code> as domain name because we are passing telling it that with another config another config file (<code class="docutils literal notranslate"><span class="pre">/etc/nginx/sites-available/datascience.sites</span></code>) that looks like this:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>server <span class="o">{</span>
     server_name yourserver.com<span class="p">;</span>
     include /etc/nginx/sites-available/datascience/*.conf<span class="p">;</span>  <span class="c1"># here we tell nginx to load all the app&#39;s configs found in this path</span>
@@ -465,9 +468,14 @@ proxy_set_header X-Forwarded-For <span class="nv">$proxy_add_x_forwarded_for</sp
 </pre></div>
 </div>
 <p>This last file is not supposed to be changed a lot. The <code class="docutils literal notranslate"><span class="pre">*.config</span></code> files in <code class="docutils literal notranslate"><span class="pre">/etc/nginx/sites-available/datascience/</span></code> are the ones that need to be created, one for each new application. It will be loaded automatically with the <code class="docutils literal notranslate"><span class="pre">include</span></code> command in the previous script.</p>
-<ol class="simple">
-<li><p>Once you added your config file to the correct folder, you need to make sure the config is valid and then restart nginx to take into account your modifications. Like so:</p></li>
-</ol>
+<p>In general, to add sites to nginx, we create a link from <code class="docutils literal notranslate"><span class="pre">sites-available</span></code> to <code class="docutils literal notranslate"><span class="pre">sites-enabled</span></code>, like so:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ln -s /etc/nginx/sites-available/datascience.studio /etc/nginx/sites-enabled/
+</pre></div>
+</div>
+</div>
+<div class="section" id="nginx-verification-and-reloading">
+<h4>Nginx verification and reloading<a class="headerlink" href="#nginx-verification-and-reloading" title="Permalink to this headline">¶</a></h4>
+<p>Once you have added your config file to the correct folder, you need to make sure the config is valid and then restart nginx to take into account your modifications. Like so:</p>
 <p>Verify configuration:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nginx -t
 </pre></div>
