@@ -33,19 +33,19 @@ Once you have built your `Dockerfile` file and you have pushed it, you have pull
 To build the docker image and run it we would do something like this below. Usually we want to do this in our local development machine first.
 1. Build it:
 
-```bash
-docker build -t pandas-profiling-api .
-```
+    ```bash
+    docker build -t pandas-profiling-api .
+    ```
 
 2. Run it:
-```
-docker run -d -p 8080:80 -e MAX_WORKERS="2" -v /full/path/to/cache.sqlite:/app/cache.sqlite pandas-profiling-api
-```
+    ```
+    docker run -d -p 8080:80 -e MAX_WORKERS="2" -v /full/path/to/cache.sqlite:/app/cache.sqlite pandas-profiling-api
+    ```
 
 The flags here mean the following:
 * `-d`: run the container in the background. It returns the prompt inmediatly after running this command.
 * `-p`: bind the port `80` of the container to the port `8080` of your `localhost` (the server or your dev machien). It takes whatever arrives to port `8080` on the server and redirects it to the port `80` of the container. First you put the port of your host and then the port of the container!
-* `-e`: indicate an environment variable to modify the behavior of the container. Here it is `MAX_WORKERS` which is used by the container to set the number of processes started by gunicorn.
+* `-e`: indicate an environment variable to modify the behavior of the container. Here it is `MAX_WORKERS` which is used **specifically** by this container to set the number of processes started by gunicorn.
 * `-v`: this allows us to mount a volume from the local disk to the be used in the container. This is super useful when you want to persist data. Here, I am mapping the database file `/full/path/to/cache.sqlite` towards the database file `/app/cache.sqlite`. The first **absolut** path is in my local machine, the second **absolut** path is found within the container.
 * `pandas-profiling-api`: this is the name of the image you built before.
 
@@ -60,7 +60,7 @@ curl localhost:8080
 If everything goes fine, you should have an answer. I am using port `8080` because that is the port that is listening in my host (dev machine or server), as specified above. You can also send your API requests using this method ofc and check it works.
 
 
-### Ngninx + your app 
+### Nginx + your app 
 
 If all goes well, your service is ready to be reverse-proxied by nginx (or apache, here I will discuss nginx). The idea of a reverse proxy is the following:
 
@@ -76,7 +76,7 @@ Nginx config seems like a rabbit hole, but the gist is the following: you define
 
 Right now, as we have organized our server, and using our previous example, we do this:
 
-1. We need to add a `profiling.conf` file in `/etc/nginx/sites-available/datascience/`. This config file contains exclusively the path that our API will use as URL. Note that we will always use the same domain `yourserver.com`. Let's say we want to run our app at `yourserver.com/profiler`, this is the config I would put in `profiling.conf`:
+We need to add a `profiling.conf` file in `/etc/nginx/sites-available/datascience/`. This config file contains exclusively the path that our API will use as URL. Note that we will always use the same domain `yourserver.com`. Let's say we want to run our app at `yourserver.com/profiler`, this is the config I would put in `profiling.conf`:
 ```bash
 location /profiler/ {
 rewrite ^/profiler(.*) $1 break;
@@ -89,9 +89,9 @@ proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
 
 ```
 
-Basically, I'm telling nginx to get everything that arrives at `yourserver.com/profiler/` and send it to our service running in `localhost:8080` (localhost means the server itself).
+Basically, I'm telling nginx to get everything that arrives at `yourserver.com/profiler/some-id-12132`, with the `rewrite` command we keep only that which inmediatly follows `/profiler` (i.e., `/some-id-12132`) and finally send it to our service running in `localhost:8080` (`localhost` means here the server itself). At the end, the query will be such as if we had sent `http://localhost:8080/some-id-12132` (again, seen from within the server itself).
 
-Nginx knows we are using `yourserver.com` as domain name because we are passing it as config another file, `datascience.sites`, that looks like this:
+Note that nginx knows that we are using `yourserver.com` as domain name because we are telling it that with another config another config file (`/etc/nginx/sites-available/datascience.sites`) that looks like this:
 
 ```bash
 server {
@@ -102,7 +102,15 @@ server {
 
 This last file is not supposed to be changed a lot. The `*.config` files in `/etc/nginx/sites-available/datascience/` are the ones that need to be created, one for each new application. It will be loaded automatically with the `include` command in the previous script.
 
-2. Once you added your config file to the correct folder, you need to make sure the config is valid and then restart nginx to take into account your modifications. Like so:
+In general, to add sites to nginx, we create a link from `sites-available` to `sites-enabled`, like so:
+
+```bash
+ln -s /etc/nginx/sites-available/datascience.studio /etc/nginx/sites-enabled/
+``` 
+
+#### Nginx verification and reloading
+
+Once you have added your config file to the correct folder, you need to make sure the config is valid and then restart nginx to take into account your modifications. Like so:
 
 Verify configuration:
 ```bash
@@ -117,18 +125,23 @@ That should be all :)
 
 ### Common problems
 1. If you add a prefix like `/profiler/` to your app, make sure your app is aware of that. That is, your app may be listengin to `localhost` but since you will be receiving your requests at `yourserver.com/profiler/` you need to specify that in your app. For example, in my Python code for the profiler app, I specify this:
-```python
-app = FastAPI(root_path="/profiler")
 
-```
-Which indicates that the root of my app is `/profiler` and not the root `/`. This is **very** important because all the resources (javascript, icons, css, images,...) of your website won't be found if the paths are not correct. You can also deal with this in your nginx config file with the magic of `rewrite`.
+    ```python
+    app = FastAPI(root_path="/profiler")
+    ```
 
-2. Sometimes you need to open port with `iptables`. This is not ideal because you don't want to be opening ports.
+    Which indicates that the root of my app is `/profiler` and not the root `/`. This is **very** important because all the resources (javascript, icons, css, images,...) of your website won't be found if the paths are not correct. You can also deal with this in your nginx config file with the magic of `rewrite`.
+
+2. Sometimes you need to open a port with `iptables`. This is not ideal because you don't want to be opening ports.
 3. You need to add the certificates info to deal with `https` instead of `http`. This can be done automatically with certbot.
 
 ### Useful commands
 
 1. Check docker logs
-`docker logs container_name`
+    ```bash
+    docker logs container_name
+    ```
 2. Connect to a specific runing docker container
-`docker exec -it container_name bash`
+    ```bash
+    docker exec -it container_name bash
+    ```
