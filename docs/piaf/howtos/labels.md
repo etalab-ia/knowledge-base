@@ -3,7 +3,7 @@
 
 ## What?
 
-Haystack uses an object called `Label` which stores the question contained in the knowledge base. In our piaf use case, we have a single knowledge base file that contains the documents we want to index in ES **and** the questions we use to evaluate the system.
+Haystack uses an object called `Label` which stores the questions contained in the knowledge base (a SQuAD-like dataset). In our piaf use case, we have a single knowledge base file that contains the documents we want to index in ES **and** the questions we use to evaluate the system.
 
 ## Why?
 It is very important to know how these `Labels` are treated during validation as it directly affects the score of our test metrics.
