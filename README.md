@@ -1,7 +1,7 @@
 # knowledge-base
 
-Base des connaissances du Lab IA à Etalab
-
+Base des connaissances du Lab IA à Etalab 
+https://etalab-ia.github.io/knowledge-base/intro.html
 ## Usage
 
 ### Building the book
