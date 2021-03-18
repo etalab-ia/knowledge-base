@@ -21,6 +21,8 @@ Vos données doivent comporter les informations suivantes:
 - Une liste de contextes : C'est votre base de connaissance. Les contextes sont des textes. Il n'y a pas de contrainte sur la longueur du texte, PIAF se charge d'optimiser sa longueur pour votre cas d'usage.  
 - Des questions et des réponses pour effectuer l'évaluation. 100 minimum. Il peut y avoir plusieurs questions par contexte et plusieurs réponses par questions.  
 
+![schema](../../assets/piaf/work_with_piaf_onboarding.png)
+
 ## Sous quel format envoyer les données ? 
  Idéalement vos données sont envoyées sous la forme d'un json structuré de la manière suivante (en suivant le format SQuAD v2.0) :
  ```json
