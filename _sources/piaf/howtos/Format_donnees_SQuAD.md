@@ -19,7 +19,7 @@ Si vous avez une quantité de pairs Question-Réponse conséquente, nous pourron
 ## Quelles données envoyer pour proposer un cas d'usage ? 
 Vos données doivent comporter les informations suivantes: 
 - Une liste de contextes : C'est votre base de connaissance. Les contextes sont des textes. Il n'y a pas de contrainte sur la longueur du texte, PIAF se charge d'optimiser sa longueur pour votre cas d'usage.  
-- Des questions et des réponses pour effectuer l'evaluation. Il peut y avoir plusieurs questions par contexte et plusieurs réponses par questions.  
+- Des questions et des réponses pour effectuer l'évaluation. 100 minimum. Il peut y avoir plusieurs questions par contexte et plusieurs réponses par questions.  
 
 ## Sous quel format envoyer les données ? 
  Idéalement vos données sont envoyées sous la forme d'un json structuré de la manière suivante (en suivant le format SQuAD v2.0) :
@@ -49,3 +49,5 @@ Vos données doivent comporter les informations suivantes:
  
 Vous pouvez aussi nous envoyer vos données sous une autre forme (.csv par exemple) et nous nous occupons de les convertir pour vous. 
 
+## Retour de l'évaluation
+Nous allons faire lire vos textes à notre application. Ensuite, nous allons lui poser les 100 questions que vous nous avez fourni et comparer les réponses qui vont en sortir avec celles que vous nous aurez fourni. Nous serons alors capable de vous dire à quel taux de réponse notre application est capable de répondre a votre cas s'usage.
