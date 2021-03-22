@@ -11,8 +11,8 @@ If you'd like to develop on and build the knowledge-base book, you should:
 - Clone this repository
 - Go to the project folder `cd knowledge-base` 
 - Run `pip install -r requirements.txt` (it is recommended you do this within a virtual environment)
-- (Recommended) Remove the existing `docs/_build/` directory
-- Run `jupyter-book build docs/` to build the book
+- (Recommended) Remove the existing `docs/_build/` directory `rm -rf docs/_build`
+- Run `jupyter-book build --all docs/` to build the book
 
 A fully-rendered HTML version of the book will be built in `docs/_build/html/`.
 
