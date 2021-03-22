@@ -1,35 +1,35 @@
-- file: intro 
-
-- part: Lab IA
-  chapters:
-  - file: lab_ia/intro
-  - file: lab_ia/onboarding
+file: index
+sections:
+- file: lab_ia/index
+  sections:
   - file: lab_ia/resources
+  - file: lab_ia/python
+  - file: lab_ia/secrets
   - file: lab_ia/coding_standards
-    sections:
-      - file: lab_ia/git 
-      - file: lab_ia/secrets
-      - file: lab_ia/python
-      - file: lab_ia/jupyter
-      - file: lab_ia/deploy_project
+  - file: lab_ia/jupyter
+  - file: lab_ia/intro
+  - file: lab_ia/deploy_project
+  - file: lab_ia/notebooks
   - file: lab_ia/reporting_standards
-
-
-- part: Piaf - Pour une IA Francophone
-  chapters:
-  - file: piaf/howtos/overview
+  - file: lab_ia/git
+  - file: lab_ia/onboarding
+- file: piaf/index
+  sections:
+  - file: piaf/reader/index
     sections:
-      - file: piaf/howtos/Format_donnees_SQuAD   
-      - file: piaf/howtos/labels
-  - file: piaf/retriever/overview
+    - file: piaf/reader/experiment1
+  - file: piaf/retriever/index
     sections:
-      - file: piaf/retriever/complementarity_dense_sparse
-      - file: piaf/retriever/complementarity_dense_sparse_v2
-      - file: piaf/retriever/dense_vs_sparse_qualitative
-      - file: piaf/retriever/score_threshold_sparse_retriever
-      - file: piaf/retriever/Visualisation_csv_results
-      - file: piaf/retriever/Visualisation_results_Robin
-      - file: piaf/retriever/DPR_performance
-      - file: piaf/retriever/DPR_fine_tuning
-      - file: piaf/retriever/ES_preprocessing
-      
+    - file: piaf/retriever/ES_preprocessing
+    - file: piaf/retriever/complementarity_dense_sparse
+    - file: piaf/retriever/DPR_fine_tuning
+    - file: piaf/retriever/Visualisation_csv_results
+    - file: piaf/retriever/score_threshold_sparse_retriever
+    - file: piaf/retriever/Visualisation_results_Robin
+    - file: piaf/retriever/DPR_performance
+    - file: piaf/retriever/complementarity_dense_sparse_v2
+    - file: piaf/retriever/dense_vs_sparse_qualitative
+  - file: piaf/howtos/index
+    sections:
+    - file: piaf/howtos/labels
+    - file: piaf/howtos/Format_donnees_SQuAD

@@ -131,3 +131,7 @@ dmypy.json
 # Docs
 _build
 
+/bin
+pyvenv.cfg
+/share
+/etc

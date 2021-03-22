@@ -1,11 +1,16 @@
+# Lab IA's Knowledge Book
 
-# Notebooks (.ipynb)
+Welcome to Lab IA's Knowledge Book
+
+This Knowledge Book project is focused on facilitating the sharing of knowledge between Etalab's data scientists and other technical roles using data formats and tools that make sense in these professions. It allows us to publish posts  (Markdown and Jupyter Notebook) to better promote the analysis of our work.
+
+## About Notebooks (.ipynb)
 
 Notebooks are great for conduction exploratory analysis and keeping notes, but they do introduce some problems - particularly when maintaining project structure, sensible imports, and version control.
 
 Also refer to Python guidance.
 
-## Structure
+### Structure
 
 One problem with notebooks is they encourage bad importing practice. It might be tempting to do something like this:
 
@@ -31,7 +36,7 @@ numpy.sqrt(x)
 ```
 
 
-## Version control
+### Version control
 
 Notebooks do not lend themselves well to version control - because of their verbose file structure that contains lots of information in addition to the code - makes [git diff](https://git-scm.com/docs/git-diff) or pull requests difficult to interpret. To prevent this from causing difficulties, I'd suggest taking one or both of the following steps:
 
@@ -90,3 +95,6 @@ Notebooks do not lend themselves well to version control - because of their verb
 
     *Note*: The generated `.py` and `.html` files will be committed but are not present in the git diff message presented in the terminal. This is a bug in git as the diff message is generated before the pre-commit script fires.
 
+
+
+Inspired by airbnb's [Knowledge Repo](https://github.com/airbnb/knowledge-repo) and using the amazing [Jupyter Book](https://jupyterbook.org/) project to generate static content.
