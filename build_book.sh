@@ -1,1 +1,1 @@
-rm -rf content/_build && jupyter-book build --all docs
+rm -rf content docs/_build && jupyter-book build --all docs
