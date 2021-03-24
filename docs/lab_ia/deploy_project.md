@@ -127,6 +127,9 @@ service reload nginx
 
 That should be all :) 
 
+### Security Concerns
+See [here](https://cheatsheetseries.owasp.org/cheatsheets/Docker_Security_Cheat_Sheet.html) some actions that can be taken to secure our docker files.
+
 ### Common problems
 1. If you add a prefix like `/profiler/` to your app, make sure your app is aware of that. That is, your app may be listengin to `localhost` but since you will be receiving your requests at `yourserver.com/profiler/` you need to specify that in your app. For example, in my Python code for the profiler app, I specify this:
 
