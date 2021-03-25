@@ -11,6 +11,8 @@ PIAF désigne la solution de Question Réponse proposée par la DINUM. Elle s'ap
 * [Haystack](https://github.com/deepset-ai/haystack) : une brique open source à laquelle nous contribuons activement permettant de faire du question réponse sur une base documentaire. Elle intègre une partie retriever qui retrouve les meilleurs documents candidat et une brique reader dans laquelle le modèle piaf est intégré et qui permet de trouver la bonne réponse. 
 * [Piaf Agent](https://piaf.datascience.etalab.studio/piafagent/) et [Piaf Bot](https://piafbot.chatbot.fabnum.fr/) : des interfaces graphique permettant d'interroger l'API de haystack et de permettre à l'utilisateur de poser une question et d'obtenir une réponse. 
 
+![architecture](../../assets/piaf/archi_piaf.png)
+
 ## Comment nous utilisons PIAF ? 
 Pour utiliser PIAF, il n'y a pas besoin d'entrainer un modèle sur vos données. Nous récupérons vos données et ajustons les paramètres des différents composants du système pour votre cas d'usage. 
 
