@@ -33,6 +33,7 @@ Vos données doivent comporter les informations suivantes:
   "data": [{
     'title': 'Immatriculer un véhicule d'occasion', #OBLIGATOIRE : titre de votre chapitre (un chapitre peut contenir plusieurs contextes)
     'theme': 'Véhicule', #FACULTATIF : Metadonnées d'arborescence. Si ces données sont disponibles, elles peuvent améliorer les performances de PIAF en permettant à l'utilisateur de restreindre le champ de sa demande 
+    'link': 'www.link_to_title.com',
     'Dossier': "Carte grise (certificat d'immatriculation)", #FACULTATIF : Metadonnées d'arborescence. #FACULTATIF : Metadonnées d'arborescence.
     'id': 'F1050', #FACULTATIF : Metadonnées d'arborescence.
     'paragraphs': [{
