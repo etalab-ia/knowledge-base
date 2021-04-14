@@ -5,7 +5,6 @@ sections:
   - file: lab_ia/notebooks
   - file: lab_ia/reporting_standards
   - file: lab_ia/onboarding
-  - file: lab_ia/deploy_project
   - file: lab_ia/resources
   - file: lab_ia/coding_standards/index
     sections:
