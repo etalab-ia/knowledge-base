@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>csv-detective analysis</title>
+    <title>Retriever Module</title>
     
   <link rel="stylesheet" href="../../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -54,8 +54,8 @@
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Analysis of three csv-detective manual annotations" href="join_label_files.html" />
-    <link rel="prev" title="Test : Preprocessing directly with ElasticSearch Analyzers" href="../../piaf/retriever/ES_preprocessing.html" />
+    <link rel="next" title="Étude des scores système dense vs sparse" href="dense_vs_sparse_qualitative.html" />
+    <link rel="prev" title="Haystack Label’s Inquiry" href="../howtos/labels.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -74,8 +74,6 @@
         <div class="navbar-brand-box">
 <a class="navbar-brand text-wrap" href="../../index.html">
   
-  <img src="../../_static/logo.png" class="logo" alt="logo">
-  
   
 </a>
 </div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
@@ -83,50 +81,25 @@
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form>
 <nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-    <p class="caption collapsible-parent">
- <span class="caption-text">
-  Lab IA
- </span>
-</p>
-<ul class="nav sidenav_l1">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../lab_ia/intro.html">
-   Overview
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../lab_ia/onboarding.html">
-   Onboarding
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../lab_ia/resources.html">
-   Resources
-  </a>
- </li>
+    <ul class="current nav sidenav_l1">
  <li class="toctree-l1 collapsible-parent">
-  <a class="reference internal" href="../../lab_ia/coding_standards.html">
-   Coding Standards
+  <a class="reference internal" href="../../lab_ia/index.html">
+   LAB IA
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
-    <a class="reference internal" href="../../lab_ia/git.html">
-     Working with Git
+    <a class="reference internal" href="../../lab_ia/notebooks.html">
+     Content with notebooks
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../../lab_ia/secrets.html">
-     Secrets
+    <a class="reference internal" href="../../lab_ia/reporting_standards.html">
+     Reporting Standards
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../../lab_ia/python.html">
-     Python
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../lab_ia/jupyter.html">
-     Notebooks (.ipynb)
+    <a class="reference internal" href="../../lab_ia/onboarding.html">
+     Onboarding
     </a>
    </li>
    <li class="toctree-l2">
@@ -134,111 +107,92 @@
      Deploying your project to a server
     </a>
    </li>
-  </ul>
-  <i class="fas fa-chevron-down">
-  </i>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../lab_ia/reporting_standards.html">
-   Reporting Standards
-  </a>
- </li>
-</ul>
-<p class="caption collapsible-parent">
- <span class="caption-text">
-  Piaf - Pour une IA Francophone
- </span>
-</p>
-<ul class="nav sidenav_l1">
- <li class="toctree-l1 collapsible-parent">
-  <a class="reference internal" href="../../piaf/howtos/overview.html">
-   PIAF How-to’s
-  </a>
-  <ul class="collapse-ul">
    <li class="toctree-l2">
-    <a class="reference internal" href="../../piaf/howtos/Format_donnees_SQuAD.html">
-     Format données SQuAD
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../piaf/howtos/labels.html">
-     Haystack Label’s Inquiry
+    <a class="reference internal" href="../../lab_ia/resources.html">
+     Resources
     </a>
    </li>
   </ul>
   <i class="fas fa-chevron-down">
   </i>
  </li>
- <li class="toctree-l1 collapsible-parent">
-  <a class="reference internal" href="../../piaf/retriever/overview.html">
-   Retriever Module
-  </a>
-  <ul class="collapse-ul">
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../piaf/retriever/complementarity_dense_sparse.html">
-     Analyse complémentarité
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../piaf/retriever/complementarity_dense_sparse_v2.html">
-     Analyse complémentarité
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../piaf/retriever/dense_vs_sparse_qualitative.html">
-     Étude des scores système dense vs sparse
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../piaf/retriever/score_threshold_sparse_retriever.html">
-     Recherche d’un seuil pour le score sparse
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../piaf/retriever/Visualisation_csv_results.html">
-     Visualisation de l’indice de précision obtenu dans results.csv
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../piaf/retriever/Visualisation_results_Robin.html">
-     Visualisation de la précision dense vs sparse
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../piaf/retriever/DPR_performance.html">
-     Why my trained DPR is (was) not working
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../piaf/retriever/DPR_fine_tuning.html">
-     DPR Fine-Tuning (finally)
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../piaf/retriever/ES_preprocessing.html">
-     Test : Preprocessing directly with ElasticSearch Analyzers
-    </a>
-   </li>
-  </ul>
-  <i class="fas fa-chevron-down">
-  </i>
- </li>
-</ul>
-<p class="caption collapsible-parent">
- <span class="caption-text">
-  csv-detective
- </span>
-</p>
-<ul class="current nav sidenav_l1">
  <li class="toctree-l1 current active collapsible-parent">
-  <a class="current reference internal" href="#">
-   csv-detective analysis
+  <a class="reference internal" href="../index.html">
+   PIAF
   </a>
-  <ul class="collapse-ul">
-   <li class="toctree-l2">
-    <a class="reference internal" href="join_label_files.html">
-     Analysis of three csv-detective manual annotations
+  <ul class="current collapse-ul">
+   <li class="toctree-l2 collapsible-parent">
+    <a class="reference internal" href="../howtos/index.html">
+     PIAF How-to’s
     </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3">
+      <a class="reference internal" href="../howtos/Format_donnees_SQuAD.html">
+       Format données SQuAD
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../howtos/labels.html">
+       Haystack Label’s Inquiry
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+   <li class="toctree-l2 current active collapsible-parent">
+    <a class="current reference internal" href="#">
+     Retriever Module
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3">
+      <a class="reference internal" href="dense_vs_sparse_qualitative.html">
+       Étude des scores système dense vs sparse
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="DPR_fine_tuning.html">
+       DPR Fine-Tuning (finally)
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="Visualisation_csv_results.html">
+       Visualisation de l’indice de précision obtenu dans results.csv
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="ES_preprocessing.html">
+       Test : Preprocessing directly with ElasticSearch Analyzers
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="complementarity_dense_sparse_v2.html">
+       Analyse complémentarité
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="score_threshold_sparse_retriever.html">
+       Recherche d’un seuil pour le score sparse
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="complementarity_dense_sparse.html">
+       Analyse complémentarité
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="DPR_performance.html">
+       Why my trained DPR is (was) not working
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="Visualisation_results_Robin.html">
+       Visualisation de la précision dense vs sparse
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
    </li>
   </ul>
   <i class="fas fa-chevron-down">
@@ -284,7 +238,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/csv-detective/analysis/overview.md"><button type="button"
+        <a class="dropdown-buttons" href="../../_sources/piaf/retriever/index.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -304,10 +258,10 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/psorianom/knowledge-base/issues/new?title=Issue%20on%20page%20%2Fcsv-detective/analysis/overview.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/psorianom/knowledge-base/issues/new?title=Issue%20on%20page%20%2Fpiaf/retriever/index.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/psorianom/knowledge-base/edit/master/docs/csv-detective/analysis/overview.md"><button
+        <a class="edit-button" href="https://github.com/psorianom/knowledge-base/edit/master/docs/piaf/retriever/index.md"><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
     </div>
@@ -335,10 +289,11 @@
         
               <div>
                 
-  <div class="section" id="csv-detective-analysis">
-<h1>csv-detective analysis<a class="headerlink" href="#csv-detective-analysis" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="retriever-module">
+<h1>Retriever Module<a class="headerlink" href="#retriever-module" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
-<li><p>This section contains some analysis done in relation with csv-detective</p></li>
+<li><p>This is the module on charge of retrieveing the correct documents for a given query.</p></li>
+<li><p>Currently based on ES</p></li>
 </ul>
 <div class="toctree-wrapper compound">
 </div>
@@ -357,7 +312,7 @@
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./csv-detective/analysis"
+            path: "./piaf/retriever"
         },
         predefinedOutput: true
     }
@@ -369,8 +324,8 @@
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="../../piaf/retriever/ES_preprocessing.html" title="previous page">Test : Preprocessing directly with ElasticSearch Analyzers</a>
-    <a class='right-next' id="next-link" href="join_label_files.html" title="next page">Analysis of three csv-detective manual annotations</a>
+    <a class='left-prev' id="prev-link" href="../howtos/labels.html" title="previous page">Haystack Label’s Inquiry</a>
+    <a class='right-next' id="next-link" href="dense_vs_sparse_qualitative.html" title="next page">Étude des scores système dense vs sparse</a>
 
         </div>
         
@@ -382,7 +337,7 @@
         
           By etalab-ia<br/>
         
-            &copy; Copyright 2020.<br/>
+            &copy; Copyright 2021.<br/>
       </p>
     </div>
   </footer>

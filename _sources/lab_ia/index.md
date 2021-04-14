@@ -1,5 +1,4 @@
-
-# Overview
+# LAB IA
 
 Etalab accompagne les administrations autour de l’exploitation de leurs données grâce aux sciences des données et à l’Intelligence Artificielle
 

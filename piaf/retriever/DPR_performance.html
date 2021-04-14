@@ -54,8 +54,8 @@
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="DPR Fine-Tuning (finally)" href="DPR_fine_tuning.html" />
-    <link rel="prev" title="Visualisation de la précision dense vs sparse" href="Visualisation_results_Robin.html" />
+    <link rel="next" title="Visualisation de la précision dense vs sparse" href="Visualisation_results_Robin.html" />
+    <link rel="prev" title="Analyse complémentarité" href="complementarity_dense_sparse.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -74,8 +74,6 @@
         <div class="navbar-brand-box">
 <a class="navbar-brand text-wrap" href="../../index.html">
   
-  <img src="../../_static/logo.png" class="logo" alt="logo">
-  
   
 </a>
 </div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
@@ -83,50 +81,25 @@
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form>
 <nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-    <p class="caption collapsible-parent">
- <span class="caption-text">
-  Lab IA
- </span>
-</p>
-<ul class="nav sidenav_l1">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../lab_ia/intro.html">
-   Overview
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../lab_ia/onboarding.html">
-   Onboarding
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../lab_ia/resources.html">
-   Resources
-  </a>
- </li>
+    <ul class="current nav sidenav_l1">
  <li class="toctree-l1 collapsible-parent">
-  <a class="reference internal" href="../../lab_ia/coding_standards.html">
-   Coding Standards
+  <a class="reference internal" href="../../lab_ia/index.html">
+   LAB IA
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
-    <a class="reference internal" href="../../lab_ia/git.html">
-     Working with Git
+    <a class="reference internal" href="../../lab_ia/notebooks.html">
+     Content with notebooks
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../../lab_ia/secrets.html">
-     Secrets
+    <a class="reference internal" href="../../lab_ia/reporting_standards.html">
+     Reporting Standards
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../../lab_ia/python.html">
-     Python
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../lab_ia/jupyter.html">
-     Notebooks (.ipynb)
+    <a class="reference internal" href="../../lab_ia/onboarding.html">
+     Onboarding
     </a>
    </li>
    <li class="toctree-l2">
@@ -134,35 +107,9 @@
      Deploying your project to a server
     </a>
    </li>
-  </ul>
-  <i class="fas fa-chevron-down">
-  </i>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../lab_ia/reporting_standards.html">
-   Reporting Standards
-  </a>
- </li>
-</ul>
-<p class="caption collapsible-parent">
- <span class="caption-text">
-  Piaf - Pour une IA Francophone
- </span>
-</p>
-<ul class="current nav sidenav_l1">
- <li class="toctree-l1 collapsible-parent">
-  <a class="reference internal" href="../howtos/overview.html">
-   PIAF How-to’s
-  </a>
-  <ul class="collapse-ul">
    <li class="toctree-l2">
-    <a class="reference internal" href="../howtos/Format_donnees_SQuAD.html">
-     Format données SQuAD
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../howtos/labels.html">
-     Haystack Label’s Inquiry
+    <a class="reference internal" href="../../lab_ia/resources.html">
+     Resources
     </a>
    </li>
   </ul>
@@ -170,75 +117,82 @@
   </i>
  </li>
  <li class="toctree-l1 current active collapsible-parent">
-  <a class="reference internal" href="overview.html">
-   Retriever Module
+  <a class="reference internal" href="../index.html">
+   PIAF
   </a>
   <ul class="current collapse-ul">
-   <li class="toctree-l2">
-    <a class="reference internal" href="complementarity_dense_sparse.html">
-     Analyse complémentarité
+   <li class="toctree-l2 collapsible-parent">
+    <a class="reference internal" href="../howtos/index.html">
+     PIAF How-to’s
     </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3">
+      <a class="reference internal" href="../howtos/Format_donnees_SQuAD.html">
+       Format données SQuAD
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../howtos/labels.html">
+       Haystack Label’s Inquiry
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="complementarity_dense_sparse_v2.html">
-     Analyse complémentarité
+   <li class="toctree-l2 current active collapsible-parent">
+    <a class="reference internal" href="index.html">
+     Retriever Module
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="dense_vs_sparse_qualitative.html">
-     Étude des scores système dense vs sparse
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="score_threshold_sparse_retriever.html">
-     Recherche d’un seuil pour le score sparse
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Visualisation_csv_results.html">
-     Visualisation de l’indice de précision obtenu dans results.csv
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Visualisation_results_Robin.html">
-     Visualisation de la précision dense vs sparse
-    </a>
-   </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     Why my trained DPR is (was) not working
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="DPR_fine_tuning.html">
-     DPR Fine-Tuning (finally)
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="ES_preprocessing.html">
-     Test : Preprocessing directly with ElasticSearch Analyzers
-    </a>
-   </li>
-  </ul>
-  <i class="fas fa-chevron-down">
-  </i>
- </li>
-</ul>
-<p class="caption collapsible-parent">
- <span class="caption-text">
-  csv-detective
- </span>
-</p>
-<ul class="nav sidenav_l1">
- <li class="toctree-l1 collapsible-parent">
-  <a class="reference internal" href="../../csv-detective/analysis/overview.html">
-   csv-detective analysis
-  </a>
-  <ul class="collapse-ul">
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../csv-detective/analysis/join_label_files.html">
-     Analysis of three csv-detective manual annotations
-    </a>
+    <ul class="current collapse-ul">
+     <li class="toctree-l3">
+      <a class="reference internal" href="dense_vs_sparse_qualitative.html">
+       Étude des scores système dense vs sparse
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="DPR_fine_tuning.html">
+       DPR Fine-Tuning (finally)
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="Visualisation_csv_results.html">
+       Visualisation de l’indice de précision obtenu dans results.csv
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="ES_preprocessing.html">
+       Test : Preprocessing directly with ElasticSearch Analyzers
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="complementarity_dense_sparse_v2.html">
+       Analyse complémentarité
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="score_threshold_sparse_retriever.html">
+       Recherche d’un seuil pour le score sparse
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="complementarity_dense_sparse.html">
+       Analyse complémentarité
+      </a>
+     </li>
+     <li class="toctree-l3 current active">
+      <a class="current reference internal" href="#">
+       Why my trained DPR is (was) not working
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="Visualisation_results_Robin.html">
+       Visualisation de la précision dense vs sparse
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
    </li>
   </ul>
   <i class="fas fa-chevron-down">
@@ -651,8 +605,8 @@ The former uses ElasticSearch, the latter uses Facebook FAISS.</p>
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="Visualisation_results_Robin.html" title="previous page">Visualisation de la précision dense vs sparse</a>
-    <a class='right-next' id="next-link" href="DPR_fine_tuning.html" title="next page">DPR Fine-Tuning (finally)</a>
+    <a class='left-prev' id="prev-link" href="complementarity_dense_sparse.html" title="previous page">Analyse complémentarité</a>
+    <a class='right-next' id="next-link" href="Visualisation_results_Robin.html" title="next page">Visualisation de la précision dense vs sparse</a>
 
         </div>
         
@@ -664,7 +618,7 @@ The former uses ElasticSearch, the latter uses Facebook FAISS.</p>
         
           By etalab-ia<br/>
         
-            &copy; Copyright 2020.<br/>
+            &copy; Copyright 2021.<br/>
       </p>
     </div>
   </footer>
