@@ -19,7 +19,6 @@ sections:
   - file: csv-detective/analysis/index
     sections:
     - file: csv-detective/analysis/join_label_files
-    - file: csv-detective/analysis/overview
 - file: piaf/index
   sections:
   - file: piaf/howtos/index
