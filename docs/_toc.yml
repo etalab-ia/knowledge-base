@@ -1,30 +1,37 @@
-- file: intro 
-
-- part: Lab IA
-  chapters:
-  - file: lab_ia/intro
+file: index
+sections:
+- file: lab_ia/index
+  sections:
+  - file: lab_ia/notebooks
+  - file: lab_ia/reporting_standards
   - file: lab_ia/onboarding
   - file: lab_ia/resources
-  - file: lab_ia/coding_standards
+  - file: lab_ia/coding_standards/index
     sections:
-      - file: lab_ia/git 
-      - file: lab_ia/secrets
-      - file: lab_ia/python
-      - file: lab_ia/jupyter
-  - file: lab_ia/reporting_standards
-
-
-- part: Piaf - Pour une IA Francophone
-  chapters:
-  - file: piaf/retriever/overview
+    - file: lab_ia/coding_standards/git
+    - file: lab_ia/coding_standards/python
+    - file: lab_ia/coding_standards/secrets
+    - file: lab_ia/coding_standards/deploy_project
+    - file: lab_ia/coding_standards/jupyter
+- file: csv-detective/index
+  sections:
+  - file: csv-detective/analysis/index
     sections:
-      - file: piaf/retriever/complementarity_dense_sparse
-      - file: piaf/retriever/complementarity_dense_sparse_v2
-      - file: piaf/retriever/dense_vs_sparse_qualitative
-      - file: piaf/retriever/score_threshold_sparse_retriever
-      - file: piaf/retriever/Visualisation_csv_results
-      - file: piaf/retriever/Visualisation_results_Robin
-      - file: piaf/retriever/DPR_performance
-      - file: piaf/retriever/DPR_fine_tuning
-      - file: piaf/retriever/ES_preprocessing
-      
+    - file: csv-detective/analysis/join_label_files
+- file: piaf/index
+  sections:
+  - file: piaf/howtos/index
+    sections:
+    - file: piaf/howtos/Format_donnees_SQuAD
+    - file: piaf/howtos/labels
+  - file: piaf/retriever/index
+    sections:
+    - file: piaf/retriever/dense_vs_sparse_qualitative
+    - file: piaf/retriever/DPR_fine_tuning
+    - file: piaf/retriever/Visualisation_csv_results
+    - file: piaf/retriever/ES_preprocessing
+    - file: piaf/retriever/complementarity_dense_sparse_v2
+    - file: piaf/retriever/score_threshold_sparse_retriever
+    - file: piaf/retriever/complementarity_dense_sparse
+    - file: piaf/retriever/DPR_performance
+    - file: piaf/retriever/Visualisation_results_Robin

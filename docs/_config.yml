@@ -7,8 +7,8 @@
 # Book settings
 title: ""
 author                      : etalab-ia  # The author of the book
-copyright                   : "2020"  # Copyright year to be placed in the footer
-logo                        : logo.png  # A path to the book logo
+copyright                   : "2021"  # Copyright year to be placed in the footer
+logo                        : assets/logo.png  # A path to the book logo
 
 execute:
   execute_notebooks: off
