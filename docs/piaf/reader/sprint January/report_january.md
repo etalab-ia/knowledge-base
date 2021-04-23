@@ -97,4 +97,6 @@ The time for question answering is mainly related to k_retriever
 ![Question Answering Time VS k_retriever](./graphs/output_40_1.png)
 
 ## Conclusion
-We saw on this dataset that the best performances are achieved with low k_retriever (1) and high k_reader_per_candidate (20)
+We saw on this dataset that the best performances are achieved with low k_retriever (1) and high k_reader_per_candidate (20).
+For this setting, and this dataset, the top_k accuracy is 52%. 
+Better results might be achieved with custom pipelines or title boosting and this will be further investigated. 
