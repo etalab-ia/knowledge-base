@@ -20,6 +20,9 @@ sections:
     - file: csv-detective/analysis/join_label_files
 - file: piaf/index
   sections:
+  - file: piaf/reader/index
+    sections:
+    - file: piaf/reader/report_january
   - file: piaf/howtos/index
     sections:
     - file: piaf/howtos/Format_donnees_SQuAD
