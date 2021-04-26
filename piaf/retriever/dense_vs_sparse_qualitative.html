@@ -51,8 +51,8 @@
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="DPR Fine-Tuning (finally)" href="DPR_fine_tuning.html" />
-    <link rel="prev" title="Retriever Module" href="index.html" />
+    <link rel="next" title="Recherche d’un seuil pour le score sparse" href="score_threshold_sparse_retriever.html" />
+    <link rel="prev" title="Analyse complémentarité" href="complementarity_dense_sparse_v2.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -82,80 +82,11 @@
     <div class="bd-toc-item active">
         <ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../lab_ia/index.html">
-   LAB IA
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../lab_ia/notebooks.html">
-     Content with notebooks
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../lab_ia/reporting_standards.html">
-     Reporting Standards
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../lab_ia/onboarding.html">
-     Onboarding
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../lab_ia/resources.html">
-     Resources
-    </a>
-   </li>
-   <li class="toctree-l2 has-children">
-    <a class="reference internal" href="../../lab_ia/coding_standards/index.html">
-     Coding Standards
-    </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-    <label for="toctree-checkbox-2">
-     <i class="fas fa-chevron-down">
-     </i>
-    </label>
-    <ul>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../../lab_ia/coding_standards/git.html">
-       Working with Git
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../../lab_ia/coding_standards/python.html">
-       Python
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../../lab_ia/coding_standards/secrets.html">
-       Secrets
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../../lab_ia/coding_standards/deploy_project.html">
-       Deploying your project to a server
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../../lab_ia/coding_standards/jupyter.html">
-       Notebooks (.ipynb)
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
   <a class="reference internal" href="../../csv-detective/index.html">
    CSV-DETECTIVE
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -164,8 +95,8 @@
     <a class="reference internal" href="../../csv-detective/analysis/index.html">
      csv-detective analysis
     </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-    <label for="toctree-checkbox-4">
+    <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+    <label for="toctree-checkbox-2">
      <i class="fas fa-chevron-down">
      </i>
     </label>
@@ -183,8 +114,8 @@
   <a class="reference internal" href="../index.html">
    PIAF
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -193,8 +124,8 @@
     <a class="reference internal" href="../howtos/index.html">
      PIAF How-to’s
     </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-    <label for="toctree-checkbox-6">
+    <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+    <label for="toctree-checkbox-4">
      <i class="fas fa-chevron-down">
      </i>
     </label>
@@ -215,45 +146,15 @@
     <a class="reference internal" href="index.html">
      Retriever Module
     </a>
-    <input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
-    <label for="toctree-checkbox-7">
+    <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+    <label for="toctree-checkbox-5">
      <i class="fas fa-chevron-down">
      </i>
     </label>
     <ul class="current">
-     <li class="toctree-l3 current active">
-      <a class="current reference internal" href="#">
-       Étude des scores système dense vs sparse
-      </a>
-     </li>
      <li class="toctree-l3">
       <a class="reference internal" href="DPR_fine_tuning.html">
        DPR Fine-Tuning (finally)
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="Visualisation_csv_results.html">
-       Visualisation de l’indice de précision obtenu dans results.csv
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="ES_preprocessing.html">
-       Test : Preprocessing directly with ElasticSearch Analyzers
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="complementarity_dense_sparse_v2.html">
-       Analyse complémentarité
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="score_threshold_sparse_retriever.html">
-       Recherche d’un seuil pour le score sparse
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="complementarity_dense_sparse.html">
-       Analyse complémentarité
       </a>
      </li>
      <li class="toctree-l3">
@@ -262,8 +163,107 @@
       </a>
      </li>
      <li class="toctree-l3">
+      <a class="reference internal" href="ES_preprocessing.html">
+       Test : Preprocessing directly with ElasticSearch Analyzers
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="Visualisation_csv_results.html">
+       Visualisation de l’indice de précision obtenu dans results.csv
+      </a>
+     </li>
+     <li class="toctree-l3">
       <a class="reference internal" href="Visualisation_results_Robin.html">
        Visualisation de la précision dense vs sparse
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="complementarity_dense_sparse.html">
+       Analyse complémentarité
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="complementarity_dense_sparse_v2.html">
+       Analyse complémentarité
+      </a>
+     </li>
+     <li class="toctree-l3 current active">
+      <a class="current reference internal" href="#">
+       Étude des scores système dense vs sparse
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="score_threshold_sparse_retriever.html">
+       Recherche d’un seuil pour le score sparse
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../lab_ia/index.html">
+   LAB IA
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lab_ia/notebooks.html">
+     Content with notebooks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lab_ia/onboarding.html">
+     Onboarding
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lab_ia/reporting_standards.html">
+     Reporting Standards
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lab_ia/resources.html">
+     Resources
+    </a>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../lab_ia/coding_standards/index.html">
+     Coding Standards
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+    <label for="toctree-checkbox-7">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../lab_ia/coding_standards/deploy_project.html">
+       Deploying your project to a server
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../lab_ia/coding_standards/git.html">
+       Working with Git
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../lab_ia/coding_standards/jupyter.html">
+       Notebooks (.ipynb)
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../lab_ia/coding_standards/python.html">
+       Python
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../lab_ia/coding_standards/secrets.html">
+       Secrets
       </a>
      </li>
     </ul>
@@ -560,8 +560,8 @@ Specifically, I compare two detailed_results JSON files:</p>
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="index.html" title="previous page">Retriever Module</a>
-    <a class='right-next' id="next-link" href="DPR_fine_tuning.html" title="next page">DPR Fine-Tuning (finally)</a>
+    <a class='left-prev' id="prev-link" href="complementarity_dense_sparse_v2.html" title="previous page">Analyse complémentarité</a>
+    <a class='right-next' id="next-link" href="score_threshold_sparse_retriever.html" title="next page">Recherche d’un seuil pour le score sparse</a>
 
         </div>
         
