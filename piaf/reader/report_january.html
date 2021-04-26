@@ -498,19 +498,21 @@ Due to this bug, we changed the parameters that we studied. See test set up.</p>
 </div>
 <div class="section" id="test-set-up">
 <h3>Test set up<a class="headerlink" href="#test-set-up" title="Permalink to this headline">¶</a></h3>
-<p>The configurations of the Pipeline that are tested are the following :
-“k_retriever”: [1,5,20,50,100],
-“k_title_retriever” : [10], # must be present, but only used when retriever_type == title_bm25
-“k_reader_per_candidate”: [1,5,10,20],
-“k_reader_total”: [5,10,20],
-“retriever_type”: [“bm25”], # Can be bm25, sbert, dpr, title or title_bm25
-“squad_dataset”: [“./data/evaluation-datasets/full_spf_squad.json”],
-“filter_level”: [None],
-“preprocessing”: [True],
-“boosting” : [1], #default to 1
-“split_by”: [“word”],  # Can be “word”, “sentence”, or “passage”
-“split_length”: [10000000],
-“experiment_name”: [“rr_20210420”]</p>
+<p>The configurations of the Pipeline that are tested are the following :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;k_retriever&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">100</span><span class="p">],</span>
+<span class="s2">&quot;k_title_retriever&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="c1"># must be present, but only used when retriever_type == title_bm25</span>
+<span class="s2">&quot;k_reader_per_candidate&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">20</span><span class="p">],</span>
+<span class="s2">&quot;k_reader_total&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">20</span><span class="p">],</span>
+<span class="s2">&quot;retriever_type&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;bm25&quot;</span><span class="p">],</span> <span class="c1"># Can be bm25, sbert, dpr, title or title_bm25</span>
+<span class="s2">&quot;squad_dataset&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;./data/evaluation-datasets/full_spf_squad.json&quot;</span><span class="p">],</span>
+<span class="s2">&quot;filter_level&quot;</span><span class="p">:</span> <span class="p">[</span><span class="kc">None</span><span class="p">],</span>
+<span class="s2">&quot;preprocessing&quot;</span><span class="p">:</span> <span class="p">[</span><span class="kc">True</span><span class="p">],</span>
+<span class="s2">&quot;boosting&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="c1">#default to 1</span>
+<span class="s2">&quot;split_by&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;word&quot;</span><span class="p">],</span>  <span class="c1"># Can be &quot;word&quot;, &quot;sentence&quot;, or &quot;passage&quot;</span>
+<span class="s2">&quot;split_length&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">10000000</span><span class="p">],</span>
+<span class="s2">&quot;experiment_name&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;rr_20210420&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
 <ul class="simple">
 <li><p>Transformers reader with “etalab-ia/camembert-base-squadFR-fquad-piaf” model</p></li>
 <li><p>The embedding retriever is using the following model : <a class="reference external" href="https://huggingface.co/distilbert-base-multilingual-cased">https://huggingface.co/distilbert-base-multilingual-cased</a></p></li>
@@ -523,34 +525,34 @@ Due to this bug, we changed the parameters that we studied. See test set up.</p>
 <div class="section" id="accuracy">
 <h3>Accuracy<a class="headerlink" href="#accuracy" title="Permalink to this headline">¶</a></h3>
 <p>If the answer given by the pipeline is contained or contains the correct answer, then the answer is considered valid. The accuracy is the percentage of valid answers over the query passed to the pipeline.</p>
-<p>The top1 accuracy is the accuracy of the pipeline, considering only the first answer. The topk accuracy is the accuracy of the pipeline using all of the 10 answers given at the end of the pipeline.</p>
-<p>For k_reader_total (ou k_display) = 5<br />
-Best results are achieved with a low k_retriever. Above k_reader_per_candidate = 5, there is no impact of this parameter on the results
+<p>The top1 accuracy is the accuracy of the pipeline, considering only the first answer. The <code class="docutils literal notranslate"><span class="pre">topk</span></code> accuracy is the accuracy of the pipeline using all of the 10 answers given at the end of the pipeline.</p>
+<p>For <code class="docutils literal notranslate"><span class="pre">k_reader_total</span> <span class="pre">(ou</span> <span class="pre">k_display)</span> <span class="pre">=</span> <span class="pre">5</span></code>
+Best results are achieved with a low <code class="docutils literal notranslate"><span class="pre">k_retriever</span></code>. Above <code class="docutils literal notranslate"><span class="pre">k_reader_per_candidate</span> <span class="pre">=</span> <span class="pre">5</span></code>, there is no impact of this parameter on the results
 <img alt="Topk accuracy VS k_retriever" src="../../_images/output_14_0.png" /></p>
-<p>There is a quite low probability of finding the answer in the top. This probability strongly depends from the k_retriever but is not affected by k_reader_per_candidate
+<p>There is a quite low probability of finding the answer in the top. This probability strongly depends from the <code class="docutils literal notranslate"><span class="pre">k_retriever</span></code> but is not affected by <code class="docutils literal notranslate"><span class="pre">k_reader_per_candidate</span></code>
 <img alt="Top1 accuracy VS k_retriever" src="../../_images/output_23_0.png" /></p>
-<p>As one could expect, increasing the k_reader_total increases the chances of finding the correct answer. However, for the user experience to be optimal, we believe that no more than 5 answers should be diplayed for a query.
-Here is an exemple with k_reader_total = 20
+<p>As one could expect, increasing the <code class="docutils literal notranslate"><span class="pre">k_reader_total</span></code> increases the chances of finding the correct answer. However, for the user experience to be optimal, we believe that no more than 5 answers should be diplayed for a query.
+Here is an exemple with <code class="docutils literal notranslate"><span class="pre">k_reader_total</span> <span class="pre">=</span> <span class="pre">20</span></code>
 <img alt="Topk accuracy VS k_retriever" src="../../_images/output_20_0.png" /></p>
-<p>We modelize the behavior of the performance VS the parameters <code class="docutils literal notranslate"><span class="pre">['k_reader_per_candidate',</span> <span class="pre">'k_reader_total',</span> <span class="pre">'k_retriever']</span></code> with a polynomial equation of degree 3. R² = 0.933.</p>
+<p>We modelize the behavior of the performance VS the parameters <code class="docutils literal notranslate"><span class="pre">['k_reader_per_candidate',</span> <span class="pre">'k_reader_total',</span> <span class="pre">'k_retriever']</span></code> with a polynomial equation of degree 3. <code class="docutils literal notranslate"><span class="pre">R²</span> <span class="pre">=</span> <span class="pre">0.933</span></code>.</p>
 <p>The parameters having the most impact on the results are <code class="docutils literal notranslate"><span class="pre">['k_reader_per_candidate',</span> <span class="pre">'k_retriever','k_reader_per_candidate</span> <span class="pre">k_reader_total']</span></code>
 <img alt="Partial_dependance" src="../../_images/output_30_1.png" /></p>
 <p><img alt="Partial_dependance_2" src="../../_images/output_31_1.png" /></p>
 </div>
 <div class="section" id="time-for-retrieval">
 <h3>Time for retrieval<a class="headerlink" href="#time-for-retrieval" title="Permalink to this headline">¶</a></h3>
-<p>The time for question answering increases linearly when k_retriever increases.<br />
+<p>The time for question answering increases linearly when <code class="docutils literal notranslate"><span class="pre">k_retriever</span></code> increases.<br />
 <img alt="Question Answering Time VS k_retriever" src="../../_images/output_35_0.png" /></p>
-<p>The time for question answering increases  when k_reader_per_candidate increases.<br />
+<p>The time for question answering increases  when <code class="docutils literal notranslate"><span class="pre">k_reader_per_candidate</span></code> increases.<br />
 <img alt="Question Answering Time VS k_retriever" src="../../_images/output_36_0.png" /></p>
-<p>The time for question answering is mainly related to k_retriever
+<p>The time for question answering is mainly related to <code class="docutils literal notranslate"><span class="pre">k_retriever</span></code>
 <img alt="Question Answering Time VS k_retriever" src="../../_images/output_40_1.png" /></p>
 </div>
 </div>
 <div class="section" id="conclusion">
 <h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h2>
-<p>We saw on this dataset that the best performances are achieved with low k_retriever (1) and high k_reader_per_candidate (20).
-For this setting, and this dataset, the top_k accuracy is 52%.
+<p>We saw on this dataset that the best performances are achieved with low <code class="docutils literal notranslate"><span class="pre">k_retriever</span></code> (1) and high <code class="docutils literal notranslate"><span class="pre">k_reader_per_candidate</span></code> (20).
+For this setting, and this dataset, the <code class="docutils literal notranslate"><span class="pre">top_k</span> <span class="pre">accuracy</span></code> is 52%.
 Better results might be achieved with custom pipelines or title boosting and this will be further investigated.</p>
 </div>
 </div>

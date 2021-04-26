@@ -42,6 +42,7 @@ Due to this bug, we changed the parameters that we studied. See test set up.
 
 ### Test set up
 The configurations of the Pipeline that are tested are the following : 
+```
 "k_retriever": [1,5,20,50,100],
 "k_title_retriever" : [10], # must be present, but only used when retriever_type == title_bm25
 "k_reader_per_candidate": [1,5,10,20],
@@ -54,7 +55,7 @@ The configurations of the Pipeline that are tested are the following :
 "split_by": ["word"],  # Can be "word", "sentence", or "passage"
 "split_length": [10000000],
 "experiment_name": ["rr_20210420"]
-
+```
 - Transformers reader with "etalab-ia/camembert-base-squadFR-fquad-piaf" model
 - The embedding retriever is using the following model : https://huggingface.co/distilbert-base-multilingual-cased
 
@@ -64,37 +65,37 @@ Each question of the dataset is queried to the Pipeline and we verify the Pipeli
 ### Accuracy
 If the answer given by the pipeline is contained or contains the correct answer, then the answer is considered valid. The accuracy is the percentage of valid answers over the query passed to the pipeline.
 
-The top1 accuracy is the accuracy of the pipeline, considering only the first answer. The topk accuracy is the accuracy of the pipeline using all of the 10 answers given at the end of the pipeline. 
+The top1 accuracy is the accuracy of the pipeline, considering only the first answer. The `topk` accuracy is the accuracy of the pipeline using all of the 10 answers given at the end of the pipeline. 
 
-For k_reader_total (ou k_display) = 5  
-Best results are achieved with a low k_retriever. Above k_reader_per_candidate = 5, there is no impact of this parameter on the results
+For `k_reader_total (ou k_display) = 5`
+Best results are achieved with a low `k_retriever`. Above `k_reader_per_candidate = 5`, there is no impact of this parameter on the results
 ![Topk accuracy VS k_retriever](./graphs/output_14_0.png)
 
-There is a quite low probability of finding the answer in the top. This probability strongly depends from the k_retriever but is not affected by k_reader_per_candidate
+There is a quite low probability of finding the answer in the top. This probability strongly depends from the `k_retriever` but is not affected by `k_reader_per_candidate`
 ![Top1 accuracy VS k_retriever](./graphs/output_23_0.png)
 
-As one could expect, increasing the k_reader_total increases the chances of finding the correct answer. However, for the user experience to be optimal, we believe that no more than 5 answers should be diplayed for a query. 
-Here is an exemple with k_reader_total = 20
+As one could expect, increasing the `k_reader_total` increases the chances of finding the correct answer. However, for the user experience to be optimal, we believe that no more than 5 answers should be diplayed for a query. 
+Here is an exemple with `k_reader_total = 20`
 ![Topk accuracy VS k_retriever](./graphs/output_20_0.png)
 
-We modelize the behavior of the performance VS the parameters ``['k_reader_per_candidate', 'k_reader_total', 'k_retriever']`` with a polynomial equation of degree 3. R² = 0.933. 
+We modelize the behavior of the performance VS the parameters ``['k_reader_per_candidate', 'k_reader_total', 'k_retriever']`` with a polynomial equation of degree 3. `R² = 0.933`. 
 
-The parameters having the most impact on the results are ``['k_reader_per_candidate', 'k_retriever','k_reader_per_candidate k_reader_total']``
+The parameters having the most impact on the results are `['k_reader_per_candidate', 'k_retriever','k_reader_per_candidate k_reader_total']`
 ![Partial_dependance](./graphs/output_30_1.png)
 
 ![Partial_dependance_2](./graphs/output_31_1.png)
 
 ### Time for retrieval
-The time for question answering increases linearly when k_retriever increases.  
+The time for question answering increases linearly when `k_retriever` increases.  
 ![Question Answering Time VS k_retriever](./graphs/output_35_0.png)
 
-The time for question answering increases  when k_reader_per_candidate increases.  
+The time for question answering increases  when `k_reader_per_candidate` increases.  
 ![Question Answering Time VS k_retriever](./graphs/output_36_0.png)
 
-The time for question answering is mainly related to k_retriever 
+The time for question answering is mainly related to `k_retriever` 
 ![Question Answering Time VS k_retriever](./graphs/output_40_1.png)
 
 ## Conclusion
-We saw on this dataset that the best performances are achieved with low k_retriever (1) and high k_reader_per_candidate (20).
-For this setting, and this dataset, the top_k accuracy is 52%. 
+We saw on this dataset that the best performances are achieved with low `k_retriever` (1) and high `k_reader_per_candidate` (20).
+For this setting, and this dataset, the `top_k accuracy` is 52%. 
 Better results might be achieved with custom pipelines or title boosting and this will be further investigated. 
