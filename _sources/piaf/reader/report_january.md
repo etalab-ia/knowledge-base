@@ -1,6 +1,4 @@
-report january
-===
-# Testing the Haystack Pipelines
+# Results Report january -- Testing the Haystack Pipelines
 
 ## Context
 At the dawn of launching a new project on the CRPA data to further test the opportunity of using PIAF in the context of the French administration, we were facing concerns regarding the standardization of the data we were to feed to PIAF.
