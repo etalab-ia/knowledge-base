@@ -27,6 +27,11 @@ jobs:
     - name: Build the toc
       run: |
         jupyter-book toc ./docs --output-folder ./docs
+        
+    # Remove old docs
+    - name: Remove old docs
+      run: |
+        rm -rf ./docs/_build
 
     # Build the book
     - name: Build the book
