@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Format données SQuAD</title>
+    <title>report january</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet" />
   <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -51,8 +51,8 @@
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Haystack Label’s Inquiry" href="labels.html" />
-    <link rel="prev" title="PIAF How-to’s" href="index.html" />
+    <link rel="next" title="PIAF How-to’s" href="../howtos/index.html" />
+    <link rel="prev" title="PIAF" href="../index.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -120,28 +120,28 @@
    </i>
   </label>
   <ul class="current">
-   <li class="toctree-l2">
-    <a class="reference internal" href="../reader/report_january.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      report january
     </a>
    </li>
-   <li class="toctree-l2 current active has-children">
-    <a class="reference internal" href="index.html">
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../howtos/index.html">
      PIAF How-to’s
     </a>
-    <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+    <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
     <label for="toctree-checkbox-4">
      <i class="fas fa-chevron-down">
      </i>
     </label>
-    <ul class="current">
-     <li class="toctree-l3 current active">
-      <a class="current reference internal" href="#">
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../howtos/Format_donnees_SQuAD.html">
        Format données SQuAD
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="labels.html">
+      <a class="reference internal" href="../howtos/labels.html">
        Haystack Label’s Inquiry
       </a>
      </li>
@@ -316,7 +316,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/piaf/howtos/Format_donnees_SQuAD.md"><button type="button"
+        <a class="dropdown-buttons" href="../../_sources/piaf/reader/report_january.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -336,10 +336,10 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/psorianom/knowledge-base/issues/new?title=Issue%20on%20page%20%2Fpiaf/howtos/Format_donnees_SQuAD.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/psorianom/knowledge-base/issues/new?title=Issue%20on%20page%20%2Fpiaf/reader/report_january.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/psorianom/knowledge-base/edit/master/docs/piaf/howtos/Format_donnees_SQuAD.md"><button
+        <a class="edit-button" href="https://github.com/psorianom/knowledge-base/edit/master/docs/piaf/reader/report_january.md"><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
     </div>
@@ -364,30 +364,91 @@
             </div>
             <nav id="bd-toc-nav">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#qu-est-que-piaf">
-   Qu’est que PIAF ?
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   report january
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#comment-nous-utilisons-piaf">
-   Comment nous utilisons PIAF ?
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#testing-the-haystack-pipelines">
+   Testing the Haystack Pipelines
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#quelles-donnees-envoyer-pour-proposer-un-cas-d-usage">
-   Quelles données envoyer pour proposer un cas d’usage ?
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#sous-quel-format-envoyer-les-donnees">
-   Sous quel format envoyer les données ?
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#retour-de-l-evaluation">
-   Retour de l’évaluation
-  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#context">
+     Context
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#solution">
+     Solution
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sprint-content">
+     Sprint content
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#test">
+     Test
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#test-objectives">
+       Test objectives
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#behaviour">
+       Behaviour
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#dataset">
+       Dataset
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#hardware">
+       Hardware
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#deviations">
+       Deviations
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#test-set-up">
+       Test set up
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#results">
+     Results
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#accuracy">
+       Accuracy
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#time-for-retrieval">
+       Time for retrieval
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#conclusion">
+     Conclusion
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -400,71 +461,112 @@
         
               <div>
                 
-  <div class="section" id="format-donnees-squad">
-<h1>Format données SQuAD<a class="headerlink" href="#format-donnees-squad" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="qu-est-que-piaf">
-<h2>Qu’est que PIAF ?<a class="headerlink" href="#qu-est-que-piaf" title="Permalink to this headline">¶</a></h2>
-<p>PIAF désigne la solution de Question Réponse proposée par la DINUM. Elle s’appuie sur différentes briques technologiques :</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://www.data.gouv.fr/fr/datasets/piaf-le-dataset-francophone-de-questions-reponses/">Le dataset de Piaf</a> : un dataset contenant de multiples exemples de Questions Réponses (QR) provenant de wikipédia. Cette annotation est issue d’une annotation citoyenne. Ce dataset suive la methodologie et le format du dataset QR anglophone <a class="reference external" href="https://rajpurkar.github.io/SQuAD-explorer/">SQuAD</a>. Vous trouverez plus de renseignements <a class="reference external" href="https://piaf.etalab.studio/">ici</a>.</p></li>
-<li><p><a class="reference external" href="https://huggingface.co/etalab-ia/camembert-base-squadFR-fquad-piaf">camembert-base-squadFR-fquad-piaf</a> : un modèle français de Question Réponses basé sur CamemBERT et fine-tuné sur une combinaison de trois datasets français de Question Réponse:</p>
-<ul>
-<li><p>PIAFv1.1</p></li>
-<li><p>FQuADv1.0</p></li>
-<li><p>SQuAD-FR (SQuAD automatically translated to French)</p></li>
-</ul>
-</li>
-<li><p><a class="reference external" href="https://github.com/deepset-ai/haystack">Haystack</a> : une brique open source à laquelle nous contribuons activement permettant de faire du question réponse sur une base documentaire. Elle intègre une partie retriever qui retrouve les meilleurs documents candidat et une brique reader dans laquelle le modèle piaf est intégré et qui permet de trouver la bonne réponse.</p></li>
-<li><p><a class="reference external" href="https://piaf.datascience.etalab.studio/piafagent/">Piaf Agent</a> et <a class="reference external" href="https://piafbot.chatbot.fabnum.fr/">Piaf Bot</a> : des interfaces graphique permettant d’interroger l’API de haystack et de permettre à l’utilisateur de poser une question et d’obtenir une réponse.</p></li>
-</ul>
-<p><img alt="architecture" src="../../_images/archi_piaf.png" /></p>
+  <div class="section" id="report-january">
+<h1>report january<a class="headerlink" href="#report-january" title="Permalink to this headline">¶</a></h1>
 </div>
-<div class="section" id="comment-nous-utilisons-piaf">
-<h2>Comment nous utilisons PIAF ?<a class="headerlink" href="#comment-nous-utilisons-piaf" title="Permalink to this headline">¶</a></h2>
-<p>Pour utiliser PIAF, il n’y a pas besoin d’entrainer un modèle sur vos données. Nous récupérons vos données et ajustons les paramètres des différents composants du système pour votre cas d’usage.</p>
-<p>Si vous avez une quantité de pairs Question-Réponse conséquente, nous pourrons envisager le fine-tuning de notre modèle avec vos données. Cette procedure pourrait améliorer la performance du système.</p>
+<div class="section" id="testing-the-haystack-pipelines">
+<h1>Testing the Haystack Pipelines<a class="headerlink" href="#testing-the-haystack-pipelines" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="context">
+<h2>Context<a class="headerlink" href="#context" title="Permalink to this headline">¶</a></h2>
+<p>At the dawn of launching a new project on the CRPA data to further test the opportunity of using PIAF in the context of the French administration, we were facing concerns regarding the standardization of the data we were to feed to PIAF.</p>
+<p>We want to be able to launch a new instance of PIAF with as few human intervention as possible. However the performance of the whole pipeline is much influenced by the size of the knowledge base available for searching. We also know that many parameters will influence the answer retrieval in terms of quality (number of correct retrievals) and response-time. These parameters can be : document length, number of documents retreived, number of answers requested per documents, among others.</p>
+<p>We have found out that some general feeling of how the performances are affected by the parameters can be acquired by running experiments on general purpose SQuAD-formated datasets, based on Wikipedia articles. However, it will be necessary to fine tune every specific use case to make sure that the parameters are the best possibe. Also, this report help us to deploy a solution that has been properly evaluated.</p>
 </div>
-<div class="section" id="quelles-donnees-envoyer-pour-proposer-un-cas-d-usage">
-<h2>Quelles données envoyer pour proposer un cas d’usage ?<a class="headerlink" href="#quelles-donnees-envoyer-pour-proposer-un-cas-d-usage" title="Permalink to this headline">¶</a></h2>
-<p>Vos données doivent comporter les informations suivantes:</p>
-<ul class="simple">
-<li><p>Une liste de contextes : C’est votre base de connaissance. Les contextes sont des textes. Il n’y a pas de contrainte sur la longueur du texte, PIAF se charge d’optimiser sa longueur pour votre cas d’usage.</p></li>
-<li><p>Des questions et des réponses pour effectuer l’évaluation. 100 minimum. Il peut y avoir plusieurs questions par contexte et plusieurs réponses par questions.</p></li>
-</ul>
-<p><img alt="schema" src="../../_images/work_with_piaf_onboarding.png" /></p>
+<div class="section" id="solution">
+<h2>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">¶</a></h2>
+<p>In order to use our solution, we first need to transform the input data into a standard format that will be used during the whole set of PIAF tools developed.</p>
+<p>The natural solution was to turn the data to the SQuAD format. Our final goal is to aim at a solution where you would only have to process your data in the squad format. You would then launch the piaf annotation platform to annotate yourself the data. The annotated data will then be used to fine tune and launch your QA solution.</p>
 </div>
-<div class="section" id="sous-quel-format-envoyer-les-donnees">
-<h2>Sous quel format envoyer les données ?<a class="headerlink" href="#sous-quel-format-envoyer-les-donnees" title="Permalink to this headline">¶</a></h2>
-<p>Idéalement vos données sont envoyées sous la forme d’un json structuré de la manière suivante (en suivant le format SQuAD v2.0) :</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>{
- &quot;version&quot;: &quot;v1.0&quot;,
- &quot;data&quot;: [{
-   &#39;title&#39;: &#39;Immatriculer un véhicule d&#39;occasion&#39;, #OBLIGATOIRE : titre de votre chapitre (un chapitre peut contenir plusieurs contextes)
-   &#39;theme&#39;: &#39;Véhicule&#39;, #FACULTATIF : Metadonnées d&#39;arborescence. Si ces données sont disponibles, elles peuvent améliorer les performances de PIAF en permettant à l&#39;utilisateur de restreindre le champ de sa demande 
-   &#39;link&#39;: &#39;www.link_to_title.com&#39;,
-   &#39;Dossier&#39;: &quot;Carte grise (certificat d&#39;immatriculation)&quot;, #FACULTATIF : Metadonnées d&#39;arborescence. #FACULTATIF : Metadonnées d&#39;arborescence.
-   &#39;id&#39;: &#39;F1050&#39;, #FACULTATIF : Metadonnées d&#39;arborescence.
-   &#39;paragraphs&#39;: [{
-       &#39;context&#39;: &quot;Carte grise:...&quot; #C&#39;est le contenu de votre base de connaissance 
-       &#39;qas&#39;: [ #Si vous n&#39;avez pas d&#39;annotation, laissez une liste vide
-           {&#39;question&#39;:&quot;J&#39;ai acheté ...?&quot;
-            &#39;answers&#39;: [ #Si vous n&#39;avez pas de réponse annotée, laissez une liste vide
-                   {
-                 &quot;text&quot;: &quot;100 000&quot;, #La réponse à la question. La réponse se trouve dans le context. C&#39;est un ensemble de mots continu 
-                 &quot;answer_start&quot;: 472 #FACULTATIF Le token du début de la réponse. 
-               }
-            ]
-            &quot;is_impossible&quot;: False #True s&#39;il n&#39;y a pas de réponse possible, ou pas de réponse annoté. False dans les autres cas. 
-           }]
-       }]
-   }]
+<div class="section" id="sprint-content">
+<h2>Sprint content<a class="headerlink" href="#sprint-content" title="Permalink to this headline">¶</a></h2>
+<p>This sprint aims at implementing the solution allowing the evaluation of the PIAF solution. We wanting to use as much as possible the functions developped by the haystack team but also implement some testing on our side for implementing a proper git flow. We implemented this testing with the pytest library.</p>
+<p>We also wanted to gain more insights as to what are the best parameters to get an optimized solution for questionning the <a class="reference external" href="http://service-public.fr">service-public.fr</a> knowledge base.</p>
+</div>
+<div class="section" id="test">
+<h2>Test<a class="headerlink" href="#test" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="test-objectives">
+<h3>Test objectives<a class="headerlink" href="#test-objectives" title="Permalink to this headline">¶</a></h3>
+<p>Get a feeling of how the parameters can affect the performance of haystack. Either in terms of quality of answering or performances for the time of answering.</p>
+</div>
+<div class="section" id="behaviour">
+<h3>Behaviour<a class="headerlink" href="#behaviour" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-mermaid notranslate"><div class="highlight"><pre><span></span>graph TD;
+    Query--&gt;Retriever;
+    Database--&gt;Retriever;
+    Retriever--&gt;|k_retriever docs|Ranker;
+    Ranker--&gt;|k_retriever * k_reader answers|10_answers;
 </pre></div>
 </div>
-<p>Vous pouvez aussi nous envoyer vos données sous une autre forme (.csv par exemple) et nous nous occupons de les convertir pour vous.</p>
 </div>
-<div class="section" id="retour-de-l-evaluation">
-<h2>Retour de l’évaluation<a class="headerlink" href="#retour-de-l-evaluation" title="Permalink to this headline">¶</a></h2>
-<p>Nous allons faire lire vos textes à notre application. Ensuite, nous allons lui poser les 100 questions que vous nous avez fourni et comparer les réponses qui vont en sortir avec celles que vous nous aurez fourni. Nous serons alors capable de vous dire à quel taux de réponse notre application est capable de répondre a votre cas s’usage.</p>
+<div class="section" id="dataset">
+<h3>Dataset<a class="headerlink" href="#dataset" title="Permalink to this headline">¶</a></h3>
+<p>The results presented in this report were generated using the dataset full_spf_squad V1.0. This datasets consists in 3068 contexts and 538 questions, of which 127 have answers.</p>
+</div>
+<div class="section" id="hardware">
+<h3>Hardware<a class="headerlink" href="#hardware" title="Permalink to this headline">¶</a></h3>
+<p>The test was run on GPU_bro</p>
+</div>
+<div class="section" id="deviations">
+<h3>Deviations<a class="headerlink" href="#deviations" title="Permalink to this headline">¶</a></h3>
+<p>There were some unknown bug preventing from running all the tests that were intended to be done. This is especially the case for the lowest value of <code class="docutils literal notranslate"><span class="pre">split_length</span></code> (100). For more information on this bug, please check <a class="reference external" href="https://github.com/huggingface/transformers/issues/11354">this</a>.
+Due to this bug, we changed the parameters that we studied. See test set up.</p>
+</div>
+<div class="section" id="test-set-up">
+<h3>Test set up<a class="headerlink" href="#test-set-up" title="Permalink to this headline">¶</a></h3>
+<p>The configurations of the Pipeline that are tested are the following :
+“k_retriever”: [1,5,20,50,100],
+“k_title_retriever” : [10], # must be present, but only used when retriever_type == title_bm25
+“k_reader_per_candidate”: [1,5,10,20],
+“k_reader_total”: [5,10,20],
+“retriever_type”: [“bm25”], # Can be bm25, sbert, dpr, title or title_bm25
+“squad_dataset”: [“./data/evaluation-datasets/full_spf_squad.json”],
+“filter_level”: [None],
+“preprocessing”: [True],
+“boosting” : [1], #default to 1
+“split_by”: [“word”],  # Can be “word”, “sentence”, or “passage”
+“split_length”: [10000000],
+“experiment_name”: [“rr_20210420”]</p>
+<ul class="simple">
+<li><p>Transformers reader with “etalab-ia/camembert-base-squadFR-fquad-piaf” model</p></li>
+<li><p>The embedding retriever is using the following model : <a class="reference external" href="https://huggingface.co/distilbert-base-multilingual-cased">https://huggingface.co/distilbert-base-multilingual-cased</a></p></li>
+</ul>
+<p>Each question of the dataset is queried to the Pipeline and we verify the Pipeline answer vs the answer annotated in full_spf_squad.</p>
+</div>
+</div>
+<div class="section" id="results">
+<h2>Results<a class="headerlink" href="#results" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="accuracy">
+<h3>Accuracy<a class="headerlink" href="#accuracy" title="Permalink to this headline">¶</a></h3>
+<p>If the answer given by the pipeline is contained or contains the correct answer, then the answer is considered valid. The accuracy is the percentage of valid answers over the query passed to the pipeline.</p>
+<p>The top1 accuracy is the accuracy of the pipeline, considering only the first answer. The topk accuracy is the accuracy of the pipeline using all of the 10 answers given at the end of the pipeline.</p>
+<p>For k_reader_total (ou k_display) = 5<br />
+Best results are achieved with a low k_retriever. Above k_reader_per_candidate = 5, there is no impact of this parameter on the results
+<img alt="Topk accuracy VS k_retriever" src="../../_images/output_14_0.png" /></p>
+<p>There is a quite low probability of finding the answer in the top. This probability strongly depends from the k_retriever but is not affected by k_reader_per_candidate
+<img alt="Top1 accuracy VS k_retriever" src="../../_images/output_23_0.png" /></p>
+<p>As one could expect, increasing the k_reader_total increases the chances of finding the correct answer. However, for the user experience to be optimal, we believe that no more than 5 answers should be diplayed for a query.
+Here is an exemple with k_reader_total = 20
+<img alt="Topk accuracy VS k_retriever" src="../../_images/output_20_0.png" /></p>
+<p>We modelize the behavior of the performance VS the parameters <code class="docutils literal notranslate"><span class="pre">['k_reader_per_candidate',</span> <span class="pre">'k_reader_total',</span> <span class="pre">'k_retriever']</span></code> with a polynomial equation of degree 3. R² = 0.933.</p>
+<p>The parameters having the most impact on the results are <code class="docutils literal notranslate"><span class="pre">['k_reader_per_candidate',</span> <span class="pre">'k_retriever','k_reader_per_candidate</span> <span class="pre">k_reader_total']</span></code>
+<img alt="Partial_dependance" src="../../_images/output_30_1.png" /></p>
+<p><img alt="Partial_dependance_2" src="../../_images/output_31_1.png" /></p>
+</div>
+<div class="section" id="time-for-retrieval">
+<h3>Time for retrieval<a class="headerlink" href="#time-for-retrieval" title="Permalink to this headline">¶</a></h3>
+<p>The time for question answering increases linearly when k_retriever increases.<br />
+<img alt="Question Answering Time VS k_retriever" src="../../_images/output_35_0.png" /></p>
+<p>The time for question answering increases  when k_reader_per_candidate increases.<br />
+<img alt="Question Answering Time VS k_retriever" src="../../_images/output_36_0.png" /></p>
+<p>The time for question answering is mainly related to k_retriever
+<img alt="Question Answering Time VS k_retriever" src="../../_images/output_40_1.png" /></p>
+</div>
+</div>
+<div class="section" id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h2>
+<p>We saw on this dataset that the best performances are achieved with low k_retriever (1) and high k_reader_per_candidate (20).
+For this setting, and this dataset, the top_k accuracy is 52%.
+Better results might be achieved with custom pipelines or title boosting and this will be further investigated.</p>
 </div>
 </div>
 
@@ -481,7 +583,7 @@
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./piaf/howtos"
+            path: "./piaf/reader"
         },
         predefinedOutput: true
     }
@@ -493,8 +595,8 @@
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="index.html" title="previous page">PIAF How-to’s</a>
-    <a class='right-next' id="next-link" href="labels.html" title="next page">Haystack Label’s Inquiry</a>
+    <a class='left-prev' id="prev-link" href="../index.html" title="previous page">PIAF</a>
+    <a class='right-next' id="next-link" href="../howtos/index.html" title="next page">PIAF How-to’s</a>
 
         </div>
         
