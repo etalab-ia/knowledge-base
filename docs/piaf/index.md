@@ -1,25 +1,26 @@
 # PIAF
 
-This folder contains information about the Piaf project.
+Cette partie contient toutes les informations concernant le projet Piaf.
 
-## History
-Piaf was created in 2019 and has known a few evolutions since. Here they are :  
-- Early 2019  
-Begining of the project: create and publish an open-source dataset for training question-answering models in french
-- Summer 2019  
-Developpment of the PiafAnno platform (the platform required to invite people to contribute) and creation of the presentation website [Piaf](https://piaf.etalab.studio/)
-- November 2019  
-Start of the collaborative annotation campain
-- February 2020  
-[Dataset 1.0](https://github.com/etalab-ia/piaf-code/raw/master/piaf-v1.0.json) release
-- May 2020   
-Publication of [this article](https://arxiv.org/abs/2007.00968) at LREC2020 conference
-- June 2020  
-Publication of the first [Piaf QA model](https://huggingface.co/etalab-ia/camembert-base-squadFR-fquad-piaf) in french on hugginface  
+## Historique
 
-- April 2021   
-Begining of the [Piaf application](https://piaf.etalab.studio/application-piaf/), as an information retrieval engine
+Piaf est né en 2019 et a évolué au fil des mois. En voici donc un petit résumé :  
+- Début 2019  
+Début du projet : l'objectif est de créer un jeu de données en open-source pour entrainer des modèles de question-answering en français
+- Été 2019  
+Développement d'une plateforme collaborative afin de recueillie les contributions : [PiafAnno](https://github.com/etalab/piaf). Et création du site de présentation du projet : [Piaf](https://piaf.etalab.studio/)
+- Novembre 2019  
+Début de la campagne d'annotation collaborative
+- Février 2020  
+Publication du [Dataset 1.0](https://github.com/etalab-ia/piaf-code/raw/master/piaf-v1.0.json)
+- Mai 2020   
+Publication de [et article](https://arxiv.org/abs/2007.00968) à la conférence LREC2020
+- Juin 2020  
+Publication du premier [Piaf QA modèle](https://huggingface.co/etalab-ia/camembert-base-squadFR-fquad-piaf) francophone sur hugginface  
+
+- Avril 2021   
+Début de l'[application Piaf](https://piaf.etalab.studio/application-piaf/), en tant que moteur de recherche d'information
 
 ## Contact
-For any request, feel free to contact us  
+Pour toute requête, veuillez nous écrire :  
 => piaf@data.gouv.fr
