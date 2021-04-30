@@ -2,6 +2,20 @@
 
 Cette partie contient toutes les informations concernant le projet Piaf.
 
+
+## Qu'est que PIAF ?
+PIAF signifie "Pour une IA francophone" et désigne la solution de Question Réponse proposée par la DINUM, et les porduits qui l'entoure. Elle s'appuie sur différentes briques technologiques :
+
+* [Le dataset de Piaf](https://www.data.gouv.fr/fr/datasets/piaf-le-dataset-francophone-de-questions-reponses/) : un dataset contenant de multiples exemples de Questions Réponses (QR) provenant de wikipédia. Cette annotation est issue d'une annotation citoyenne. Ce dataset suive la methodologie et le format du dataset QR anglophone [SQuAD](https://rajpurkar.github.io/SQuAD-explorer/). Vous trouverez plus de renseignements [ici](https://piaf.etalab.studio/).
+* [camembert-base-squadFR-fquad-piaf](https://huggingface.co/etalab-ia/camembert-base-squadFR-fquad-piaf) : un modèle français de Question Réponses basé sur CamemBERT et fine-tuné sur une combinaison de trois datasets français de Question Réponse:
+    * PIAFv1.1
+    * FQuADv1.0
+    * SQuAD-FR (SQuAD automatically translated to French)
+* [Haystack](https://github.com/deepset-ai/haystack) : une brique open source à laquelle nous contribuons activement permettant de faire du question réponse sur une base documentaire. Elle intègre une partie retriever qui retrouve les meilleurs documents candidat et une brique reader dans laquelle le modèle piaf est intégré et qui permet de trouver la bonne réponse.
+* [Piaf Agent](https://piaf.datascience.etalab.studio/piafagent/) :  C'est une barre de recherche, soit une interface graphique permettant d'interroger l'API de haystack afin de laisser un utilisateur poser une question et d'obtenir une réponse.
+* [Piaf Bot](https://piafbot.chatbot.fabnum.fr/) : C'est un chatbot facile à mettre en place car il se base sur un excel. Il peut se brancher sur l'API de haystack afin d'aller plus loin que les bot classiques.
+
+
 ## Historique
 
 Piaf est né en 2019 et a évolué au fil des mois. En voici donc un petit résumé :  
