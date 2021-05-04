@@ -1,0 +1,650 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Performance on CNIL Dataset</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Results Report january – Testing the Haystack Pipelines" href="report_january.html" />
+    <link rel="prev" title="Reader Module" href="index.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+      <img src="../../_static/logo.png" class="logo" alt="logo">
+      
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../csv-detective/index.html">
+   CSV-DETECTIVE
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../csv-detective/analysis/index.html">
+     csv-detective analysis
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+    <label for="toctree-checkbox-2">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../csv-detective/analysis/join_label_files.html">
+       Analysis of three csv-detective manual annotations
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../index.html">
+   PIAF
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active has-children">
+    <a class="reference internal" href="index.html">
+     Reader Module
+    </a>
+    <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+    <label for="toctree-checkbox-4">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul class="current">
+     <li class="toctree-l3 current active">
+      <a class="current reference internal" href="#">
+       Performance on CNIL Dataset
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="report_january.html">
+       Results Report january – Testing the Haystack Pipelines
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../howtos/index.html">
+     PIAF How-to’s
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+    <label for="toctree-checkbox-5">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../howtos/benchmark_search.html">
+       Quels sont les outils simlaires ?
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../howtos/integrate.html">
+       Intégrer Piaf dans mon site
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../howtos/labels.html">
+       Haystack Label’s Inquiry
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../retriever/index.html">
+     Retriever Module
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+    <label for="toctree-checkbox-6">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../retriever/DPR_fine_tuning.html">
+       DPR Fine-Tuning (finally)
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../retriever/DPR_performance.html">
+       Why my trained DPR is (was) not working
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../retriever/ES_preprocessing.html">
+       Test : Preprocessing directly with ElasticSearch Analyzers
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../retriever/Visualisation_csv_results.html">
+       Visualisation de l’indice de précision obtenu dans results.csv
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../retriever/Visualisation_results_Robin.html">
+       Visualisation de la précision dense vs sparse
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../retriever/complementarity_dense_sparse.html">
+       Analyse complémentarité
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../retriever/complementarity_dense_sparse_v2.html">
+       Analyse complémentarité
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../retriever/dense_vs_sparse_qualitative.html">
+       Étude des scores système dense vs sparse
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../retriever/score_threshold_sparse_retriever.html">
+       Recherche d’un seuil pour le score sparse
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../lab_ia/index.html">
+   LAB IA
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lab_ia/notebooks.html">
+     Content with notebooks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lab_ia/onboarding.html">
+     Onboarding
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lab_ia/reporting_standards.html">
+     Reporting Standards
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../lab_ia/resources.html">
+     Resources
+    </a>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../lab_ia/coding_standards/index.html">
+     Coding Standards
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+    <label for="toctree-checkbox-8">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../lab_ia/coding_standards/deploy_project.html">
+       Deploying your project to a server
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../lab_ia/coding_standards/git.html">
+       Working with Git
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../lab_ia/coding_standards/jupyter.html">
+       Notebooks (.ipynb)
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../lab_ia/coding_standards/python.html">
+       Python
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../lab_ia/coding_standards/secrets.html">
+       Secrets
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/piaf/reader/report_cnil.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/psorianom/knowledge-base"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/psorianom/knowledge-base/issues/new?title=Issue%20on%20page%20%2Fpiaf/reader/report_cnil.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/psorianom/knowledge-base/edit/master/docs/piaf/reader/report_cnil.md"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Performance on CNIL Dataset
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#test-method">
+   Test method
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dataset">
+   Dataset
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#results">
+   Results
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#retriever-reader-pipeline">
+     Retriever + reader pipeline
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#scikit-optimize-method">
+       Scikit optimize method
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#grid-search">
+       Grid search
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#optimization-duration">
+       Optimization duration
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#retriever-only">
+     Retriever only
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="performance-on-cnil-dataset">
+<h1>Performance on CNIL Dataset<a class="headerlink" href="#performance-on-cnil-dataset" title="Permalink to this headline">¶</a></h1>
+</div>
+<div class="section" id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<p>The objective of this report is to evaluate the performances of the PIAF-stack on the dataset provided by the CNIL.</p>
+<p>These performances will be compared to the performances obtained with the current solution implemented on the CNIL
+website <a class="reference external" href="https://www.cnil.fr/fr/cnil-direct">besoin d’aide</a></p>
+</div>
+<div class="section" id="test-method">
+<h1>Test method<a class="headerlink" href="#test-method" title="Permalink to this headline">¶</a></h1>
+<p>Each question of the dataset will be queried to the knowledge base. This will be done with two types of pipelines:</p>
+<ul class="simple">
+<li><p>One containing a retriever and a reader</p></li>
+<li><p>One containing a retriever.</p></li>
+</ul>
+<p>For the retriever/reader pipeline, the result of the pipeline will be evaluated by comparing the answer obtained with
+the gold answer. If the answer obtained contains or is contained by the gold answer then the answer will be considered
+valid.</p>
+<p>For the retriever pipeline, the ID of the retrieved document will be compared to the true document.</p>
+<p>The parameters for configuring the pipeline retriever + reader are described below. Two methods will be compared in this
+protocol.</p>
+<p>One method is using a gridsearch to find the best parameters for the pipeline. Below are the parameters evaluated.</p>
+<p>Parameters for gridsearch :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;k_retriever&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">50</span><span class="p">],</span>
+    <span class="s2">&quot;k_title_retriever&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">50</span><span class="p">],</span>  <span class="c1"># must be present, but only used when retriever_type == title_bm25</span>
+    <span class="s2">&quot;k_reader_per_candidate&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">50</span><span class="p">],</span>
+    <span class="s2">&quot;k_reader_total&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span>
+    <span class="s2">&quot;reader_model_version&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;053b085d851196110d7a83d8e0f077d0a18470be&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;retriever_model_version&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;1a01b38498875d45f69b2a6721bf6fe87425da39&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;retriever_type&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;title_bm25&quot;</span><span class="p">],</span>  <span class="c1"># Can be bm25, sbert, dpr, title or title_bm25</span>
+    <span class="s2">&quot;squad_dataset&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;./clients/cnil/knowledge_base/besoindaide_PIAF_V5.json&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;filter_level&quot;</span><span class="p">:</span> <span class="p">[</span><span class="kc">None</span><span class="p">],</span>
+    <span class="s2">&quot;preprocessing&quot;</span><span class="p">:</span> <span class="p">[</span><span class="kc">False</span><span class="p">],</span>
+    <span class="s2">&quot;boosting&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span>  <span class="c1"># default to 1</span>
+    <span class="s2">&quot;split_by&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;word&quot;</span><span class="p">],</span>  <span class="c1"># Can be &quot;word&quot;, &quot;sentence&quot;, or &quot;passage&quot;</span>
+    <span class="s2">&quot;split_length&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1000000</span><span class="p">],</span>
+    <span class="s2">&quot;experiment_name&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;cnil&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The second method is using the librairy scikit-optimize which is using the Bayesian Optimisation to find the best set of
+parameters for the evaluation.</p>
+<p>Parameters for scikit optimize :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;k_retriever&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">50</span><span class="p">],</span>
+    <span class="s2">&quot;k_title_retriever&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">50</span><span class="p">],</span>  <span class="c1"># must be present, but only used when retriever_type == title_bm25</span>
+    <span class="s2">&quot;k_reader_per_candidate&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">],</span>
+    <span class="s2">&quot;k_reader_total&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">],</span>
+    <span class="s2">&quot;reader_model_version&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;053b085d851196110d7a83d8e0f077d0a18470be&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;retriever_model_version&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;1a01b38498875d45f69b2a6721bf6fe87425da39&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;retriever_type&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;title_bm25&quot;</span><span class="p">],</span>  <span class="c1"># Can be bm25, sbert, dpr, title or title_bm25</span>
+    <span class="s2">&quot;squad_dataset&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;./clients/cnil/knowledge_base/besoindaide_PIAF_V5.json&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;filter_level&quot;</span><span class="p">:</span> <span class="p">[</span><span class="kc">None</span><span class="p">],</span>
+    <span class="s2">&quot;preprocessing&quot;</span><span class="p">:</span> <span class="p">[</span><span class="kc">False</span><span class="p">],</span>
+    <span class="s2">&quot;boosting&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span>  <span class="c1"># default to 1</span>
+    <span class="s2">&quot;split_by&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;word&quot;</span><span class="p">],</span>  <span class="c1"># Can be &quot;word&quot;, &quot;sentence&quot;, or &quot;passage&quot;</span>
+    <span class="s2">&quot;split_length&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1000000</span><span class="p">],</span>
+    <span class="s2">&quot;experiment_name&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;cnil_optimize&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The parameters for the pipeline retriever only are the following. The retriever used is a <code class="docutils literal notranslate"><span class="pre">TitleEmbeddingRetriever</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;k_retriever&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">],</span>
+    <span class="s2">&quot;squad_dataset&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;./clients/cnil/knowledge_base/besoindaide_PIAF_V5.json&quot;</span><span class="p">],</span>
+    <span class="c1"># data/evaluation-datasets/fquad_valid_with_impossible_fraction.json data/evaluation-datasets/testing_squad_format.json</span>
+    <span class="s2">&quot;filter_level&quot;</span><span class="p">:</span> <span class="p">[</span><span class="kc">None</span><span class="p">],</span>
+    <span class="s2">&quot;preprocessing&quot;</span><span class="p">:</span> <span class="p">[</span><span class="kc">True</span><span class="p">],</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Note that for this test the final results that would be displayed to a user are the two 5 best answers/documents</p>
+</div>
+<div class="section" id="dataset">
+<h1>Dataset<a class="headerlink" href="#dataset" title="Permalink to this headline">¶</a></h1>
+<p>The dataset used for this evaluation is the dataset <code class="docutils literal notranslate"><span class="pre">besoindaide_PIAF_V5.json</span></code>. This datasets contains the knowledge
+base of besoin d’aide. This knowledge base contains 523 contexts in which an answer can be found. The documents are
+organized with a title and a context. In this case, the title is always a question. Also, the first question annotated
+is always the title of the document. Additionally, the CNIL annotated the dataset with 168 additional questions. This
+results in 691 questions that can be queried to the knowledge base.
+However, for a reason that is unknown only 683 questions were tested. This is because the following questions were duplicated:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s2">&quot;Le droit à l&#39;image s&#39;applique-t-il sur internet ?&quot;</span><span class="p">,</span>
+ <span class="s1">&#39;Un site peut-il réutiliser les informations du Registre du commerce et des sociétés ?&#39;</span><span class="p">,</span>
+ <span class="s2">&quot;Numéro de sécurité sociale (NIR) : dans quels cas les communes et les départements peuvent-ils l&#39;utiliser ?&quot;</span><span class="p">,</span>
+ <span class="s1">&#39;Numéro de sécurité sociale (NIR) des enfants en école primaire : une mairie peut-elle le demander ?&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Les MDPH peuvent-elles utiliser le numéro de sécurité sociale des personnes qui déposent un dossier ?&#39;</span><span class="p">,</span>
+ <span class="s2">&quot;Télémédecine : l&#39;échange de données de santé est-il autorisé ?&quot;</span><span class="p">,</span>
+ <span class="s1">&#39;DMP (dossier médical personnel) : qui peut le consulter ?&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;La CNIL peut-elle contrôler en ligne les sites web ?&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="results">
+<h1>Results<a class="headerlink" href="#results" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="retriever-reader-pipeline">
+<h2>Retriever + reader pipeline<a class="headerlink" href="#retriever-reader-pipeline" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="scikit-optimize-method">
+<h3>Scikit optimize method<a class="headerlink" href="#scikit-optimize-method" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">k_reader_total</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">reader_top_k_accuracy_has_answer</span> <span class="o">=</span> <span class="mf">0.703</span> 
+<span class="n">reader_top_1_accuracy_has_answer</span> <span class="o">=</span> <span class="mf">0.138</span>
+<span class="n">parameters</span> <span class="p">:</span> 
+<span class="n">k_retriever</span> <span class="o">=</span> <span class="n">k_title_retriever</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">boosting</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">k_reader_per_candidate</span> <span class="o">=</span> <span class="mi">12</span> <span class="p">(</span><span class="ow">not</span> <span class="n">sensitive</span> <span class="p">:</span> <span class="n">basically</span> <span class="n">can</span> <span class="n">be</span> <span class="n">between</span> <span class="mi">12</span> <span class="ow">and</span> <span class="mi">21</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="section" id="grid-search">
+<h3>Grid search<a class="headerlink" href="#grid-search" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">k_reader_total</span> <span class="o">=</span> <span class="mi">5</span> <span class="p">(</span><span class="ow">or</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">reader_top_k_accuracy_has_answer</span> <span class="o">=</span> <span class="mf">0.701</span>
+<span class="n">reader_top_1_accuracy_has_answer</span> <span class="o">=</span> <span class="mf">0.138</span>
+<span class="n">parameters</span> <span class="p">:</span> 
+<span class="n">k_retriever</span> <span class="o">=</span> <span class="n">k_title_retriever</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">boosting</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">k_reader_per_candidate</span> <span class="o">=</span> <span class="mi">20</span> 
+</pre></div>
+</div>
+<p>Note that there is a small difference between the two results (1 more good answer for the scikit optimize)</p>
+</div>
+<div class="section" id="optimization-duration">
+<h3>Optimization duration<a class="headerlink" href="#optimization-duration" title="Permalink to this headline">¶</a></h3>
+<p>It is worthwhile to say that the best configuration is found with the scikit_optimize after 100 runs and approx 20 hours
+and a half. The gridsearch took 585 runs and 6 days. However, three different k_reader_total were investigated although
+we were only interested in one. Therefore, we should divide the time for running the experiment by three in order to
+compare it with the scikit optimize.</p>
+<p>Therefore, we can say that scikit optimize allowed to divide the time necessary for testing by approx. a factor two in
+this case.</p>
+</div>
+</div>
+<div class="section" id="retriever-only">
+<h2>Retriever only<a class="headerlink" href="#retriever-only" title="Permalink to this headline">¶</a></h2>
+<p>The performances with the retriever only are :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">5</span> <span class="n">reader_topk_accuracy_has_answer</span> <span class="p">:</span> <span class="mf">0.877</span>
+<span class="k">for</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">3</span> <span class="n">reader_topk_accuracy_has_answer</span> <span class="p">:</span> <span class="mf">0.861</span>
+<span class="n">reader_top1_accuracy_has_answer</span> <span class="p">:</span> <span class="mf">0.826</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./piaf/reader"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="index.html" title="previous page">Reader Module</a>
+    <a class='right-next' id="next-link" href="report_january.html" title="next page">Results Report january – Testing the Haystack Pipelines</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By etalab-ia<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
