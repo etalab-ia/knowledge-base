@@ -138,7 +138,7 @@ this case.
 The performances with the retriever only are :
 ```python
 for k = 5 reader_topk_accuracy_has_answer : 0.877
-for k = 5 reader_topk_accuracy_has_answer : 0.861
+for k = 3 reader_topk_accuracy_has_answer : 0.861
 reader_top1_accuracy_has_answer : 0.826
 ```
 
