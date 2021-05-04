@@ -150,8 +150,13 @@
     </label>
     <ul>
      <li class="toctree-l3">
-      <a class="reference internal" href="../howtos/Format_donnees_SQuAD.html">
-       Format données SQuAD
+      <a class="reference internal" href="../howtos/benchmark_search.html">
+       Quels sont les outils simlaires ?
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../howtos/integrate.html">
+       Intégrer Piaf dans mon site
       </a>
      </li>
      <li class="toctree-l3">
@@ -812,7 +817,7 @@ roc_auc_score:  0.455
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">class_weights</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span><span class="o">.</span><span class="mi">17</span><span class="p">,</span><span class="mi">1</span><span class="p">:</span><span class="o">.</span><span class="mi">83</span><span class="p">}</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">class_weights</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span><span class="mf">.17</span><span class="p">,</span><span class="mi">1</span><span class="p">:</span><span class="mf">.83</span><span class="p">}</span>
 <span class="n">clf3</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">class_weight</span><span class="o">=</span><span class="n">class_weights</span><span class="p">)</span>
 <span class="n">clf3</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_clf3</span><span class="p">,</span> <span class="n">y_train_clf3</span><span class="p">)</span> 
 <span class="n">y_pred_clf3</span> <span class="o">=</span> <span class="n">clf3</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_clf3</span><span class="p">)</span>
@@ -925,6 +930,6 @@ roc_auc_score:  0.54
   
   <script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
 
-  None
+  
   </body>
 </html>
