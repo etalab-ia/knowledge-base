@@ -115,7 +115,7 @@ k_reader_per_candidate = 12 (not sensitive : basically can be between 12 and 21)
 
 ### Grid search
 ```python
-for k_reader_total = 5
+for k_reader_total = 5 (or 3)
 reader_top_k_accuracy_has_answer = 0.701
 reader_top_1_accuracy_has_answer = 0.138
 parameters : 
