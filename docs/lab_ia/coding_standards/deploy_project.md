@@ -122,7 +122,7 @@ nginx -t
 ```
 If everything is fine, restart nginx:
 ```
-service reload nginx
+service nginx reload
 ```
 
 That should be all :) 
