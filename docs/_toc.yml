@@ -29,6 +29,7 @@ sections:
     - file: piaf/howtos/benchmark_search
     - file: piaf/howtos/integrate
     - file: piaf/howtos/labels
+    - file: piaf/howtos/metrics
   - file: piaf/retriever/index
     sections:
     - file: piaf/retriever/DPR_fine_tuning
