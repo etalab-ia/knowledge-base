@@ -18,7 +18,7 @@ Beaucoup des utilisateurs arrivent sur les sites de l'administration via google.
 Mesurer la satisfaction des usagers quant aux moteurs de recherche qu'il utilisent. S'il s'avère non satisfaisant, trouver un moyen de résoudre cet irritant.
 
 ## Chronologie
-Étape 1 (mars - avril) : interviews
+Étape 1 (mai - juin) : interviews
 Livrable : compréhension du contexte, recueil du besoin, irritants et personas
 
 ## Résultats
