@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PIAF How-to’s</title>
+    <title>Piaf Application</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet" />
   <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -51,8 +51,8 @@
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Quels sont les outils simlaires ?" href="benchmark_search.html" />
-    <link rel="prev" title="PIAF" href="../index.html" />
+    <link rel="next" title="Intégrer Piaf dans mon site" href="integrate.html" />
+    <link rel="prev" title="Quels sont les outils simlaires ?" href="benchmark_search.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -190,7 +190,7 @@
   </label>
   <ul class="current">
    <li class="toctree-l2 current active has-children">
-    <a class="current reference internal" href="#">
+    <a class="reference internal" href="index.html">
      PIAF How-to’s
     </a>
     <input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
@@ -198,14 +198,14 @@
      <i class="fas fa-chevron-down">
      </i>
     </label>
-    <ul>
+    <ul class="current">
      <li class="toctree-l3">
       <a class="reference internal" href="benchmark_search.html">
        Quels sont les outils simlaires ?
       </a>
      </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="fiche_produit.html">
+     <li class="toctree-l3 current active">
+      <a class="current reference internal" href="#">
        Piaf Application
       </a>
      </li>
@@ -343,7 +343,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/piaf/howtos/index.md"><button type="button"
+        <a class="dropdown-buttons" href="../../_sources/piaf/howtos/fiche_produit.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -363,10 +363,10 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/psorianom/knowledge-base/issues/new?title=Issue%20on%20page%20%2Fpiaf/howtos/index.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/psorianom/knowledge-base/issues/new?title=Issue%20on%20page%20%2Fpiaf/howtos/fiche_produit.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/psorianom/knowledge-base/edit/master/docs/piaf/howtos/index.md"><button
+        <a class="edit-button" href="https://github.com/psorianom/knowledge-base/edit/master/docs/piaf/howtos/fiche_produit.md"><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
     </div>
@@ -386,6 +386,51 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ameliorer-la-recherche-d-information-au-sein-des-sites-des-administrations-publiques">
+   Améliorer la recherche d’information au sein des sites des administrations publiques
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#contexte">
+   Contexte
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#problematique">
+   Problématique
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#autre-sujets-connexes">
+     Autre sujets connexes :
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#objectifs">
+   Objectifs
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#chronologie">
+   Chronologie
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#resultats">
+   Résultats
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -394,11 +439,35 @@
         
               <div>
                 
-  <div class="section" id="piaf-how-to-s">
-<h1>PIAF How-to’s<a class="headerlink" href="#piaf-how-to-s" title="Permalink to this headline">¶</a></h1>
-<p>This section has the how-to’s to use/understand PIAF and its satellite applications.</p>
-<p>To know more about the <strong>Piaf</strong> projet, please refer to the <a href="https://piaf.etalab.studio/">presentation website</a></p>
-<div class="toctree-wrapper compound">
+  <div class="section" id="piaf-application">
+<h1>Piaf Application<a class="headerlink" href="#piaf-application" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="ameliorer-la-recherche-d-information-au-sein-des-sites-des-administrations-publiques">
+<h2>Améliorer la recherche d’information au sein des sites des administrations publiques<a class="headerlink" href="#ameliorer-la-recherche-d-information-au-sein-des-sites-des-administrations-publiques" title="Permalink to this headline">¶</a></h2>
+<p>Cette page se veut la <em>Fiche produit</em>  telle que décrite dans le manifesto de beta.gouv lors de la phase d’investigation. (voir <a class="reference external" href="https://doc.incubateur.net/communaute/gerer-sa-startup-detat-ou-de-territoires-au-quotidien/je-gere-mon-produit-et-son-impact/gerer-sa-fiche-produit">ici</a>)</p>
+</div>
+<div class="section" id="contexte">
+<h2>Contexte<a class="headerlink" href="#contexte" title="Permalink to this headline">¶</a></h2>
+<p>Quasiment tous les sites des administrations possèdent des moteurs de recherche, qu’ils soient sous la forme d’une barre de recherche ou d’un chatbot.</p>
+</div>
+<div class="section" id="problematique">
+<h2>Problématique<a class="headerlink" href="#problematique" title="Permalink to this headline">¶</a></h2>
+<p>Est-on certain que les usagers sont satisfaits par les moteurs de recherche existants sur les sites des administrations ?</p>
+<div class="section" id="autre-sujets-connexes">
+<h3>Autre sujets connexes :<a class="headerlink" href="#autre-sujets-connexes" title="Permalink to this headline">¶</a></h3>
+<p>Beaucoup des utilisateurs arrivent sur les sites de l’administration via google. Est-ce qu’il existe des sites pour lesquels google ne référence pas bien les résultats ? Est-ce que des questions de souveraineté se posent si on laisse à google le choix des résultats à montrer aux administrations ?</p>
+</div>
+</div>
+<div class="section" id="objectifs">
+<h2>Objectifs<a class="headerlink" href="#objectifs" title="Permalink to this headline">¶</a></h2>
+<p>Mesurer la satisfaction des usagers quant aux moteurs de recherche qu’il utilisent. S’il s’avère non satisfaisant, trouver un moyen de résoudre cet irritant.</p>
+</div>
+<div class="section" id="chronologie">
+<h2>Chronologie<a class="headerlink" href="#chronologie" title="Permalink to this headline">¶</a></h2>
+<p>Étape 1 (mai - juin) : interviews
+Livrable : compréhension du contexte, recueil du besoin, irritants et personas</p>
+</div>
+<div class="section" id="resultats">
+<h2>Résultats<a class="headerlink" href="#resultats" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 
@@ -427,8 +496,8 @@
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="../index.html" title="previous page">PIAF</a>
-    <a class='right-next' id="next-link" href="benchmark_search.html" title="next page">Quels sont les outils simlaires ?</a>
+    <a class='left-prev' id="prev-link" href="benchmark_search.html" title="previous page">Quels sont les outils simlaires ?</a>
+    <a class='right-next' id="next-link" href="integrate.html" title="next page">Intégrer Piaf dans mon site</a>
 
         </div>
         
