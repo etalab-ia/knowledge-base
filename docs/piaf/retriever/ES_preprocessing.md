@@ -28,7 +28,7 @@ The preprocessing function needs to be ran both while indexing the documents and
 To facilitate the installation of our pipeline, our current solution is as coupled to the original Haystack dev as possible. This entails that in production, no other Python code is run. We use the Haystack library as it is in its own master repo. Thus, the function above cannot be run without creating a wrapper that would complexify our production environment. The same is true while querying, this preprocessing would need to run client-side (hard) or creating yet-anonther wrapper for our system that add this function.
 
 ## Solution
-To solve the issue, @Guillim got an insight from the DScientists working in the _Code du Travail Numerique_ project : use the preprocessors (called _analyzers_) already existing in the ElasticSearch stack. 
+To solve the issue, @Guillim got an insight from the DScientists working in the _Code du Travail Numerique_ project: use the preprocessors (called _analyzers_) already existing in the ElasticSearch stack. 
 
 In this way, everything would be self-contained within ES.
 
@@ -50,7 +50,7 @@ The resulting PR containing these modifs is [here]().
 
 
 ### Python Pre-Processing
-The previous simple procesing yields the following improvment: 
+The previous simple processing yields the following improvement: 
 
 1. BM25, v12, 406 QA dataset, no filtering, with no preprocessing: `Mean_precision 0.21. Time per ES query (ms): 16.721`
 2. BM25, v12, 406 QA dataset, no filtering, with preprocessing:   `Mean_precision 0.34. Time per ES query (ms): 19.722`
@@ -112,5 +112,5 @@ For this experiment the `icu-tokenizer` does not seem to offer an advantage over
 ## TODO
 
 1. Test "default" as analyzer name. Check it is taken into account. {fa}`check`
-2. Wonder why using the four filters is faster than using them indpendently :o 
+2. Wonder why using the four filters is faster than using them independently :o 
 3. Merge the proposed PR into master and add the required plugin line to Haystack's ES Dockerfile. {fa}`check`

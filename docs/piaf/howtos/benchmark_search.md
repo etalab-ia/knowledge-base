@@ -4,11 +4,14 @@ Il existe une mulititude de solutions aujourd'hui, que nous pouvons classer en d
 - les moteurs de recherche simple-composant
 - les moteurs de recherche multi-composants  
 
-La différence entre les deux peut se résumer ainsi: les multi-composants peuvent utiliser les moteurs simple-composant pour construire des systèmes plus complexe. Les multi-composants sont naturellement moins nombreux et beaucoup plus récent.
+La différence entre les deux peut se résumer ainsi : les multi-composants peuvent utiliser les moteurs simple-composant pour construire des systèmes plus complexes.
+Les multi-composants sont naturellement moins nombreux et beaucoup plus récents.
 
-Un dernière remarque, d'après nos recherches, la plupart des moteurs simple sont basés sur la meme technologie: [Lucene](https://lucene.apache.org/). Ils diffèrent donc par leur implementation et les features développées autour de cette brique fondamentale.
+Un dernière remarque, d'après nos recherches, la plupart des moteurs simple sont basés sur la même technologie : [Lucene](https://lucene.apache.org/).
+Ils diffèrent donc par leur implémentation et les features développées autour de cette brique fondamentale.
 
-Certains moteurs intègrent de l'IA (on les qualifera de dense) tandis que d'autre ne font que de l'indexation (on les qualifera de clairsemé). La différence visible qui en découle, c'est une compréhension "profonde" de la syntaxe, comme les synonymes.
+Certains moteurs intègrent de l'IA (on les qualifera de dense) tandis que d'autres ne font que de l'indexation (on les qualifera de clairsemé).
+La différence visible qui en découle, c'est une compréhension "profonde" de la syntaxe, comme les synonymes.
 
 
 Voici donc une liste des principaux moteurs que nous avons identifiés.
@@ -21,7 +24,7 @@ open-source
 _blazing-fast, open source enterprise search platform_  
 
 - Elasticsearch  
-[lien](https://www.elastic.co/)
+[lien](https://www.elastic.co/)  
 clairsemé (mais la nouvelle version semble aller vers le dense)  
 open-source  
 integration possible  
