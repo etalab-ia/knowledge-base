@@ -25,7 +25,7 @@ protocol.
 
 One method is using a gridsearch to find the best parameters for the pipeline. Below are the parameters evaluated.
 
-Parameters for gridsearch :
+Parameters for gridsearch:
 ```python
 parameters = {
     "k_retriever": [1, 3, 5, 10, 20, 50],
@@ -45,10 +45,10 @@ parameters = {
 }
 ```
 
-The second method is using the librairy scikit-optimize which is using the Bayesian Optimisation to find the best set of
+The second method is using the library scikit-optimize which is using the Bayesian Optimisation to find the best set of
 parameters for the evaluation.
 
-Parameters for scikit optimize :
+Parameters for scikit optimize:
 ```python
 parameters = {
     "k_retriever": [1, 50],

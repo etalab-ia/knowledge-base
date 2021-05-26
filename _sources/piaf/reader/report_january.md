@@ -3,9 +3,14 @@
 ## Context
 At the dawn of launching a new project on the CRPA data to further test the opportunity of using PIAF in the context of the French administration, we were facing concerns regarding the standardization of the data we were to feed to PIAF.
 
-We want to be able to launch a new instance of PIAF with as few human intervention as possible. However the performance of the whole pipeline is much influenced by the size of the knowledge base available for searching. We also know that many parameters will influence the answer retrieval in terms of quality (number of correct retrievals) and response-time. These parameters can be : document length, number of documents retreived, number of answers requested per documents, among others.
+We want to be able to launch a new instance of PIAF with as few human interventions as possible.
+However the performance of the whole pipeline is much influenced by the size of the knowledge base available for searching.
+We also know that many parameters will influence the answer retrieval in terms of quality (number of correct retrievals) and response-time.
+These parameters can be: document length, number of documents retrieved, number of answers requested per documents, among others.
 
-We have found out that some general feeling of how the performances are affected by the parameters can be acquired by running experiments on general purpose SQuAD-formated datasets, based on Wikipedia articles. However, it will be necessary to fine tune every specific use case to make sure that the parameters are the best possibe. Also, this report help us to deploy a solution that has been properly evaluated. 
+We have found out that some general feeling of how the performances are affected by the parameters can be acquired by running experiments on general purpose SQuAD-formated datasets, based on Wikipedia articles.
+However, it will be necessary to fine tune every specific use case to make sure that the parameters are the best possible.
+Also, this report helps us to deploy a solution that has been properly evaluated. 
 
 ## Solution
 In order to use our solution, we first need to transform the input data into a standard format that will be used during the whole set of PIAF tools developed.
@@ -13,9 +18,11 @@ In order to use our solution, we first need to transform the input data into a s
 The natural solution was to turn the data to the SQuAD format. Our final goal is to aim at a solution where you would only have to process your data in the squad format. You would then launch the piaf annotation platform to annotate yourself the data. The annotated data will then be used to fine tune and launch your QA solution. 
 
 ## Sprint content 
-This sprint aims at implementing the solution allowing the evaluation of the PIAF solution. We wanting to use as much as possible the functions developped by the haystack team but also implement some testing on our side for implementing a proper git flow. We implemented this testing with the pytest library. 
+This sprint aims at implementing the solution allowing the evaluation of the PIAF solution.
+We want to use as much as possible the functions developed by the haystack team but also implement some testing on our side for implementing a proper git flow.
+We implemented this testing with the pytest library. 
 
-We also wanted to gain more insights as to what are the best parameters to get an optimized solution for questionning the service-public.fr knowledge base. 
+We also wanted to gain more insights as to what are the best parameters to get an optimized solution for questioning the service-public.fr knowledge base. 
 
 ## Test
 ### Test objectives 
@@ -41,7 +48,7 @@ There were some unknown bug preventing from running all the tests that were inte
 Due to this bug, we changed the parameters that we studied. See test set up. 
 
 ### Test set up
-The configurations of the Pipeline that are tested are the following : 
+The configurations of the Pipeline that are tested are the following: 
 ```
 "k_retriever": [1,5,20,50,100],
 "k_title_retriever" : [10], # must be present, but only used when retriever_type == title_bm25
@@ -57,9 +64,9 @@ The configurations of the Pipeline that are tested are the following :
 "experiment_name": ["rr_20210420"]
 ```
 - Transformers reader with "etalab-ia/camembert-base-squadFR-fquad-piaf" model
-- The embedding retriever is using the following model : https://huggingface.co/distilbert-base-multilingual-cased
+- The embedding retriever is using the following model: https://huggingface.co/distilbert-base-multilingual-cased
 
-Each question of the dataset is queried to the Pipeline and we verify the Pipeline answer vs the answer annotated in full_spf_squad.
+Each question of the dataset is queried to the Pipeline, and we verify the Pipeline answer vs the answer annotated in full_spf_squad.
 
 ## Results 
 ### Accuracy

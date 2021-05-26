@@ -4,11 +4,11 @@
 
 ## Intro
 
-I have fine-tuned a camambert model over our combo of French SQuAD-like datasets (PIAF, FQuAD, SQuAD-FR) using the [DPR objective](https://arxiv.org/abs/2004.04906) (similarity between query and positive and dissimilarity with negative contexts). The objective is to use this model in our PIAF Retriever module. 
+I have fine-tuned a camembert model over our combo of French SQuAD-like datasets (PIAF, FQuAD, SQuAD-FR) using the [DPR objective](https://arxiv.org/abs/2004.04906) (similarity between query and positive and dissimilarity with negative contexts). The objective is to use this model in our PIAF Retriever module. 
 
 ### Problem 
 
-The training has been completed on Jean ZAY. It runs without major problems apprently. Still, when testing this model with our [evaluation script](https://github.com/etalab-ia/piaf-ml/blob/master/src/evaluation/retriever_25k_eval.py) and our test dataset (460 SPF questions), the results are surprisingly low (MAP around 5%) compared to those obtained with BM25 (~20%) and SBERT (~18%).
+The training has been completed on Jean ZAY. It runs without major problems apparently. Still, when testing this model with our [evaluation script](https://github.com/etalab-ia/piaf-ml/blob/master/src/evaluation/retriever_25k_eval.py) and our test dataset (460 SPF questions), the results are surprisingly low (MAP around 5%) compared to those obtained with BM25 (~20%) and SBERT (~18%).
 
 ### Possible sources of errors
 
@@ -18,9 +18,9 @@ One or more initial issues may be the culprit for this low performance:
 
 1. DPR and Huggingface and Haystack are all ready for dealing with BERT-like encoders (context and query). Camembert is based on Roberta, so maybe the differences when converting the output of the DPR training to a Haystack compatible model input generate the low performance ;
 
-2. The training (and dev) dataset has only one positive context and one hard negative context. While in the paper (and [issues](https://github.com/facebookresearch/DPR/issues/42)) they affirm this is enough, and in the code it is indeed the case, maybe I am missing something ? Note: while the training uses only 1 hard negative contexts, the evaluation employs 30!
+2. The training (and dev) dataset has only one positive context and one hard negative context. While in the paper (and [issues](https://github.com/facebookresearch/DPR/issues/42)) they affirm this is enough, and in the code it is indeed the case, maybe I am missing something? Note: while the training uses only 1 hard negative contexts, the evaluation employs 30!
 
-3. The hard negative contexts I am using are not good ? I follow the paper and use the top-k results from a BM25 query **not containing the answer** ;
+3. The hard negative contexts I am using are not good? I follow the paper and use the top-k results from a BM25 query **not containing the answer** ;
 
 4. My evaluation script des not work properly. The mapping + FAISS layer is somehow not working.
 
@@ -30,10 +30,10 @@ One or more initial issues may be the culprit for this low performance:
 
 For each problem above, I have tried:
 
-0. I was training with 4 Nvidia V100 GPUs, so a realb batch size of 16 * 4 = 64 ; while DPR used 8 V100s, so 16 * 8 = 128. Fixed this, no dice.
+0. I was training with 4 Nvidia V100 GPUs, so a real batch size of 16 * 4 = 64 ; while DPR used 8 V100s, so 16 * 8 = 128. Fixed this, no dice.
 
 1. Changed to a [multilingual bert](https://huggingface.co/bert-base-multilingual-uncased). Still bad results, so even if use the same architecture, I still have bad results.
-2. Following the original Natural Questions [input datset used by DPR](https://dl.fbaipublicfiles.com/dpr/data/retriever/biencoder-nq-train.json.gz), I added around 90 hard negative contexts to each question. The results with my script are still horrible. 
+2. Following the original Natural Questions [input dataset used by DPR](https://dl.fbaipublicfiles.com/dpr/data/retriever/biencoder-nq-train.json.gz), I added around 90 hard negative contexts to each question. The results with my script are still horrible. 
 **Note**: at the end of the training, we have an average rank of about 4, while DPR reported 24 :/ 
 
 
@@ -43,7 +43,10 @@ For each problem above, I have tried:
 
 ## Performance with Haystack's Evaluation Script
 
-I need to check if my fine-tuned multilingual Bert model (`mbertDPR`) is working. Let's not use my evaluation script, but [Haystack's e2e evaluation script](https://github.com/deepset-ai/haystack/blob/master/tutorials/Tutorial5_Evaluation.ipynb). We will focus exlcusively on the retriever for now. Also, while they test in English, I believe a multilingual bert should not do very bad. 
+I need to check if my fine-tuned multilingual Bert model (`mbertDPR`) is working.
+Let's not use my evaluation script, but [Haystack's e2e evaluation script](https://github.com/deepset-ai/haystack/blob/master/tutorials/Tutorial5_Evaluation.ipynb).
+We will focus exclusively on the retriever for now.
+Also, while they test in English, I believe a multilingual bert should not do very bad. 
 
 Haystack allows us to use either two types of backends: `ElasticsearchDocumentStore` or `FAISSDocumentStore`.
 The former uses ElasticSearch, the latter uses Facebook FAISS.
@@ -116,10 +119,10 @@ Retriever Mean Avg Precision: 0.12633009994121103
 In this proposed test, DPR from faceboook (MAP: 0.97) is indeed better than BM25 (MAP: 0.93). 
 
 ```{attention}
-And what is better ! Our `mbertDPR` model is performing not as good as facebook's DPR, but correctly (MAP: 0.92)! Maybe the model actually works and it is something else not working ... 
+And what is better! Our `mbertDPR` model is performing not as good as facebook's DPR, but correctly (MAP: 0.92)! Maybe the model actually works and it is something else not working ... 
 ```
 
-** This means there is an error in my evaluation script. ** Before moving on to find this bug, I decided to check the delta in performance between a FAISS and an ES backend.
+**This means there is an error in my evaluation script.** Before moving on to find this bug, I decided to check the delta in performance between a FAISS and an ES backend.
 
 
 ### Using `FAISS`
@@ -139,7 +142,7 @@ Furthermore, I found this table below on the [evaluation](https://github.com/dee
 Results reported by Haystack [here] (https://github.com/deepset-ai/haystack/blob/0a1e814bd99301dd186ea29de3d0e7619556a28a/test/benchmarks/retriever_query_results.csv)
 ```
 ## Performance with our Evaluation Script 
-The main reason I was getting horrible results using FAISS is because I was running this line before indexing in FAISS :
+The main reason I was getting horrible results using FAISS is because I was running this line before indexing in FAISS:
 ```
 document_store.faiss_index.reset()
 ```
