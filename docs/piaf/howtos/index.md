@@ -1,5 +1,3 @@
-# PIAF How-to's
+# PIAF, moteur de recherche
 
-This section is the how-to's to use/understand PIAF and its satellite applications.  
-
-To know more about the **Piaf** project, please refer to the <a href="https://piaf.etalab.studio/">presentation website</a>
+Cette section répertorie la documentation que nous produisons dans le cadre de l'application PIAF comme moteur de recherche à destination des administrations.
