@@ -26,10 +26,10 @@ This dataset contains 3 contexts (or documents) and 17 questions:
 
 ## Data Loading
 
-### What is stored in documents ?
+### What is stored in documents?
 Easy, we have a document per context (or paragraph) (i.e., 3 documents in the `documents` index).
 
-### What is stored in these labels ?
+### What is stored in these labels?
 
 A label per answer. That is, not 17 labels but 20 because there are 17 questions but 1 question with two answers and 1 questions with 3 answers. So, it is 15 questions with one answer (15 labels) plus 1 question with two answers (2 labels), plus one question with 3 answers (3 labels) = 15 + 2 + 3 = 20 labels.
 
@@ -56,7 +56,7 @@ All labels are passed onto the ES "label" index. This happens specifically in th
 
 
 ## Retrieval
-### How are labels treated in retrieval time ?
+### How are labels treated in retrieval time?
 
 At retrieval time, `labels` are read in `eval_retriever()` function at  `utils_eval.py` (our code). They are aggregated, so we have 17 labels this time. One for each question. If a question has several answers, they are included in its corresponding label. Like so:
 
@@ -88,7 +88,7 @@ Keep in mind that a question that does not have an answer  is still used to comp
 
 ## Reading
 
-### How are labels treated in reader time ?
+### How are labels treated in reader time?
 
 Again, we deal only with the questions that are **not** empty, so 16 questions.
 

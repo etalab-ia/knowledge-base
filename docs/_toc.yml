@@ -22,10 +22,12 @@ sections:
   sections:
   - file: piaf/reader/index
     sections:
+    - file: piaf/reader/report_cnil
     - file: piaf/reader/report_january
   - file: piaf/howtos/index
     sections:
-    - file: piaf/howtos/Format_donnees_SQuAD
+    - file: piaf/howtos/benchmark_search
+    - file: piaf/howtos/integrate
     - file: piaf/howtos/labels
   - file: piaf/retriever/index
     sections:
