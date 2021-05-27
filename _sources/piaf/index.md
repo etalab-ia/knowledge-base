@@ -6,6 +6,7 @@ Cette partie contient toutes les informations concernant le projet Piaf.
 ## Qu'est que PIAF ?
 PIAF signifie "Pour une IA francophone" et désigne la solution de Questions/Réponses proposée par la DINUM, et les porduits qui l'entoure. Elle s'appuie sur différentes briques technologiques :
 
+* [PiafAnno](https://github.com/etalab/piaf) : la plateforme d'annotation collaborative permettant de recueillir des questions-réponses pour constituer un dataset d'entrainement.  
 * [Le dataset de Piaf](https://www.data.gouv.fr/fr/datasets/piaf-le-dataset-francophone-de-questions-reponses/) : un dataset contenant de multiples exemples de Questions/Réponses (QR) provenant de wikipédia. Cette annotation est issue d'une annotation citoyenne. Ce dataset suit la méthodologie et le format du dataset QR anglophone [SQuAD](https://rajpurkar.github.io/SQuAD-explorer/). Vous trouverez plus de renseignements [ici](https://piaf.etalab.studio/).
 * [camembert-base-squadFR-fquad-piaf](https://huggingface.co/etalab-ia/camembert-base-squadFR-fquad-piaf) : un modèle français de Questions/Réponses basé sur CamemBERT et fine-tuné sur une combinaison de trois datasets français de Questions/Réponses :
     * PIAFv1.1
