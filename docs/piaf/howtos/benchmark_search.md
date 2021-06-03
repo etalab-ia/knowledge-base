@@ -63,6 +63,8 @@ pour de la recherche dans la galaxie google uniquement *Gmail and Drive to Docs,
 il existe aussi ces solutions que je n'ai pas integré.
 - Yext  
 - You.com  
+- [sonic](https://github.com/valeriansaliou/sonic) (light RAM altenative to ES)
+- [ambar](https://ambar.cloud/) (suite complète avec OCR et pleins de types de fichier)
 
 #### 2. multi-composants  
 
