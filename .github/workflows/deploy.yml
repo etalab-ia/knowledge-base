@@ -26,7 +26,7 @@ jobs:
     # Build the toc
     - name: Build the toc
       run: |
-        jupyter-book toc ./docs --output-folder ./docs
+        jupyter-book toc from-project docs > docs/_toc.yml
         
     # Remove old docs
     - name: Remove old docs
