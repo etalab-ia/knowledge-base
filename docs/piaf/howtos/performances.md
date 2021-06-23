@@ -2,7 +2,7 @@
 
 ### Domaine de l'étude : service-public.fr
 La plupart des utilisateurs de service public.fr arrivent via Google. Il était donc important pour nous de mesurer la pertinence des résultats de Piaf Search, par rapport à ceux de Google.
-Nous avons donc évalué les performances d'une pipeline de recherche qui inclu une recherche google comme point de départ, à celle faite maison en utilisant l'algorithme BM25.
+Nous avons donc évalué les performances d'une pipeline de recherche qui inclu une recherche google comme point de départ, à celle faite maison en utilisant l'algorithme BM25. Nous avons aussi posé les questions directement dans le moteur de recherche de [service-public.fr](https://service-public.fr) à titre de comparaison.
  
 
 ### Détail de l'évaluation
@@ -18,12 +18,14 @@ Les performances sont légèrement à l'avantage de Piaf Search:
 | -------- | -------- |
 | Google | 0.87|
 | Piaf (BM25)     | 0.90     |
+| Service-public  | 0.02     |
 
 #### Si on considère les trois premiers résultats  
 | Retriever type | Accuracy |
 | -------- | -------- |
 | Google|     0.91|
 | Piaf (BM25)     | 0.93     |
+| Service-public  | 0.10     |
 
 Plus d'information [ici](https://github.com/etalab-ia/piaf-ml/pull/102)
   
@@ -31,3 +33,4 @@ Plus d'information [ici](https://github.com/etalab-ia/piaf-ml/pull/102)
 Si on cherche à résumer ces résultats, on peut dire que pour l'indexation de service-public.fr :
 - environ 9 fois sur 10, le bon texte est retrouvé
 - Piaf Search est légèrement plus performant que Google
+- Service-public est incapable aujourd'hui de traiter les questions en langague naturel
