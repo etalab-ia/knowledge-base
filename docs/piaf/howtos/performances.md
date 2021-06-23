@@ -34,3 +34,8 @@ Si on cherche à résumer ces résultats, on peut dire que pour l'indexation de 
 - environ 9 fois sur 10, le bon texte est retrouvé
 - Piaf Search est légèrement plus performant que Google
 - Service-public est incapable aujourd'hui de traiter les questions en langague naturel
+
+
+
+## Reference
+Le dataset des questions posés à service-public, et si oui ou non les résultats proposés sont les bons est disponible [ici](../../assets/piaf/service-public_search_evaluation_questions.json)
