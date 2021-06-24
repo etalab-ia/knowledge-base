@@ -391,6 +391,11 @@
    Conclusion
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reference">
+   Reference
+  </a>
+ </li>
 </ul>
 
             </nav>
@@ -407,7 +412,7 @@
 <div class="section" id="domaine-de-l-etude-service-public-fr">
 <h2>Domaine de l’étude : <a class="reference external" href="http://service-public.fr">service-public.fr</a><a class="headerlink" href="#domaine-de-l-etude-service-public-fr" title="Permalink to this headline">¶</a></h2>
 <p>La plupart des utilisateurs de service <a class="reference external" href="http://public.fr">public.fr</a> arrivent via Google. Il était donc important pour nous de mesurer la pertinence des résultats de Piaf Search, par rapport à ceux de Google.
-Nous avons donc évalué les performances d’une pipeline de recherche qui inclu une recherche google comme point de départ, à celle faite maison en utilisant l’algorithme BM25.</p>
+Nous avons donc évalué les performances d’une pipeline de recherche qui inclu une recherche google comme point de départ, à celle faite maison en utilisant l’algorithme BM25. Nous avons aussi posé les questions directement dans le moteur de recherche de <a class="reference external" href="https://service-public.fr">service-public.fr</a> à titre de comparaison.</p>
 </div>
 <div class="section" id="detail-de-l-evaluation">
 <h2>Détail de l’évaluation<a class="headerlink" href="#detail-de-l-evaluation" title="Permalink to this headline">¶</a></h2>
@@ -432,6 +437,9 @@ Une fois cette étape d’annotation finie, nous avons lancé nos tests: pour ch
 <tr class="row-odd"><td><p>Piaf (BM25)</p></td>
 <td><p>0.90</p></td>
 </tr>
+<tr class="row-even"><td><p>Service-public</p></td>
+<td><p>0.02</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -450,6 +458,9 @@ Une fois cette étape d’annotation finie, nous avons lancé nos tests: pour ch
 <tr class="row-odd"><td><p>Piaf (BM25)</p></td>
 <td><p>0.93</p></td>
 </tr>
+<tr class="row-even"><td><p>Service-public</p></td>
+<td><p>0.10</p></td>
+</tr>
 </tbody>
 </table>
 <p>Plus d’information <a class="reference external" href="https://github.com/etalab-ia/piaf-ml/pull/102">ici</a></p>
@@ -461,7 +472,12 @@ Une fois cette étape d’annotation finie, nous avons lancé nos tests: pour ch
 <ul class="simple">
 <li><p>environ 9 fois sur 10, le bon texte est retrouvé</p></li>
 <li><p>Piaf Search est légèrement plus performant que Google</p></li>
+<li><p>Service-public est incapable aujourd’hui de traiter les questions en langague naturel</p></li>
 </ul>
+</div>
+<div class="section" id="reference">
+<h2>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
+<p>Le dataset des questions posés à service-public, et si oui ou non les résultats proposés sont les bons est disponible <span class="xref myst">ici</span></p>
 </div>
 </div>
 
