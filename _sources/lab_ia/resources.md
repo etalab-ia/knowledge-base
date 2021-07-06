@@ -61,7 +61,7 @@ The interface that links users and models. In python, we use flask most of the t
 
 Building web services is a whole computer science domain apart. Still, in order to build quick demos to let users play with our models, it is essential to have a GUI. 
 
-The fastest way I have found to achieve this task is by using [Dask](https://examples.dask.org/machine-learning.html) or [streamlit](https://www.streamlit.io/). The former is more powerful but a little bit more trickier. The latter is less powerful but easier to get it running.
+The fastest way I have found to achieve this task is by using [Dash](https://plotly.com/dash/) or [streamlit](https://www.streamlit.io/). The former is more powerful but a little bit more trickier. The latter is less powerful but easier to get it running.
 
 
 ### Git/Github
