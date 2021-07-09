@@ -106,8 +106,8 @@ This last file is not supposed to be changed a lot. In general, to resolve our d
 ln -s /etc/nginx/sites-available/datascience.studio /etc/nginx/sites-enabled/
 ``` 
 
-
-The `*.config` files in `/etc/nginx/sites-available/datascience/` are the ones that need to be created, one for each new application. It will be loaded automatically with the `include` command in the previous script.
+##### Important:
+In our current setup, the `*.config` files in `/etc/nginx/sites-available/datascience/` are the ones that need to be created, one for each new application. It will be loaded automatically with the `include` command in the previous script.
 
 
 

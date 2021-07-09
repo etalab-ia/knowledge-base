@@ -398,6 +398,13 @@
       <a class="reference internal nav-link" href="#nginx-config">
        Nginx config
       </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#important">
+         Important:
+        </a>
+       </li>
+      </ul>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#nginx-verification-and-reloading">
@@ -528,7 +535,10 @@ proxy_set_header X-Forwarded-For <span class="nv">$proxy_add_x_forwarded_for</sp
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ln -s /etc/nginx/sites-available/datascience.studio /etc/nginx/sites-enabled/
 </pre></div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">*.config</span></code> files in <code class="docutils literal notranslate"><span class="pre">/etc/nginx/sites-available/datascience/</span></code> are the ones that need to be created, one for each new application. It will be loaded automatically with the <code class="docutils literal notranslate"><span class="pre">include</span></code> command in the previous script.</p>
+<div class="section" id="important">
+<h5>Important:<a class="headerlink" href="#important" title="Permalink to this headline">¶</a></h5>
+<p>In our current setup, the <code class="docutils literal notranslate"><span class="pre">*.config</span></code> files in <code class="docutils literal notranslate"><span class="pre">/etc/nginx/sites-available/datascience/</span></code> are the ones that need to be created, one for each new application. It will be loaded automatically with the <code class="docutils literal notranslate"><span class="pre">include</span></code> command in the previous script.</p>
+</div>
 </div>
 <div class="section" id="nginx-verification-and-reloading">
 <h4>Nginx verification and reloading<a class="headerlink" href="#nginx-verification-and-reloading" title="Permalink to this headline">¶</a></h4>
